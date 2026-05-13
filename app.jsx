@@ -13,7 +13,6 @@ function App() {
         <HitsSection />
         <StorySection />
         <PrinciplesSection />
-        <ReviewsSection />
         <PromoSection />
       </main>
       <Footer />

@@ -430,93 +430,7 @@ function PrinciplesSection() {
 }
 
 /* ============================================================
-   07. REVIEWS
-   ============================================================ */
-function ReviewsSection() {
-  const reviews = [
-    {
-      quote: 'Купила «Янтарь» в&nbsp;октябре, сейчас март&nbsp;— стоит на&nbsp;комоде у&nbsp;окна как новый. Гости спрашивают, чем поливаю. Отвечаю&nbsp;— ничем.',
-      name: 'Анна К.',
-      city: 'Москва · клиент с 2024',
-      product: 'Янтарь',
-      coll: 'Шёлковая',
-    },
-    {
-      quote: 'Заказывал «Версаль» в&nbsp;подарок жене на&nbsp;десять лет свадьбы. Через год она каждое утро поправляет один и&nbsp;тот&nbsp;же лепесток. Это сильнее, чем&nbsp;любые свежие&nbsp;цветы.',
-      name: 'Илья В.',
-      city: 'Санкт-Петербург',
-      product: 'Версаль',
-      coll: 'Atelier Luxe',
-    },
-    {
-      quote: 'Маленькая «Заря» стоит у&nbsp;меня на&nbsp;прикроватной тумбе уже три года. Не выгорела, не запылилась. Это как&nbsp;первое утро&nbsp;— каждый раз.',
-      name: 'Дарья М.',
-      city: 'Казань',
-      product: 'Заря',
-      coll: 'Утренний свет',
-    },
-  ];
-  const [i, setI] = useStateS(0);
-  const r = reviews[i];
-  return (
-    <section className="section">
-      <div className="container">
-        <Reveal>
-          <div className="section-head">
-            <div className="heading">
-              <div className="eyebrow">
-                <span className="line" />
-                <span className="caps">Отзывы</span>
-              </div>
-              <h2 className="h2">Букет, который живёт<br/>годами&nbsp;— в&nbsp;интерьере клиента.</h2>
-            </div>
-          </div>
-        </Reveal>
-
-        <div className="reviews-row">
-          <Reveal>
-            <div className="review-card">
-              <span className="rquote-mark">“</span>
-              <p className="rquote" dangerouslySetInnerHTML={{ __html: r.quote }} />
-              <div className="rauthor">
-                <div className="ravatar photo-placeholder" data-label="" />
-                <div>
-                  <div className="rname">{r.name}</div>
-                  <div className="rmeta">{r.city}</div>
-                </div>
-              </div>
-              <div className="review-product">
-                <Photo ratio="1/1" label="" />
-                <div>
-                  <div className="rp-meta">{r.coll}</div>
-                  <div className="rp-name">«{r.product}»</div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-          <Reveal delay={120}>
-            <div className="reviews-visual">
-              <Photo ratio="4/5" tone={i === 1 ? 'dark' : i === 2 ? '' : ''} label={`${r.product.toLowerCase()} · в&nbsp;интерьере`.replace(/&nbsp;/g,' ')} />
-            </div>
-          </Reveal>
-        </div>
-
-        <div className="reviews-nav">
-          <div className="reviews-counter">
-            <strong>0{i + 1}</strong> &nbsp;/&nbsp; 0{reviews.length}
-          </div>
-          <div className="carousel-controls">
-            <button className="carousel-btn" onClick={() => setI((i + reviews.length - 1) % reviews.length)} aria-label="Предыдущий"><Icon.Arrow dir="left" /></button>
-            <button className="carousel-btn" onClick={() => setI((i + 1) % reviews.length)} aria-label="Следующий"><Icon.Arrow /></button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ============================================================
-   08. PROMO
+   07. PROMO
    ============================================================ */
 function PromoSection() {
   const [email, setEmail] = useStateS('');
@@ -573,5 +487,5 @@ function PromoSection() {
 /* ---------- export ---------- */
 Object.assign(window, {
   HeroSection, CollectionsSection, PhilosophySection, HitsSection,
-  StorySection, PrinciplesSection, ReviewsSection, PromoSection,
+  StorySection, PrinciplesSection, PromoSection,
 });
