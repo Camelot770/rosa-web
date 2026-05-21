@@ -37,8 +37,15 @@ export function StorySection() {
         </R>
 
         <div className="story-grid">
-          <div className="story-visual" ref={visRef} data-label="atelier kazan · 4:5">
-            <div className="photo" />
+          <div className="story-visual" ref={visRef} data-label="">
+            <div
+              className="photo"
+              style={{
+                backgroundImage: 'url("/site-photos/atelier-studio.png")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            />
             <div className="stamp">
               est.
               <br />

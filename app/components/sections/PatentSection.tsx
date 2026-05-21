@@ -2,7 +2,14 @@
 
 import { R, Split } from '../Reveal';
 
-const items = [
+interface PatentItem {
+  code: string;
+  title: string;
+  text: string;
+  image?: string;
+}
+
+const items: PatentItem[] = [
   {
     code: '№ 2 698 058',
     title: 'Патент на технологию',
@@ -26,6 +33,7 @@ const items = [
     title: 'Товарный знак',
     text:
       'Товарный знак «Роза Цветов» зарегистрирован в&nbsp;Роспатенте. Гарантирует, что вы получаете оригинальный продукт от&nbsp;студии, а&nbsp;не&nbsp;кустарную перепродажу.',
+    image: '/site-photos/trademark-certificate.png',
   },
 ];
 
@@ -58,6 +66,13 @@ export function PatentSection() {
           {items.map((it, i) => (
             <R key={i} delay={i * 80}>
               <div className="patent-card">
+                {it.image && (
+                  <div
+                    className="patent-image"
+                    style={{ backgroundImage: `url("${it.image}")` }}
+                    aria-hidden="true"
+                  />
+                )}
                 <div className="patent-code">{it.code}</div>
                 <div className="patent-title">{it.title}</div>
                 <p className="patent-text" dangerouslySetInnerHTML={{ __html: it.text }} />
