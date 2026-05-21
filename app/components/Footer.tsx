@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { R } from './Reveal';
+import { CONTACTS } from '@/lib/contacts';
 
 export function Footer() {
   return (
@@ -80,21 +81,36 @@ export function Footer() {
             <h4>Contact</h4>
             <ul>
               <li>
-                <a href="tel:+79600453996">+7 960 045 39 96</a>
+                <a href={CONTACTS.phoneHref}>{CONTACTS.phone}</a>
               </li>
               <li>
-                <a href="mailto:rozasvetov@bk.ru">rozasvetov@bk.ru</a>
+                <a href={CONTACTS.phoneAltHref}>{CONTACTS.phoneAlt}</a>
               </li>
-              <li style={{ opacity: 0.7 }}>Казань · Татарстан</li>
-              <li style={{ opacity: 0.7 }}>9:00 — 21:00</li>
               <li>
-                <a href="#">Telegram · MAX</a>
+                <a href={CONTACTS.emailHref}>{CONTACTS.email}</a>
+              </li>
+              <li style={{ opacity: 0.7 }}>{CONTACTS.city}</li>
+              <li style={{ opacity: 0.7 }}>{CONTACTS.schedule}</li>
+              <li>
+                <a href={CONTACTS.whatsapp} target="_blank" rel="noopener">
+                  WhatsApp →
+                </a>
+              </li>
+              <li>
+                <a href={CONTACTS.telegram} target="_blank" rel="noopener">
+                  Telegram →
+                </a>
+              </li>
+              <li>
+                <a href={CONTACTS.max} target="_blank" rel="noopener">
+                  MAX-бот →
+                </a>
               </li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <div>© 2026 РОЗА ЦВЕТОВ · PATENT RU 2 451 833</div>
+          <div>© 2026 ООО «Роза Цветов» · Патент {CONTACTS.patentNumber}</div>
           <div style={{ display: 'flex', gap: 28, flexWrap: 'wrap' }}>
             <Link href="/privacy">Privacy</Link>
             <Link href="/offer">Terms</Link>

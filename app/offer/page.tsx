@@ -76,7 +76,7 @@ export default function OfferPage() {
               <p>
                 2.1. Продавец обязуется передать в&nbsp;собственность Покупателю, а&nbsp;Покупатель
                 обязуется принять и&nbsp;оплатить товар&nbsp;— стабилизированные цветочные композиции,
-                произведённые по&nbsp;технологии Rosaflorero<sup>®</sup> (патент&nbsp;RU 2&nbsp;451&nbsp;833).
+                произведённые по&nbsp;запатентованной технологии (патент&nbsp;RU&nbsp;2&nbsp;698&nbsp;058).
               </p>
               <p>
                 2.2. Наименование, ассортимент, количество и&nbsp;цена товара определяются на&nbsp;Сайте
@@ -209,7 +209,7 @@ export default function OfferPage() {
                   <span className="label">Контакты</span>
                   <a href="mailto:rozacvetov@list.ru">rozacvetov@list.ru</a>
                   <br />
-                  <a href="tel:+79600453996">+7 960 045 39 96</a>
+                  <a href="tel:+79600483996">+7 960 048 39 96</a>
                 </p>
               </div>
             </section>
@@ -221,7 +221,7 @@ export default function OfferPage() {
         <div className="legal-container">
           <hr className="hairline" />
           <div className="row">
-            <span>© 2026 ООО «Роза Цветов» · Patent RU 2 451 833</span>
+            <span>© 2026 ООО «Роза Цветов» · Patent RU 2 698 058</span>
             <Link href="/">← Вернуться на сайт</Link>
           </div>
         </div>

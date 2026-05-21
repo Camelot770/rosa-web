@@ -2237,3 +2237,281 @@ body::before {
   color: var(--ink);
   margin: 0 0 32px;
 }
+
+/* =====================================================================
+   AUDIENCES — Use-case cards
+   ===================================================================== */
+.audiences { padding: clamp(80px, 10vw, 140px) 0; }
+.aud-head {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 64px;
+  align-items: end;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+.aud-lead {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 460px;
+}
+.aud-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.aud-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper-2);
+  border: 1px solid var(--ink-line);
+  padding: 32px;
+  color: var(--ink);
+  transition: background 400ms var(--ease-expo), border-color 400ms, transform 400ms var(--ease-expo);
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+}
+.aud-card:hover {
+  background: var(--paper);
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+.aud-no {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--vermilion);
+  margin-bottom: 18px;
+}
+.aud-ttl {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 1.1;
+  margin: 0 0 18px;
+}
+.aud-ttl em { font-style: italic; color: var(--vermilion); }
+.aud-text {
+  font-family: var(--body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+  flex-grow: 1;
+}
+.aud-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.aud-chip {
+  font-family: var(--body);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border: 1px solid var(--ink-line);
+  color: var(--ink-soft);
+}
+.aud-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-top: 16px;
+  border-top: 1px solid var(--ink-line);
+}
+.aud-card:hover .aud-cta { color: var(--vermilion); }
+
+@media (max-width: 980px) {
+  .aud-head { grid-template-columns: 1fr; gap: 24px; }
+  .aud-grid { grid-template-columns: 1fr; }
+}
+
+/* =====================================================================
+   PATENT / Trust
+   ===================================================================== */
+.patent-section { padding: clamp(80px, 10vw, 140px) 0; background: var(--paper-2); }
+.patent-head {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 48px;
+  align-items: end;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+.patent-lead {
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 480px;
+}
+.patent-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.patent-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 28px 24px;
+  min-height: 280px;
+}
+.patent-code {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  min-width: 60px;
+  height: 28px;
+  padding: 0 12px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  margin-bottom: 24px;
+}
+.patent-title {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.patent-text {
+  font-family: var(--body);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+@media (max-width: 1080px) {
+  .patent-head { grid-template-columns: 1fr; }
+  .patent-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .patent-grid { grid-template-columns: 1fr; }
+}
+
+/* =====================================================================
+   FAQ
+   ===================================================================== */
+.faq-section { padding: clamp(80px, 10vw, 140px) 0; }
+.faq-head { margin-bottom: clamp(40px, 5vw, 64px); max-width: 920px; }
+.faq-list {
+  border-top: 1px solid var(--ink);
+}
+.faq-item {
+  border-bottom: 1px solid var(--ink-line);
+}
+.faq-item.open { background: linear-gradient(180deg, var(--paper-2), transparent 60%); }
+.faq-q {
+  display: grid;
+  grid-template-columns: 64px 1fr 32px;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 24px 0;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--display);
+  font-size: clamp(20px, 2vw, 26px);
+  font-style: italic;
+  color: var(--ink);
+  transition: color 200ms;
+}
+.faq-q:hover { color: var(--vermilion); }
+.faq-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-style: normal;
+  letter-spacing: 0.16em;
+  color: var(--vermilion);
+}
+.faq-text { line-height: 1.3; }
+.faq-toggle {
+  font-family: var(--display);
+  font-style: normal;
+  font-size: 28px;
+  color: var(--vermilion);
+  text-align: center;
+  transition: transform 300ms var(--ease-expo);
+}
+.faq-item.open .faq-toggle { transform: rotate(180deg); }
+.faq-a {
+  padding: 0 0 28px 80px;
+  max-width: 760px;
+}
+.faq-a p {
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .faq-q { grid-template-columns: 48px 1fr 24px; gap: 12px; padding: 20px 0; font-size: 18px; }
+  .faq-a { padding-left: 60px; }
+}
+
+/* =====================================================================
+   COOKIE BANNER
+   ===================================================================== */
+.cookie-banner {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 20px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--body);
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 900px;
+  margin: 0 auto;
+  border: 1px solid var(--vermilion);
+}
+.cookie-banner .cookie-text { flex: 1; }
+.cookie-banner .ast { color: var(--vermilion); margin-right: 4px; }
+.cookie-banner a { color: var(--vermilion); border-bottom: 1px solid currentColor; }
+.cookie-banner .cookie-btn {
+  flex-shrink: 0;
+  padding: 10px 22px;
+  background: var(--vermilion);
+  color: var(--paper);
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 200ms;
+}
+.cookie-banner .cookie-btn:hover { background: var(--vermilion-d); }
+
+@media (max-width: 640px) {
+  .cookie-banner { flex-direction: column; align-items: stretch; text-align: left; }
+}

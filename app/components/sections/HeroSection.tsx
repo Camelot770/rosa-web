@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { R, Split } from '../Reveal';
 import { I } from '../Icons';
+import { CONTACTS } from '@/lib/contacts';
 
 interface HeroSectionProps {
   totalBouquets: number;
@@ -53,8 +54,8 @@ export function HeroSection({ totalBouquets }: HeroSectionProps) {
                 Стабилизированные букеты студии <strong>«Роза Цветов»</strong>&nbsp;— настоящие
                 срезанные цветы, прошедшие глубокую стабилизацию натуральными растительными соками.
                 Сохраняют форму, цвет и&nbsp;мягкость&nbsp;— до пяти лет без воды и&nbsp;ухода.
-                Технология Rosaflorero<sup>®</sup>, патент{' '}
-                <span className="mono">RU&nbsp;2&#8202;451&#8202;833</span>.
+                Запатентованная технология стабилизации, патент{' '}
+                <span className="mono">RU&nbsp;2&#8202;698&#8202;058</span>.
               </p>
             </R>
             <R delay={1280}>
@@ -121,9 +122,9 @@ export function HeroSection({ totalBouquets }: HeroSectionProps) {
             <div className="fact">
               <span className="lab">Технология</span>
               <span className="val" style={{ fontSize: '28px' }}>
-                Rosaflorero<sup style={{ fontSize: '0.5em' }}>®</sup>
+                Patent
               </span>
-              <span className="meta">патент RU&nbsp;2&#8202;451&#8202;833</span>
+              <span className="meta">№&nbsp;2&#8202;698&#8202;058 · технология стабилизации</span>
             </div>
           </div>
         </R>

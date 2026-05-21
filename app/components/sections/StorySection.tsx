@@ -61,9 +61,7 @@ export function StorySection() {
                 в&nbsp;момент идеального раскрытия и&nbsp;на&nbsp;несколько недель погружают
                 в&nbsp;натуральные растительные соки&nbsp;— по&nbsp;запатентованной российской
                 технологии{' '}
-                <strong>
-                  Rosaflorero<sup>®</sup> · RU&nbsp;2&#8202;451&#8202;833
-                </strong>
+                <strong>патенту RU&nbsp;2&#8202;698&#8202;058</strong>
                 .
               </p>
             </R>

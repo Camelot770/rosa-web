@@ -97,7 +97,7 @@ export default async function ProductPage({ params }: PageProps) {
 
               <div className="meta-row">
                 <span className="dot" />
-                <span>Стабилизация Rosaflorero® · RU 2 451 833</span>
+                <span>Запатентованная стабилизация · RU 2 698 058</span>
               </div>
 
               <div className="price-row">

@@ -101,10 +101,10 @@ export default async function ThankYouPage({ searchParams }: PageProps) {
                 для&nbsp;согласования точного времени доставки. Если возникнут вопросы&nbsp;—
                 звоните на{' '}
                 <a
-                  href="tel:+79600453996"
+                  href="tel:+79600483996"
                   style={{ color: 'var(--vermilion)', borderBottom: '1px solid currentColor' }}
                 >
-                  +7 960 045 39 96
+                  +7 960 048 39 96
                 </a>
                 .
               </p>
@@ -117,10 +117,10 @@ export default async function ThankYouPage({ searchParams }: PageProps) {
                 можно её&nbsp;перезагрузить через минуту&nbsp;— или подождать звонок
                 менеджера. Тел.{' '}
                 <a
-                  href="tel:+79600453996"
+                  href="tel:+79600483996"
                   style={{ color: 'var(--vermilion)', borderBottom: '1px solid currentColor' }}
                 >
-                  +7 960 045 39 96
+                  +7 960 048 39 96
                 </a>
                 .
               </p>
@@ -132,10 +132,10 @@ export default async function ThankYouPage({ searchParams }: PageProps) {
                 сохранён в&nbsp;«ожидающих». Если хотите попробовать ещё раз&nbsp;—
                 свяжитесь с&nbsp;нами по&nbsp;телефону{' '}
                 <a
-                  href="tel:+79600453996"
+                  href="tel:+79600483996"
                   style={{ color: 'var(--vermilion)', borderBottom: '1px solid currentColor' }}
                 >
-                  +7 960 045 39 96
+                  +7 960 048 39 96
                 </a>
                 , и мы пришлём новую ссылку.
               </p>
