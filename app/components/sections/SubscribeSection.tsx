@@ -40,8 +40,8 @@ export function SubscribeSection() {
             <R>
               <div className="kicker">✦ Первый заказ</div>
             </R>
-            <Split as="h2" className="disp disp-xl">
-              {['Скидка <em>10%</em> на', 'первый букет.']}
+            <Split as="h2" className="disp disp-md">
+              {['Скидка <em>10%</em> на первый букет.']}
             </Split>
             <R delay={200}>
               <p className="sub">

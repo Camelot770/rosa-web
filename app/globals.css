@@ -1259,53 +1259,53 @@ body::before {
    SUBSCRIBE / PROMO
    ===================================================================== */
 .subscribe {
-  padding: clamp(96px, 12vw, 180px) 0;
+  padding: clamp(48px, 6vw, 80px) 0;
   background: var(--ink);
   color: var(--paper);
 }
 .subscribe .container { position: relative; z-index: 2; }
 .subscribe-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: clamp(40px, 5vw, 96px);
-  align-items: end;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 4vw, 64px);
+  align-items: center;
 }
 .subscribe h2 em { font-style: italic; color: var(--vermilion); }
 .subscribe .kicker {
   font-family: var(--body);
-  font-size: 11px;
-  letter-spacing: 0.3em;
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--vermilion);
-  margin-bottom: 24px;
+  margin-bottom: 14px;
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 .subscribe .kicker::before {
   content: "";
-  width: 36px; height: 1px;
+  width: 28px; height: 1px;
   background: var(--vermilion);
 }
 .subscribe .sub {
-  margin-top: 28px;
+  margin-top: 16px;
   color: rgba(244,239,229,0.75);
-  font-size: 16px;
-  line-height: 1.7;
-  max-width: 460px;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 440px;
 }
 
 .sub-form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 .sub-form .field-row {
   display: flex;
   border-bottom: 1px solid rgba(244,239,229,0.4);
-  padding: 14px 0;
+  padding: 10px 0;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 .sub-form input {
   flex: 1;
@@ -1313,9 +1313,9 @@ body::before {
   border: none;
   outline: none;
   font-family: var(--body);
-  font-size: 16px;
+  font-size: 14px;
   color: var(--paper);
-  padding: 8px 0;
+  padding: 6px 0;
 }
 .sub-form input::placeholder { color: rgba(244,239,229,0.45); }
 .sub-form .field-label {
@@ -1327,27 +1327,27 @@ body::before {
 .promo-code {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
-  padding: 14px 22px;
+  gap: 12px;
+  padding: 8px 14px;
   border: 1px dashed var(--vermilion);
   font-family: var(--mono);
-  font-size: 13px;
-  letter-spacing: 0.16em;
+  font-size: 11px;
+  letter-spacing: 0.14em;
   color: var(--vermilion);
   width: fit-content;
-  margin-top: 8px;
+  margin-top: 12px;
   cursor: copy;
   transition: background 300ms;
 }
 .promo-code:hover { background: rgba(196,73,30,0.1); }
-.promo-code .status { color: var(--paper); font-size: 10.5px; }
+.promo-code .status { color: var(--paper); font-size: 10px; opacity: 0.7; }
 
 .sub-cta {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: 16px;
+  margin-top: 8px;
 }
 .sub-cta .btn-vermilion {
   color: var(--paper);
