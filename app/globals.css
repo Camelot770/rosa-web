@@ -1089,6 +1089,11 @@ body::before {
   background: var(--paper);
   border: 1px solid var(--ink);
 }
+.spread-more {
+  margin-top: clamp(40px, 5vw, 64px);
+  display: flex;
+  justify-content: center;
+}
 .spread-card .photo {
   position: absolute; inset: 0;
   background-color: var(--paper-2);

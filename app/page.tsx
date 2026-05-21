@@ -40,7 +40,7 @@ export default async function HomePage() {
         <PlatesSection bouquets={bouquets} />
         <StorySection />
         <PatentSection />
-        <CatalogSpread bouquets={bouquets} />
+        <CatalogSpread bouquets={bouquets} limit={8} />
         <FAQSection />
         <CareSection />
         <SubscribeSection />

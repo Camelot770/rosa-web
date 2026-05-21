@@ -12,13 +12,22 @@ const filters: FilterValue[] = ['All', 'Morning Light', 'Silk', 'Boudoir', 'Atel
 interface CatalogSpreadProps {
   bouquets: Bouquet[];
   initialFilter?: FilterValue;
+  /**
+   * When set, render as a preview: hide the filter row, show only the first
+   * `limit` items, and append a "view all" CTA at the bottom that links to
+   * the full /catalog page. When undefined the component is the full catalog
+   * (filter row visible, every bouquet shown).
+   */
+  limit?: number;
 }
 
 const fmt = (n: number) => n.toLocaleString('ru-RU');
 
-export function CatalogSpread({ bouquets, initialFilter = 'All' }: CatalogSpreadProps) {
+export function CatalogSpread({ bouquets, initialFilter = 'All', limit }: CatalogSpreadProps) {
   const [active, setActive] = useState<FilterValue>(initialFilter);
-  const items = active === 'All' ? bouquets : bouquets.filter((b) => b.collectionEn === active);
+  const isPreview = typeof limit === 'number' && limit > 0;
+  const allItems = active === 'All' ? bouquets : bouquets.filter((b) => b.collectionEn === active);
+  const items = isPreview ? allItems.slice(0, limit) : allItems;
   const total = bouquets.length;
 
   return (
@@ -33,42 +42,44 @@ export function CatalogSpread({ bouquets, initialFilter = 'All' }: CatalogSpread
         </R>
         <div className="spread-head">
           <Split as="h2" className="disp disp-xl">
-            {['Каталог <em>букетов.</em>']}
+            {isPreview ? ['Хиты <em>сезона.</em>'] : ['Каталог <em>букетов.</em>']}
           </Split>
           <R delay={150}>
-            <a className="link-u" href="#contacts">
-              Заказать букет{' '}
+            <Link className="link-u" href="/catalog">
+              {isPreview ? `Все ${total} букетов` : 'Заказать букет'}{' '}
               <span className="arrow">
                 <I.Arrow />
               </span>
-            </a>
+            </Link>
           </R>
         </div>
 
-        <R>
-          <div className="filter-row">
-            <span className="lbl">Filter ✦</span>
-            {filters.map((f) => (
-              <button
-                key={f}
-                className={`filter-pill ${active === f ? 'active' : ''}`}
-                onClick={() => setActive(f)}
+        {!isPreview && (
+          <R>
+            <div className="filter-row">
+              <span className="lbl">Filter ✦</span>
+              {filters.map((f) => (
+                <button
+                  key={f}
+                  className={`filter-pill ${active === f ? 'active' : ''}`}
+                  onClick={() => setActive(f)}
+                >
+                  {f}
+                </button>
+              ))}
+              <span
+                style={{
+                  marginLeft: 'auto',
+                  fontFamily: 'var(--mono)',
+                  fontSize: 11,
+                  color: 'var(--ink-soft)',
+                }}
               >
-                {f}
-              </button>
-            ))}
-            <span
-              style={{
-                marginLeft: 'auto',
-                fontFamily: 'var(--mono)',
-                fontSize: 11,
-                color: 'var(--ink-soft)',
-              }}
-            >
-              {items.length} / {total}
-            </span>
-          </div>
-        </R>
+                {items.length} / {total}
+              </span>
+            </div>
+          </R>
+        )}
 
         <div className="spread-grid">
           {items.map((b, i) => {
@@ -124,6 +135,19 @@ export function CatalogSpread({ bouquets, initialFilter = 'All' }: CatalogSpread
             );
           })}
         </div>
+
+        {isPreview && (
+          <R delay={200}>
+            <div className="spread-more">
+              <Link href="/catalog" className="btn">
+                Посмотреть ещё · {total - items.length} букетов{' '}
+                <span className="arrow">
+                  <I.Arrow />
+                </span>
+              </Link>
+            </div>
+          </R>
+        )}
       </div>
     </section>
   );
