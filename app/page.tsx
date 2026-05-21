@@ -28,12 +28,19 @@ export default async function HomePage() {
     bouquets = BOUQUETS;
   }
 
+  // Pick the most expensive in-stock bouquet for the magazine cover slot.
+  // Updating the prices in admin changes the cover automatically (with the
+  // 60s ISR window).
+  const featured = bouquets.length
+    ? [...bouquets].sort((a, b) => b.price - a.price)[0]
+    : null;
+
   return (
     <>
       <Intro />
       <Header bouquetCount={bouquets.length} />
       <main>
-        <HeroSection totalBouquets={bouquets.length} />
+        <HeroSection totalBouquets={bouquets.length} featured={featured} />
         <AudiencesSection />
         <IndexSection totalBouquets={bouquets.length} />
         <EditorialSection />
