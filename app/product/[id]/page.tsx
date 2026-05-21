@@ -41,10 +41,11 @@ export default async function ProductPage({ params }: PageProps) {
   const bouquet = await fetchBouquet(id);
   if (!bouquet) notFound();
 
-  const all = await fetchBouquets().catch(() => []);
+  const all = await fetchBouquets().catch(() => [] as typeof bouquet[]);
   const related = all
     .filter((b) => b.collection === bouquet.collection && b.id !== bouquet.id)
     .slice(0, 4);
+  const totalBouquets = all.length;
 
   const heroImg = bouquet.images[0];
   const otherImages = bouquet.images.slice(1);
@@ -56,7 +57,7 @@ export default async function ProductPage({ params }: PageProps) {
 
   return (
     <>
-      <Header />
+      <Header bouquetCount={totalBouquets || undefined} />
       <main className="product-page">
         <div className="container">
           <Link href="/#catalog" className="product-back">
