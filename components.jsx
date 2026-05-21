@@ -192,7 +192,7 @@ function Footer() {
         <div className="footer-bottom">
           <div>© 2026 РОЗА ЦВЕТОВ · PATENT RU 2 451 833</div>
           <div style={{ display: 'flex', gap: 28, flexWrap: 'wrap' }}>
-            <a href="#">Privacy</a>
+            <a href="privacy.html">Privacy</a>
             <a href="#">Terms</a>
             <a href="#">Реквизиты</a>
             <a href="#">Issue №001 / May 2026</a>
