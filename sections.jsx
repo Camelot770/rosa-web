@@ -86,7 +86,7 @@ function HeroSection() {
             </div>
             <div className="fact">
               <span className="lab">Букетов</span>
-              <span className="val"><em>73</em></span>
+              <span className="val"><em>40</em></span>
               <span className="meta">в каталоге · 4 коллекции</span>
             </div>
             <div className="fact">
@@ -112,7 +112,7 @@ function HeroSection() {
 function IndexSection() {
   const rows = [
     { ix: '— 01', title: <span>Editorial · <em>Философия названий</em></span>, sub: 'Спред · 4 главы', pg: 'P. 04' },
-    { ix: '— 02', title: <span>Plates · <em>Четыре коллекции</em></span>, sub: '73 букета', pg: 'P. 12' },
+    { ix: '— 02', title: <span>Plates · <em>Четыре коллекции</em></span>, sub: '40 букетов', pg: 'P. 12' },
     { ix: '— 03', title: <span><em>Atelier</em> · Студия в Татарстане</span>, sub: 'Технология + история', pg: 'P. 22' },
     { ix: '— 04', title: <span><em>Catalog</em> · Хиты сезона</span>, sub: 'Showcase + цены', pg: 'P. 28' },
     { ix: '— 05', title: <span><em>Care</em> · Три правила</span>, sub: 'Уход + FAQ', pg: 'P. 36' },
@@ -269,12 +269,26 @@ function EditorialSection() {
    PLATES — Collections
    ============================================================ */
 function PlatesSection() {
-  const plates = [
-    { roman: 'I',   lbl: 'Утренний свет', name: 'Morning',  it: ' Light',  meta: '16 bouquets · до 2 700 ₽',  label: 'morning · plate i'  },
-    { roman: 'II',  lbl: 'Шёлковая',      name: 'Silk',     it: '',        meta: '22 bouquets · 2 700–4 500 ₽', label: 'silk · plate ii'    },
-    { roman: 'III', lbl: 'Будуарная',     name: 'Boudoir',  it: '',        meta: '24 bouquets · 4 500–7 000 ₽', label: 'boudoir · plate iii'},
-    { roman: 'IV',  lbl: 'Atelier Luxe',  name: 'Atelier',  it: ' Luxe',   meta: '11 bouquets · от 7 000 ₽',    label: 'luxe · plate iv'    },
+  const COLLS = [
+    { roman: 'I',   lbl: 'Утренний свет', name: 'Morning',  it: ' Light' },
+    { roman: 'II',  lbl: 'Шёлковая',      name: 'Silk',     it: ''       },
+    { roman: 'III', lbl: 'Будуарная',     name: 'Boudoir',  it: ''       },
+    { roman: 'IV',  lbl: 'Atelier Luxe',  name: 'Atelier',  it: ' Luxe'  },
   ];
+  const data = (typeof window !== 'undefined' && window.BOUQUETS) || [];
+  const fmt = (n) => n.toLocaleString('ru-RU').replace(/ /g, ' ');
+  const plates = COLLS.map((p) => {
+    const items = data.filter((b) => b.collection === p.lbl);
+    if (!items.length) return { ...p, meta: '', hero: null };
+    const prices = items.map((b) => b.price);
+    const lo = Math.min(...prices), hi = Math.max(...prices);
+    const meta = lo === hi
+      ? `${items.length} букетов · ${fmt(lo)} ₽`
+      : `${items.length} букетов · ${fmt(lo)}–${fmt(hi)} ₽`;
+    const hero = (items[0].images && items[0].images[0]) || null;
+    return { ...p, meta, hero };
+  });
+  const total = data.length;
   return (
     <section className="plates-section" id="plates">
       <div className="container">
@@ -290,20 +304,20 @@ function PlatesSection() {
             {['Plates <em>I — IV.</em>']}
           </Split>
           <R delay={150}>
-            <a className="link-u" href="#catalog">Все 73 букета <span className="arrow"><I.Arrow /></span></a>
+            <a className="link-u" href="#catalog">Все {total} букетов <span className="arrow"><I.Arrow /></span></a>
           </R>
         </div>
 
         <div className="plates">
           {plates.map((p, i) => (
             <R key={i} delay={i * 100}>
-              <a className="plate" href="#">
-                <div className="plate-photo" data-label={p.label}>
-                  <div className="photo" style={i === 2 ? { backgroundImage:
-                    'radial-gradient(at 50% 40%, rgba(196,73,30,0.22), transparent 60%), repeating-linear-gradient(135deg, rgba(26,22,18,0.06) 0 1px, transparent 1px 14px)'
-                  } : i === 3 ? { backgroundImage:
-                    'radial-gradient(at 60% 40%, rgba(154,142,122,0.4), transparent 60%), radial-gradient(at 30% 70%, rgba(196,73,30,0.18), transparent 60%)'
-                  } : undefined } />
+              <a className="plate" href="#catalog">
+                <div className="plate-photo">
+                  <div
+                    className="photo"
+                    data-label=""
+                    style={p.hero ? { backgroundImage: `url("${p.hero}")`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined}
+                  />
                   <div className="plate-tag">Plate {p.roman}</div>
                   <div className="ru-no">№ 0{i + 1}</div>
                 </div>
@@ -409,17 +423,10 @@ function StorySection() {
 function CatalogSpread() {
   const filters = ['All', 'Morning Light', 'Silk', 'Boudoir', 'Atelier Luxe'];
   const [active, setActive] = useStateS('All');
-  const all = [
-    { coll: 'Atelier Luxe',   collF: 'Atelier Luxe',  n: 'Палаццо',    p: '9 800 ₽',  ix: '№ 001 / 73', label: 'palazzo · 4:5' },
-    { coll: 'Atelier Luxe',   collF: 'Atelier Luxe',  n: 'Версаль',    p: '11 600 ₽', ix: '№ 002 / 73', label: 'versal · 4:5' },
-    { coll: 'Будуарная',      collF: 'Boudoir',       n: 'Полнолуние', p: '6 750 ₽',  ix: '№ 003 / 73', label: 'polnolunie · 4:5' },
-    { coll: 'Будуарная',      collF: 'Boudoir',       n: 'Сапфир',     p: '5 480 ₽',  ix: '№ 004 / 73', label: 'sapphir · 4:5' },
-    { coll: 'Шёлковая',       collF: 'Silk',          n: 'Янтарь',     p: '3 920 ₽',  ix: '№ 005 / 73', label: 'yantar · 4:5' },
-    { coll: 'Шёлковая',       collF: 'Silk',          n: 'Шёлк',       p: '3 240 ₽',  ix: '№ 006 / 73', label: 'shyolk · 4:5' },
-    { coll: 'Утренний свет',  collF: 'Morning Light', n: 'Мерцание',   p: '2 380 ₽',  ix: '№ 007 / 73', label: 'mertsanie · 4:5' },
-    { coll: 'Утренний свет',  collF: 'Morning Light', n: 'Заря',       p: '1 590 ₽',  ix: '№ 008 / 73', label: 'zarya · 4:5' },
-  ];
-  const items = active === 'All' ? all : all.filter(i => i.collF === active);
+  const data = (typeof window !== 'undefined' && window.BOUQUETS) || [];
+  const fmt = (n) => n.toLocaleString('ru-RU').replace(/ /g, ' ');
+  const items = active === 'All' ? data : data.filter((b) => b.collectionEn === active);
+  const total = data.length;
 
   return (
     <section className="catalog-spread" id="catalog">
@@ -428,15 +435,15 @@ function CatalogSpread() {
           <div className="page-marker" style={{ marginBottom: 24 }}>
             <span className="num">P.&nbsp;28</span>
             <span className="lab">— Catalog</span>
-            <span className="sub">/ Хиты сезона</span>
+            <span className="sub">/ Каталог букетов</span>
           </div>
         </R>
         <div className="spread-head">
           <Split as="h2" className="disp disp-xl">
-            {['Хиты <em>сезона.</em>']}
+            {['Каталог <em>букетов.</em>']}
           </Split>
           <R delay={150}>
-            <a className="link-u" href="#">Открыть весь каталог <span className="arrow"><I.Arrow /></span></a>
+            <a className="link-u" href="#contacts">Заказать букет <span className="arrow"><I.Arrow /></span></a>
           </R>
         </div>
 
@@ -447,30 +454,43 @@ function CatalogSpread() {
               <button key={f} className={`filter-pill ${active === f ? 'active' : ''}`} onClick={() => setActive(f)}>{f}</button>
             ))}
             <span style={{ marginLeft: 'auto', fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-soft)' }}>
-              {items.length} / 73
+              {items.length} / {total}
             </span>
           </div>
         </R>
 
         <div className="spread-grid">
-          {items.map((it, i) => (
-            <R key={`${active}-${i}`} delay={i * 50}>
-              <a className="spread-card" href="#">
-                <div className="ph">
-                  <div className="photo" data-label={it.label} />
-                  <span className="stamp-no">{it.ix.split(' / ')[0]}</span>
-                  <div className="quick"><span className="pill">Быстрый просмотр</span></div>
-                </div>
-                <div className="body">
-                  <div>
-                    <div className="cap">{it.coll}</div>
-                    <div className="nm"><em>«{it.n}»</em></div>
+          {items.map((b, i) => {
+            const img = b.images && b.images[0];
+            const ix = `№ ${String(b.no).padStart(3, '0')}`;
+            return (
+              <R key={`${active}-${b.id}`} delay={Math.min(i, 12) * 40}>
+                <a className="spread-card" href="#contacts">
+                  <div className="ph">
+                    <div
+                      className="photo"
+                      data-label=""
+                      style={img ? { backgroundImage: `url("${img}")`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined}
+                    />
+                    <span className="stamp-no">{ix}</span>
+                    <div className="quick"><span className="pill">Быстрый просмотр</span></div>
                   </div>
-                  <div className="pr">{it.p}</div>
-                </div>
-              </a>
-            </R>
-          ))}
+                  <div className="body">
+                    <div>
+                      <div className="cap">{b.collection}</div>
+                      <div className="nm"><em>«{b.name}»</em></div>
+                    </div>
+                    <div className="pr">
+                      {b.oldPrice && b.oldPrice > b.price ? (
+                        <span style={{ color: 'var(--taupe)', textDecoration: 'line-through', marginRight: 8, fontWeight: 400 }}>{fmt(b.oldPrice)} ₽</span>
+                      ) : null}
+                      {fmt(b.price)} ₽
+                    </div>
+                  </div>
+                </a>
+              </R>
+            );
+          })}
         </div>
       </div>
     </section>
