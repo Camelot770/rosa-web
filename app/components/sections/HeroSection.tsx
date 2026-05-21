@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { R, Split } from '../Reveal';
 import { I } from '../Icons';
 
@@ -58,12 +59,12 @@ export function HeroSection({ totalBouquets }: HeroSectionProps) {
             </R>
             <R delay={1280}>
               <div className="hero-ctas">
-                <a className="btn" href="#catalog">
+                <Link className="btn" href="/catalog">
                   Открыть каталог{' '}
                   <span className="arrow">
                     <I.Arrow />
                   </span>
-                </a>
+                </Link>
                 <a className="link-u" href="#editorial">
                   Философия названий{' '}
                   <span className="arrow">
