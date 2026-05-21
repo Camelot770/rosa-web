@@ -484,7 +484,7 @@ body::before {
      pinned polaroid (the .corner-tape decoration is designed for this).
      Scales with viewport width but never above hero-main's top by more
      than ~360px on huge screens or less than ~80px on small ones. */
-  margin-top: clamp(-360px, -22vw, -80px);
+  margin-top: clamp(-560px, -32vw, -120px);
 }
 .cover-photo {
   position: relative;
