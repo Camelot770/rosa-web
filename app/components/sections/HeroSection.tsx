@@ -5,12 +5,18 @@ import Link from 'next/link';
 import { R, Split } from '../Reveal';
 import { I } from '../Icons';
 import { CONTACTS } from '@/lib/contacts';
+import type { Bouquet } from '@/lib/bouquets-data';
 
 interface HeroSectionProps {
   totalBouquets: number;
+  /** Featured bouquet to put in the magazine-cover slot. Falls back to a
+   *  decorative placeholder when null. */
+  featured?: Bouquet | null;
 }
 
-export function HeroSection({ totalBouquets }: HeroSectionProps) {
+const fmt = (n: number) => n.toLocaleString('ru-RU').replace(/ /g, ' ');
+
+export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
   const photoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -78,22 +84,39 @@ export function HeroSection({ totalBouquets }: HeroSectionProps) {
 
           <div className="hero-right">
             <R delay={1100}>
-              <div className="cover-photo" ref={photoRef} data-label="palazzo · plate i · 4:5">
+              <Link
+                href={featured ? `/product/${featured.id}` : '/catalog'}
+                className="cover-photo"
+                ref={photoRef as React.RefObject<HTMLAnchorElement>}
+                data-label={featured ? '' : 'cover · plate i · 4:5'}
+                aria-label={featured ? `Букет «${featured.name}»` : 'Каталог'}
+              >
                 <div className="corner-tape" />
                 <div className="plate-tag">
                   <span className="v">№ 001</span> · Plate I
                 </div>
-                <div className="photo" />
-              </div>
+                <div
+                  className="photo"
+                  style={
+                    featured && featured.images[0]
+                      ? {
+                          backgroundImage: `url("${featured.images[0]}")`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                        }
+                      : undefined
+                  }
+                />
+              </Link>
             </R>
             <R delay={1200}>
               <div className="cover-caption">
                 <span>
-                  <strong>Pl.&nbsp;I</strong> · «Палаццо»
+                  <strong>Pl.&nbsp;I</strong> · «{featured ? featured.name : 'Палаццо'}»
                 </span>
-                <span>Atelier Luxe</span>
+                <span>{featured ? featured.collection : 'Atelier Luxe'}</span>
                 <span>
-                  <strong>9&#8202;800&nbsp;₽</strong>
+                  <strong>{fmt(featured ? featured.price : 9800)}&nbsp;₽</strong>
                 </span>
               </div>
             </R>
