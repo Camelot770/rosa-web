@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { R, Split } from '../Reveal';
 
 interface IndexSectionProps {
@@ -10,6 +11,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
   const rows = [
     {
       ix: '— 01',
+      href: '/editorial',
       title: (
         <span>
           Editorial · <em>Философия названий</em>
@@ -20,6 +22,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
     },
     {
       ix: '— 02',
+      href: '/plates',
       title: (
         <span>
           Plates · <em>Четыре коллекции</em>
@@ -30,6 +33,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
     },
     {
       ix: '— 03',
+      href: '/atelier',
       title: (
         <span>
           <em>Atelier</em> · Студия в Татарстане
@@ -40,6 +44,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
     },
     {
       ix: '— 04',
+      href: '/catalog',
       title: (
         <span>
           <em>Catalog</em> · Хиты сезона
@@ -50,6 +55,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
     },
     {
       ix: '— 05',
+      href: '/care',
       title: (
         <span>
           <em>Care</em> · Три правила
@@ -60,12 +66,13 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
     },
     {
       ix: '— 06',
+      href: '/b2b',
       title: (
         <span>
-          <em>Subscribe</em> · Промокод
+          <em>B2B</em> · Корпоративным
         </span>
       ),
-      sub: '−10% на первый заказ',
+      sub: 'Брендирование · от 1 суток',
       pg: 'P. 42',
     },
   ];
@@ -87,7 +94,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
           <div className="index-list">
             {rows.map((r, i) => (
               <R key={i} delay={i * 60}>
-                <a href="#" className="index-row">
+                <Link href={r.href} className="index-row">
                   <span className="ix">{r.ix}</span>
                   <span>
                     <span className="ttl">{r.title}</span>
@@ -99,7 +106,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
                     ↗
                   </span>
                   <span className="pg">{r.pg}</span>
-                </a>
+                </Link>
               </R>
             ))}
           </div>
