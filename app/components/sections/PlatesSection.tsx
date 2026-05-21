@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { R, Split } from '../Reveal';
 import { I } from '../Icons';
 import type { Bouquet, Collection } from '@/lib/bouquets-data';
@@ -54,19 +55,19 @@ export function PlatesSection({ bouquets }: PlatesSectionProps) {
             {['Plates <em>I — IV.</em>']}
           </Split>
           <R delay={150}>
-            <a className="link-u" href="#catalog">
+            <Link className="link-u" href="/catalog">
               Все {bouquets.length} букетов{' '}
               <span className="arrow">
                 <I.Arrow />
               </span>
-            </a>
+            </Link>
           </R>
         </div>
 
         <div className="plates">
           {plates.map((p, i) => (
             <R key={i} delay={i * 100}>
-              <a className="plate" href="#catalog">
+              <Link className="plate" href="/catalog">
                 <div className="plate-photo">
                   <div
                     className="photo"
@@ -97,7 +98,7 @@ export function PlatesSection({ bouquets }: PlatesSectionProps) {
                     <I.Arrow size={16} />
                   </span>
                 </div>
-              </a>
+              </Link>
             </R>
           ))}
         </div>

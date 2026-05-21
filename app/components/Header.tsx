@@ -35,12 +35,12 @@ export function Header({ bouquetCount }: HeaderProps = {}) {
           <em>Роза</em>&nbsp;Цветов
         </a>
         <nav className="nav">
-          <a href="#index">Indice</a>
-          <a href="#editorial">Editorial</a>
-          <a href="#plates">Plates</a>
-          <a href="#atelier">Atelier</a>
-          <a href="#catalog">Catalog</a>
-          <a href="#care">Care</a>
+          <Link href="/#index">Indice</Link>
+          <Link href="/#editorial">Editorial</Link>
+          <Link href="/#plates">Plates</Link>
+          <Link href="/#atelier">Atelier</Link>
+          <Link href="/catalog">Catalog</Link>
+          <Link href="/#care">Care</Link>
         </nav>
         <div className="header-right">
           <button className="icon-btn" aria-label="Поиск">

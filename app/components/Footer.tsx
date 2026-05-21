@@ -28,19 +28,19 @@ export function Footer() {
             <h4>Catalog</h4>
             <ul>
               <li>
-                <a href="#catalog">Все 40 букетов</a>
+                <a href="/catalog">Все 40 букетов</a>
               </li>
               <li>
-                <a href="#catalog">Утренний свет</a>
+                <a href="/catalog">Утренний свет</a>
               </li>
               <li>
-                <a href="#catalog">Шёлковая</a>
+                <a href="/catalog">Шёлковая</a>
               </li>
               <li>
-                <a href="#catalog">Будуарная</a>
+                <a href="/catalog">Будуарная</a>
               </li>
               <li>
-                <a href="#catalog">Atelier Luxe</a>
+                <a href="/catalog">Atelier Luxe</a>
               </li>
             </ul>
           </div>
