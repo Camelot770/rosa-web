@@ -1,5 +1,24 @@
-/* Auto-generated from rosa-flowers-export/. Do not edit by hand. */
-window.BOUQUETS = [
+// Auto-generated from rosa-flowers-export/. Do not edit by hand.
+// In M2 this static data is replaced by a server fetch to /api/bouquets.
+
+export type Collection = 'Утренний свет' | 'Шёлковая' | 'Будуарная' | 'Atelier Luxe';
+export type CollectionEn = 'Morning Light' | 'Silk' | 'Boudoir' | 'Atelier Luxe';
+
+export interface Bouquet {
+  id: number;
+  no: number;
+  name: string;
+  description: string;
+  price: number;
+  oldPrice: number | null;
+  collection: Collection;
+  collectionEn: CollectionEn;
+  isHit: boolean;
+  isNew: boolean;
+  images: string[];
+}
+
+export const BOUQUETS: Bouquet[] = [
   {
     "id": 120,
     "no": 1,
@@ -12,7 +31,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/017_%D0%A2%D0%B0%D1%82%D1%8C%D1%8F%D0%BD%D0%B0.jpg"
+      "/bouquets/017_%D0%A2%D0%B0%D1%82%D1%8C%D1%8F%D0%BD%D0%B0.jpg"
     ]
   },
   {
@@ -27,7 +46,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/029_%D0%A1%D0%B2%D0%B5%D1%82%D0%BB%D0%B0%D0%BD%D0%B0.jpg"
+      "/bouquets/029_%D0%A1%D0%B2%D0%B5%D1%82%D0%BB%D0%B0%D0%BD%D0%B0.jpg"
     ]
   },
   {
@@ -42,7 +61,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/020_%D0%92%D0%B5%D0%BD%D0%B5%D1%80%D0%B0.jpg"
+      "/bouquets/020_%D0%92%D0%B5%D0%BD%D0%B5%D1%80%D0%B0.jpg"
     ]
   },
   {
@@ -57,7 +76,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/014_%D0%90%D1%80%D0%B8%D0%BD%D0%B0.jpg"
+      "/bouquets/014_%D0%90%D1%80%D0%B8%D0%BD%D0%B0.jpg"
     ]
   },
   {
@@ -72,7 +91,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/028_%D0%90%D0%BC%D0%B5%D0%BB%D0%B8.jpg"
+      "/bouquets/028_%D0%90%D0%BC%D0%B5%D0%BB%D0%B8.jpg"
     ]
   },
   {
@@ -87,7 +106,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/035_%D0%90%D0%B3%D0%BB%D0%B0%D1%8F.jpg"
+      "/bouquets/035_%D0%90%D0%B3%D0%BB%D0%B0%D1%8F.jpg"
     ]
   },
   {
@@ -102,7 +121,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/018_%D0%92%D0%B0%D1%80%D0%B2%D0%B0%D1%80%D0%B0.jpg"
+      "/bouquets/018_%D0%92%D0%B0%D1%80%D0%B2%D0%B0%D1%80%D0%B0.jpg"
     ]
   },
   {
@@ -117,8 +136,8 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/023_%D0%9E%D0%BB%D1%8C%D0%B3%D0%B0.jpg",
-      "bouquets/023_%D0%9E%D0%BB%D1%8C%D0%B3%D0%B0_2.jpg"
+      "/bouquets/023_%D0%9E%D0%BB%D1%8C%D0%B3%D0%B0.jpg",
+      "/bouquets/023_%D0%9E%D0%BB%D1%8C%D0%B3%D0%B0_2.jpg"
     ]
   },
   {
@@ -133,7 +152,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/022_%D0%AE%D0%BB%D0%B8%D1%8F.jpg"
+      "/bouquets/022_%D0%AE%D0%BB%D0%B8%D1%8F.jpg"
     ]
   },
   {
@@ -148,7 +167,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/027_%D0%93%D0%BB%D0%BE%D1%80%D0%B8%D1%8F.jpg"
+      "/bouquets/027_%D0%93%D0%BB%D0%BE%D1%80%D0%B8%D1%8F.jpg"
     ]
   },
   {
@@ -163,7 +182,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/030_%D0%9A%D1%80%D0%B8%D1%81%D1%82%D0%B8%D0%BD%D0%B0.jpg"
+      "/bouquets/030_%D0%9A%D1%80%D0%B8%D1%81%D1%82%D0%B8%D0%BD%D0%B0.jpg"
     ]
   },
   {
@@ -178,7 +197,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/031_%D0%9C%D0%B0%D1%80%D0%B8%D0%BD%D0%B0.jpg"
+      "/bouquets/031_%D0%9C%D0%B0%D1%80%D0%B8%D0%BD%D0%B0.jpg"
     ]
   },
   {
@@ -193,7 +212,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/039_%D0%A1%D0%BE%D0%BD%D1%8F.jpg"
+      "/bouquets/039_%D0%A1%D0%BE%D0%BD%D1%8F.jpg"
     ]
   },
   {
@@ -208,7 +227,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/011_%D0%A1%D0%BE%D1%84%D0%B8%D1%8F.jpg"
+      "/bouquets/011_%D0%A1%D0%BE%D1%84%D0%B8%D1%8F.jpg"
     ]
   },
   {
@@ -223,7 +242,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/013_%D0%92%D0%B8%D0%BE%D0%BB%D0%B5%D1%82%D1%82%D0%B0.jpg"
+      "/bouquets/013_%D0%92%D0%B8%D0%BE%D0%BB%D0%B5%D1%82%D1%82%D0%B0.jpg"
     ]
   },
   {
@@ -238,7 +257,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/032_%D0%A3%D0%BB%D1%8C%D1%8F%D0%BD%D0%B0.jpg"
+      "/bouquets/032_%D0%A3%D0%BB%D1%8C%D1%8F%D0%BD%D0%B0.jpg"
     ]
   },
   {
@@ -253,7 +272,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/012_%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D1%8F.jpg"
+      "/bouquets/012_%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D1%8F.jpg"
     ]
   },
   {
@@ -268,7 +287,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/010_%D0%9C%D0%B0%D1%80%D0%B8%D1%8F.jpg"
+      "/bouquets/010_%D0%9C%D0%B0%D1%80%D0%B8%D1%8F.jpg"
     ]
   },
   {
@@ -283,7 +302,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/009_%D0%90%D0%BD%D0%BD%D0%B0.jpg"
+      "/bouquets/009_%D0%90%D0%BD%D0%BD%D0%B0.jpg"
     ]
   },
   {
@@ -298,7 +317,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/033_%D0%95%D0%BB%D0%B5%D0%BD%D0%B0.jpg"
+      "/bouquets/033_%D0%95%D0%BB%D0%B5%D0%BD%D0%B0.jpg"
     ]
   },
   {
@@ -313,7 +332,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/021_%D0%AF%D0%BD%D0%B0.jpg"
+      "/bouquets/021_%D0%AF%D0%BD%D0%B0.jpg"
     ]
   },
   {
@@ -328,7 +347,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/025_%D0%90%D0%B4%D0%B5%D0%BB%D1%8C.jpg"
+      "/bouquets/025_%D0%90%D0%B4%D0%B5%D0%BB%D1%8C.jpg"
     ]
   },
   {
@@ -343,7 +362,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/026_%D0%9D%D0%B0%D1%82%D0%B0%D0%BB%D0%B8.jpg"
+      "/bouquets/026_%D0%9D%D0%B0%D1%82%D0%B0%D0%BB%D0%B8.jpg"
     ]
   },
   {
@@ -358,7 +377,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/007_%D0%9B%D1%83%D0%BD%D0%BD%D1%8B%D0%B9_%D0%A1%D0%B2%D0%B5%D1%82.jpg"
+      "/bouquets/007_%D0%9B%D1%83%D0%BD%D0%BD%D1%8B%D0%B9_%D0%A1%D0%B2%D0%B5%D1%82.jpg"
     ]
   },
   {
@@ -373,11 +392,11 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0.jpg",
-      "bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0_2.jpg",
-      "bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0_3.jpg",
-      "bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0_4.jpg",
-      "bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0_5.jpg"
+      "/bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0.jpg",
+      "/bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0_2.jpg",
+      "/bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0_3.jpg",
+      "/bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0_4.jpg",
+      "/bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0_5.jpg"
     ]
   },
   {
@@ -392,7 +411,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": false,
     "images": [
-      "bouquets/003_%D0%A0%D0%B0%D0%BF%D1%81%D0%BE%D0%B4%D0%B8%D1%8F.jpeg"
+      "/bouquets/003_%D0%A0%D0%B0%D0%BF%D1%81%D0%BE%D0%B4%D0%B8%D1%8F.jpeg"
     ]
   },
   {
@@ -407,7 +426,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/019_%D0%90%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D0%B8%D1%8F.jpg"
+      "/bouquets/019_%D0%90%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D0%B8%D1%8F.jpg"
     ]
   },
   {
@@ -422,7 +441,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/016_%D0%90%D0%BB%D0%B8%D1%81%D0%B0.jpg"
+      "/bouquets/016_%D0%90%D0%BB%D0%B8%D1%81%D0%B0.jpg"
     ]
   },
   {
@@ -437,7 +456,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/015_%D0%92%D0%B8%D0%BE%D0%BB%D0%B0.jpg"
+      "/bouquets/015_%D0%92%D0%B8%D0%BE%D0%BB%D0%B0.jpg"
     ]
   },
   {
@@ -452,8 +471,8 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/008_%D0%94%D0%B8%D0%B0%D0%BD%D0%B0.jpg",
-      "bouquets/008_%D0%94%D0%B8%D0%B0%D0%BD%D0%B0_2.jpg"
+      "/bouquets/008_%D0%94%D0%B8%D0%B0%D0%BD%D0%B0.jpg",
+      "/bouquets/008_%D0%94%D0%B8%D0%B0%D0%BD%D0%B0_2.jpg"
     ]
   },
   {
@@ -468,7 +487,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/040_%D0%90%D0%B4%D1%80%D0%B8%D0%B0%D0%BD%D0%B0.jpg"
+      "/bouquets/040_%D0%90%D0%B4%D1%80%D0%B8%D0%B0%D0%BD%D0%B0.jpg"
     ]
   },
   {
@@ -483,7 +502,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/036_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D1%81%D0%B0.jpg"
+      "/bouquets/036_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D1%81%D0%B0.jpg"
     ]
   },
   {
@@ -498,7 +517,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/037_%D0%9C%D0%B0%D1%80%D0%B3%D0%B0%D1%80%D0%B8%D1%82%D0%B0.jpg"
+      "/bouquets/037_%D0%9C%D0%B0%D1%80%D0%B3%D0%B0%D1%80%D0%B8%D1%82%D0%B0.jpg"
     ]
   },
   {
@@ -513,7 +532,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/038_%D0%9D%D0%B0%D0%B4%D0%B5%D0%B6%D0%B4%D0%B0.jpg"
+      "/bouquets/038_%D0%9D%D0%B0%D0%B4%D0%B5%D0%B6%D0%B4%D0%B0.jpg"
     ]
   },
   {
@@ -528,7 +547,7 @@ window.BOUQUETS = [
     "isHit": true,
     "isNew": true,
     "images": [
-      "bouquets/034_%D0%90%D0%BD%D0%B6%D0%B5%D0%BB%D0%B8%D0%BA%D0%B0.jpg"
+      "/bouquets/034_%D0%90%D0%BD%D0%B6%D0%B5%D0%BB%D0%B8%D0%BA%D0%B0.jpg"
     ]
   },
   {
@@ -543,7 +562,7 @@ window.BOUQUETS = [
     "isHit": false,
     "isNew": false,
     "images": [
-      "bouquets/001_%D0%A1%D0%BE%D0%BD%D0%B0%D1%82%D0%B0.jpeg"
+      "/bouquets/001_%D0%A1%D0%BE%D0%BD%D0%B0%D1%82%D0%B0.jpeg"
     ]
   },
   {
@@ -558,7 +577,7 @@ window.BOUQUETS = [
     "isHit": false,
     "isNew": false,
     "images": [
-      "bouquets/002_%D0%AD%D0%BB%D0%B5%D0%B3%D0%B8%D1%8F.jpeg"
+      "/bouquets/002_%D0%AD%D0%BB%D0%B5%D0%B3%D0%B8%D1%8F.jpeg"
     ]
   },
   {
@@ -573,7 +592,7 @@ window.BOUQUETS = [
     "isHit": false,
     "isNew": false,
     "images": [
-      "bouquets/006_%D0%9B%D1%8F-%D0%BC%D0%B8%D0%BD%D0%BE%D1%80.jpeg"
+      "/bouquets/006_%D0%9B%D1%8F-%D0%BC%D0%B8%D0%BD%D0%BE%D1%80.jpeg"
     ]
   },
   {
@@ -588,7 +607,7 @@ window.BOUQUETS = [
     "isHit": false,
     "isNew": false,
     "images": [
-      "bouquets/005_%D0%90%D0%BA%D0%BA%D0%BE%D1%80%D0%B4.jpeg"
+      "/bouquets/005_%D0%90%D0%BA%D0%BA%D0%BE%D1%80%D0%B4.jpeg"
     ]
   },
   {
@@ -603,8 +622,7 @@ window.BOUQUETS = [
     "isHit": false,
     "isNew": false,
     "images": [
-      "bouquets/004_%D0%9B%D0%B8%D1%82%D0%B0%D0%B2%D1%80%D0%B0.jpeg"
+      "/bouquets/004_%D0%9B%D0%B8%D1%82%D0%B0%D0%B2%D1%80%D0%B0.jpeg"
     ]
   }
 ];
-window.BOUQUETS_BY_COLLECTION = {"Утренний свет": 8, "Шёлковая": 11, "Будуарная": 9, "Atelier Luxe": 12};
