@@ -65,6 +65,15 @@ export function Footer() {
               <li>
                 <Link href="/privacy">Политика конфиденциальности</Link>
               </li>
+              <li>
+                <Link href="/offer">Публичная оферта</Link>
+              </li>
+              <li>
+                <Link href="/delivery">Доставка</Link>
+              </li>
+              <li>
+                <Link href="/returns">Возврат и обмен</Link>
+              </li>
             </ul>
           </div>
           <div className="footer-col">
@@ -88,8 +97,8 @@ export function Footer() {
           <div>© 2026 РОЗА ЦВЕТОВ · PATENT RU 2 451 833</div>
           <div style={{ display: 'flex', gap: 28, flexWrap: 'wrap' }}>
             <Link href="/privacy">Privacy</Link>
-            <a href="#">Terms</a>
-            <a href="#">Реквизиты</a>
+            <Link href="/offer">Terms</Link>
+            <Link href="/offer#09">Реквизиты</Link>
             <a href="#">Issue №001 / May 2026</a>
           </div>
         </div>
