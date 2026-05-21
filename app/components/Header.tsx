@@ -1,4 +1,6 @@
+import Link from 'next/link';
 import { I } from './Icons';
+import { CartBadge } from './CartBadge';
 
 export function Header() {
   return (
@@ -29,10 +31,10 @@ export function Header() {
           <button className="icon-btn" aria-label="Избранное">
             <I.Heart />
           </button>
-          <button className="icon-btn" aria-label="Корзина">
+          <Link href="/cart" className="icon-btn" aria-label="Корзина">
             <I.Bag />
-            <span className="cart-badge">0</span>
-          </button>
+            <CartBadge />
+          </Link>
         </div>
       </div>
     </header>
