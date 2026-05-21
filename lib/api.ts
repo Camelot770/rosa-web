@@ -52,12 +52,29 @@ function collectionEnFor(c: Collection): CollectionEn {
   return map[c];
 }
 
+/**
+ * Resolve an image URL.
+ *
+ * The API mixes two image origins:
+ *   - absolute URLs (legacy data, e.g. https://rosa-flowers-client.vercel.app/bouquets/bouquet-01.jpeg)
+ *   - relative paths (newer admin uploads, e.g. /uploads/<uuid>.jpg)
+ *
+ * Relative paths are served by the Amvera backend via `app.use('/uploads', express.static(...))`,
+ * so we prepend the API origin. Absolute URLs are returned untouched.
+ */
+function absoluteImage(url: string): string {
+  if (!url) return url;
+  if (/^https?:\/\//i.test(url)) return url;
+  if (url.startsWith('/')) return `${API_BASE}${url}`;
+  return `${API_BASE}/${url}`;
+}
+
 function shape(api: ApiBouquet, no: number): Bouquet {
   const c = collectionForPrice(api.price);
   const images = (api.images ?? [])
     .slice()
     .sort((a, b) => a.sortOrder - b.sortOrder)
-    .map((i) => i.url);
+    .map((i) => absoluteImage(i.url));
   return {
     id: api.id,
     no,
