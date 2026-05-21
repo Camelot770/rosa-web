@@ -2520,3 +2520,82 @@ body::before {
 @media (max-width: 640px) {
   .cookie-banner { flex-direction: column; align-items: stretch; text-align: left; }
 }
+
+/* =====================================================================
+   FAVORITES — toggle button + /favorites page
+   ===================================================================== */
+.fav-card {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper);
+  border: 1px solid var(--ink-line);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 200ms, color 200ms, border-color 200ms, transform 200ms;
+  z-index: 2;
+}
+.fav-card:hover {
+  color: var(--vermilion);
+  border-color: var(--vermilion);
+  transform: scale(1.05);
+}
+.fav-card.active {
+  color: var(--vermilion);
+  border-color: var(--vermilion);
+  background: var(--paper);
+}
+
+.fav-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 22px;
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 200ms, color 200ms, border-color 200ms;
+}
+.fav-inline:hover { color: var(--vermilion); border-color: var(--vermilion); }
+.fav-inline.active {
+  color: var(--vermilion);
+  border-color: var(--vermilion);
+  background: rgba(196,73,30,0.06);
+}
+
+/* =====================================================================
+   FAVORITES PAGE — /favorites
+   ===================================================================== */
+.fav-page { padding: clamp(40px, 6vw, 80px) 0 clamp(80px, 10vw, 140px); }
+.fav-page h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(56px, 9vw, 140px);
+  line-height: 0.92;
+  margin: 12px 0 40px;
+}
+.fav-page h1 em { font-style: italic; color: var(--vermilion); }
+.fav-page .lead {
+  font-family: var(--body);
+  font-size: 15px;
+  color: var(--ink-soft);
+  max-width: 540px;
+  margin: 0 0 40px;
+  line-height: 1.6;
+}
+.fav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 32px;
+}

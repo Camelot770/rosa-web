@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { I } from './Icons';
 import { CartBadge } from './CartBadge';
+import { HeartBadge } from './HeartBadge';
 import { CONTACTS } from '@/lib/contacts';
 
 function pluralBouquet(n: number): string {
@@ -49,9 +50,10 @@ export function Header({ bouquetCount }: HeaderProps = {}) {
           <button className="icon-btn" aria-label="Поиск">
             <I.Search />
           </button>
-          <button className="icon-btn" aria-label="Избранное">
+          <Link href="/favorites" className="icon-btn" aria-label="Избранное">
             <I.Heart />
-          </button>
+            <HeartBadge />
+          </Link>
           <Link href="/cart" className="icon-btn" aria-label="Корзина">
             <I.Bag />
             <CartBadge />
