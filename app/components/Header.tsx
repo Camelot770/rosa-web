@@ -34,9 +34,9 @@ export function Header({ bouquetCount }: HeaderProps = {}) {
         </div>
       </div>
       <div className="masthead">
-        <a className="brand-name" href="#top">
+        <Link className="brand-name" href="/">
           <em>Роза</em>&nbsp;Цветов
-        </a>
+        </Link>
         <nav className="nav">
           <Link href="/#index">Indice</Link>
           <Link href="/#editorial">Editorial</Link>
