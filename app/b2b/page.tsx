@@ -33,6 +33,13 @@ export default function B2BPage() {
             до&nbsp;того, как уйдут в&nbsp;мусорное ведро.
           </p>
 
+          <div
+            className="b2b-hero"
+            role="img"
+            aria-label="Фирменная упаковка «Роза Цветов» с букетом внутри"
+            style={{ backgroundImage: 'url("/site-photos/b2b-branded-box.png")' }}
+          />
+
           <article className="legal-doc">
             <section>
               <h2>

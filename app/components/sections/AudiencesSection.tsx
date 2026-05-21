@@ -7,6 +7,7 @@ import { I } from '../Icons';
 const cards = [
   {
     no: '01',
+    photo: '/site-photos/audience-gift.png',
     title: (
       <>
         Подарок <em>со&nbsp;смыслом</em>
@@ -19,6 +20,7 @@ const cards = [
   },
   {
     no: '02',
+    photo: '/site-photos/audience-interior.png',
     title: (
       <>
         Для дома <em>и интерьера</em>
@@ -31,6 +33,7 @@ const cards = [
   },
   {
     no: '03',
+    photo: '/site-photos/audience-business.png',
     title: (
       <>
         Для бизнеса <em>и партнёров</em>
@@ -71,22 +74,29 @@ export function AudiencesSection() {
           {cards.map((c, i) => (
             <R key={i} delay={i * 100}>
               <Link href={c.href} className="aud-card">
-                <div className="aud-no">— {c.no}</div>
-                <h3 className="aud-ttl">{c.title}</h3>
-                <p className="aud-text">{c.text}</p>
-                <div className="aud-chips">
-                  {c.chips.map((chip) => (
-                    <span key={chip} className="aud-chip">
-                      {chip}
+                <div
+                  className="aud-photo"
+                  style={{ backgroundImage: `url("${c.photo}")` }}
+                  aria-hidden="true"
+                />
+                <div className="aud-body">
+                  <div className="aud-no">— {c.no}</div>
+                  <h3 className="aud-ttl">{c.title}</h3>
+                  <p className="aud-text">{c.text}</p>
+                  <div className="aud-chips">
+                    {c.chips.map((chip) => (
+                      <span key={chip} className="aud-chip">
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="aud-cta">
+                    {c.cta}{' '}
+                    <span className="arrow">
+                      <I.Arrow />
                     </span>
-                  ))}
-                </div>
-                <span className="aud-cta">
-                  {c.cta}{' '}
-                  <span className="arrow">
-                    <I.Arrow />
                   </span>
-                </span>
+                </div>
               </Link>
             </R>
           ))}
