@@ -1,6 +1,11 @@
 import type { MetadataRoute } from 'next';
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://rosa-web.vercel.app';
+// Falls back to the actual Vercel-generated canonical URL. Set
+// NEXT_PUBLIC_SITE_URL in Vercel env once a custom domain (e.g.
+// розацветов.рф) is wired up.
+const BASE =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  'https://rosa-web-naums-projects-5189a309.vercel.app';
 
 export default function robots(): MetadataRoute.Robots {
   return {
