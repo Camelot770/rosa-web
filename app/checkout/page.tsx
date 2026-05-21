@@ -7,6 +7,7 @@ import { Header } from '@/app/components/Header';
 import { Footer } from '@/app/components/Footer';
 import { I } from '@/app/components/Icons';
 import { useCart } from '@/lib/cart';
+import { CONTACTS } from '@/lib/contacts';
 
 const fmt = (n: number) => n.toLocaleString('ru-RU');
 
@@ -307,7 +308,7 @@ export default function CheckoutPage() {
                       onChange={() => update('deliveryType', 'pickup')}
                     />
                     <div className="rt-title">Самовывоз</div>
-                    <div className="rt-sub">Казань · ул. ____ (адрес студии)</div>
+                    <div className="rt-sub">{CONTACTS.pickupAddressShort} · бесплатно</div>
                   </label>
                 </div>
 

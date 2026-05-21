@@ -13,6 +13,9 @@ export const CONTACTS = {
   max: 'https://max.ru/id165510704999_bot',
   schedule: 'Без выходных · 9:00 — 21:00',
   city: 'Казань · Татарстан',
+  pickupAddressShort: 'д. Званка, ул. Приозерная, 58',
+  pickupAddressFull:
+    '422772, Республика Татарстан, Пестречинский район, д. Званка, ул. Приозерная, 58',
   patentNumber: '№ 2 698 058',
   patentNote: 'технология стабилизации',
   trademarkNumber: 'товарный знак «Роза Цветов» в Роспатенте',
