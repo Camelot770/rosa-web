@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Header } from '@/app/components/Header';
 import { Footer } from '@/app/components/Footer';
 import { AddToCartButton } from '@/app/components/AddToCartButton';
+import { FavoriteToggle } from '@/app/components/FavoriteToggle';
 import { fetchBouquet, fetchBouquets } from '@/lib/api';
 
 export const revalidate = 60;
@@ -112,6 +113,7 @@ export default async function ProductPage({ params }: PageProps) {
 
               <div className="product-cta">
                 <AddToCartButton bouquet={bouquet} />
+                <FavoriteToggle bouquet={bouquet} variant="inline" />
                 <Link href="/cart" className="link-u">
                   Перейти в корзину →
                 </Link>

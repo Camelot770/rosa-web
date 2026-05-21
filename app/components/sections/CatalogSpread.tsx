@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { R, Split } from '../Reveal';
 import { I } from '../Icons';
+import { FavoriteToggle } from '../FavoriteToggle';
 import type { Bouquet, CollectionEn } from '@/lib/bouquets-data';
 
 type FilterValue = 'All' | CollectionEn;
@@ -103,6 +104,7 @@ export function CatalogSpread({ bouquets, initialFilter = 'All', limit }: Catalo
                       }
                     />
                     <span className="stamp-no">{ix}</span>
+                    <FavoriteToggle bouquet={b} variant="card" />
                     <div className="quick">
                       <span className="pill">Быстрый просмотр</span>
                     </div>
