@@ -2553,3 +2553,170 @@ body::before {
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 32px;
 }
+
+/* =====================================================================
+   MOBILE NAV — hamburger button + slide-in menu
+   ===================================================================== */
+.hamburger {
+  display: none;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid var(--ink-line);
+  color: var(--ink);
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: border-color 200ms;
+}
+.hamburger:hover { border-color: var(--ink); }
+.hamburger span {
+  display: block;
+  width: 18px;
+  height: 1.6px;
+  background: var(--ink);
+  transition: transform 240ms var(--ease-expo), opacity 200ms;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 1100px) {
+  .hamburger { display: inline-flex; }
+}
+@media (max-width: 560px) {
+  .hide-on-mobile { display: none !important; }
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(26, 22, 18, 0.55);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  animation: fadeIn 200ms var(--ease-out);
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.mobile-menu-panel {
+  background: var(--paper);
+  width: 100%;
+  max-width: 440px;
+  padding: 24px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  animation: slideIn 280ms var(--ease-expo);
+}
+@keyframes slideIn { from { transform: translateX(40px); } to { transform: translateX(0); } }
+
+.mobile-menu-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 8px;
+}
+.mobile-menu-head .caps {
+  color: var(--vermilion);
+}
+.mobile-menu-close {
+  background: transparent;
+  border: none;
+  font-family: var(--display);
+  font-size: 36px;
+  line-height: 1;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 200ms;
+}
+.mobile-menu-close:hover { color: var(--vermilion); }
+
+.mobile-menu-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+.mobile-menu-panel ul li {
+  border-bottom: 1px solid var(--ink-line);
+}
+.mobile-menu-panel ul li a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 18px 0;
+  color: var(--ink);
+  transition: color 200ms, padding 200ms;
+}
+.mobile-menu-panel ul li a:hover {
+  color: var(--vermilion);
+  padding-left: 6px;
+}
+.mobile-menu-panel .ml-label {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.1;
+  grid-column: 1;
+}
+.mobile-menu-panel .ml-sub {
+  display: block;
+  font-family: var(--body);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 4px;
+  grid-column: 1;
+}
+.mobile-menu-panel .ml-arrow {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  color: var(--ink-soft);
+}
+
+.mobile-menu-foot {
+  padding-top: 20px;
+  margin-top: 16px;
+  border-top: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 13px;
+}
+.mobile-menu-foot a {
+  color: var(--ink);
+  font-weight: 500;
+}
+.mobile-menu-foot .caps {
+  color: var(--ink-soft);
+  font-size: 10.5px;
+}
+
+/* =====================================================================
+   MOBILE — fill gaps for grids missing fallback
+   ===================================================================== */
+@media (max-width: 900px) {
+  .aud-grid { grid-template-columns: 1fr; }
+  .editorial-head { grid-template-columns: 1fr; gap: 16px; }
+}
+@media (max-width: 600px) {
+  .story-stats { gap: 16px; }
+  .facts-strip { grid-template-columns: 1fr; }
+  .fact:last-child { border-bottom: none; }
+}
+@media (max-width: 420px) {
+  /* Hero headline gets too aggressive on tiny phones */
+  .cover-headline { font-size: clamp(56px, 14vw, 96px); line-height: 0.92; }
+}
