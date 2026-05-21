@@ -176,6 +176,7 @@ function Footer() {
               <li><a href="#">Care</a></li>
               <li><a href="#">Сертификат</a></li>
               <li><a href="#">Сотрудничество</a></li>
+              <li><a href="privacy.html">Политика конфиденциальности</a></li>
             </ul>
           </div>
           <div className="footer-col">
