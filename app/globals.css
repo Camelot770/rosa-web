@@ -1269,12 +1269,8 @@ body::before {
   color: var(--paper);
 }
 .subscribe .container { position: relative; z-index: 2; }
-.subscribe-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(28px, 4vw, 64px);
-  align-items: center;
-}
+.promo-block { max-width: 720px; }
+.promo-hint { margin-top: 20px; }
 .subscribe h2 em { font-style: italic; color: var(--vermilion); }
 .subscribe .kicker {
   font-family: var(--body);
@@ -1300,35 +1296,6 @@ body::before {
   max-width: 440px;
 }
 
-.sub-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.sub-form .field-row {
-  display: flex;
-  border-bottom: 1px solid rgba(244,239,229,0.4);
-  padding: 10px 0;
-  align-items: center;
-  gap: 12px;
-}
-.sub-form input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  outline: none;
-  font-family: var(--body);
-  font-size: 14px;
-  color: var(--paper);
-  padding: 6px 0;
-}
-.sub-form input::placeholder { color: rgba(244,239,229,0.45); }
-.sub-form .field-label {
-  font-size: 10.5px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--vermilion);
-}
 .promo-code {
   display: inline-flex;
   align-items: center;
@@ -1346,25 +1313,6 @@ body::before {
 }
 .promo-code:hover { background: rgba(196,73,30,0.1); }
 .promo-code .status { color: var(--paper); font-size: 10px; opacity: 0.7; }
-
-.sub-cta {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: 8px;
-}
-.sub-cta .btn-vermilion {
-  color: var(--paper);
-}
-.btn-light {
-  color: var(--ink);
-}
-.btn-light::before { background: var(--paper); }
-.btn-light::after { background: var(--vermilion); }
-.btn-light:hover { color: var(--paper); }
-
-@media (max-width: 900px) { .subscribe-grid { grid-template-columns: 1fr; } }
 
 /* =====================================================================
    FOOTER
