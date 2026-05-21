@@ -28,7 +28,7 @@ export default async function HomePage() {
   return (
     <>
       <Intro />
-      <Header />
+      <Header bouquetCount={bouquets.length} />
       <main>
         <HeroSection totalBouquets={bouquets.length} />
         <IndexSection totalBouquets={bouquets.length} />

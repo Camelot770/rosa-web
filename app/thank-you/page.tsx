@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Header } from '@/app/components/Header';
 import { Footer } from '@/app/components/Footer';
+import { fetchBouquets } from '@/lib/api';
 
 export const metadata: Metadata = {
   title: 'Заказ принят · Роза Цветов',
@@ -40,7 +41,10 @@ async function loadStatus(orderId: string): Promise<OrderStatus | null> {
 
 export default async function ThankYouPage({ searchParams }: PageProps) {
   const orderId = searchParams.orderId ?? null;
-  const order = orderId ? await loadStatus(orderId) : null;
+  const [order, allBouquets] = await Promise.all([
+    orderId ? loadStatus(orderId) : Promise.resolve(null),
+    fetchBouquets().catch(() => []),
+  ]);
 
   const isPaid = order?.paymentStatus === 'paid';
   const isCanceled = order?.paymentStatus === 'canceled';
@@ -48,7 +52,7 @@ export default async function ThankYouPage({ searchParams }: PageProps) {
 
   return (
     <>
-      <Header />
+      <Header bouquetCount={allBouquets.length || undefined} />
       <main className="thanks-page">
         <div className="container">
           <div className="thanks-card">
