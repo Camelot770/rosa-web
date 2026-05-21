@@ -153,8 +153,36 @@ export default function CheckoutPage() {
         throw new Error(data.error || `Сервер вернул ${res.status}`);
       }
       const data = await res.json();
+      const orderId: number = data.orderId;
       clearCart();
-      router.push(`/thank-you?orderId=${encodeURIComponent(data.orderId)}`);
+
+      // Try to spin up a YooKassa checkout. If the payment route isn't
+      // deployed or YooKassa is unreachable, fall back to the M3 flow:
+      // order is saved, studio calls back.
+      try {
+        const origin = window.location.origin;
+        const payRes = await fetch(`${API_BASE}/api/payment/create-guest`, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            orderId,
+            returnUrl: `${origin}/thank-you?orderId=${orderId}`,
+          }),
+        });
+        if (payRes.ok) {
+          const { confirmationUrl } = await payRes.json();
+          if (typeof confirmationUrl === 'string' && confirmationUrl.length > 0) {
+            window.location.href = confirmationUrl;
+            return;
+          }
+        } else {
+          console.warn('Payment init failed:', payRes.status);
+        }
+      } catch (payErr) {
+        console.warn('Payment init exception:', payErr);
+      }
+
+      router.push(`/thank-you?orderId=${encodeURIComponent(orderId)}`);
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Не удалось отправить заказ.';
       setError(msg);
@@ -436,7 +464,7 @@ export default function CheckoutPage() {
 
                 <div className="checkout-submit-row" style={{ marginTop: 24 }}>
                   <button type="submit" className="btn" disabled={submitting}>
-                    {submitting ? 'Отправляем…' : 'Подтвердить заказ'}{' '}
+                    {submitting ? 'Создаём платёж…' : `Оплатить ${fmt(total)} ₽`}{' '}
                     <span className="arrow">
                       <I.Arrow />
                     </span>
@@ -449,9 +477,9 @@ export default function CheckoutPage() {
                       letterSpacing: '0.04em',
                     }}
                   >
-                    После подтверждения заказа менеджер позвонит для согласования времени
-                    доставки и&nbsp;способа оплаты. Онлайн-оплата через ЮKassa подключается
-                    отдельным этапом.
+                    После подтверждения заказа мы перенаправим вас на ЮKassa
+                    для&nbsp;безопасной оплаты. Если онлайн-оплата временно недоступна,
+                    мы&nbsp;примем заказ и&nbsp;менеджер позвонит для согласования.
                   </div>
                 </div>
               </section>
