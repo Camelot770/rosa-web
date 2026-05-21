@@ -1,19 +1,17 @@
-/* =========================================================
-   Роза Цветов — App Root
-   ========================================================= */
-
 function App() {
   return (
     <React.Fragment>
-      <Header cartCount={2} />
+      <Intro />
+      <Header />
       <main>
         <HeroSection />
-        <CollectionsSection />
-        <PhilosophySection />
-        <HitsSection />
+        <IndexSection />
+        <EditorialSection />
+        <PlatesSection />
         <StorySection />
-        <PrinciplesSection />
-        <PromoSection />
+        <CatalogSpread />
+        <CareSection />
+        <SubscribeSection />
       </main>
       <Footer />
     </React.Fragment>
