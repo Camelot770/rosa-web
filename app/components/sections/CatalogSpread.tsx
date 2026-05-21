@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { R, Split } from '../Reveal';
 import { I } from '../Icons';
 import type { Bouquet, CollectionEn } from '@/lib/bouquets-data';
@@ -74,7 +75,7 @@ export function CatalogSpread({ bouquets }: CatalogSpreadProps) {
             const ix = `№ ${String(b.no).padStart(3, '0')}`;
             return (
               <R key={`${active}-${b.id}`} delay={Math.min(i, 12) * 40}>
-                <a className="spread-card" href="#contacts">
+                <Link className="spread-card" href={`/product/${b.id}`}>
                   <div className="ph">
                     <div
                       className="photo"
@@ -117,7 +118,7 @@ export function CatalogSpread({ bouquets }: CatalogSpreadProps) {
                       {fmt(b.price)} ₽
                     </div>
                   </div>
-                </a>
+                </Link>
               </R>
             );
           })}

@@ -1,0 +1,103 @@
+// Thin API client for rosa-flowers-server.
+//
+// We keep the shape transformation here so the rest of the app speaks our
+// own `Bouquet` type (with collection by price tier, first image as a flat
+// string url) rather than the raw API shape with related image rows.
+
+import type { Bouquet, Collection, CollectionEn } from './bouquets-data';
+
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, '') ||
+  'https://rosa-cvetov-camelot770.amvera.io';
+
+interface ApiImage {
+  id: number;
+  bouquetId: number;
+  url: string;
+  sortOrder: number;
+}
+
+interface ApiBouquet {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  oldPrice: number | null;
+  category: string;
+  tags: string[] | null;
+  inStock: boolean;
+  isHit: boolean;
+  isNew: boolean;
+  customOrder: boolean;
+  sortOrder: number;
+  createdAt: string;
+  updatedAt: string;
+  images: ApiImage[];
+}
+
+function collectionForPrice(price: number): Collection {
+  if (price < 2700) return 'Утренний свет';
+  if (price < 4500) return 'Шёлковая';
+  if (price < 7000) return 'Будуарная';
+  return 'Atelier Luxe';
+}
+
+function collectionEnFor(c: Collection): CollectionEn {
+  const map: Record<Collection, CollectionEn> = {
+    'Утренний свет': 'Morning Light',
+    Шёлковая: 'Silk',
+    Будуарная: 'Boudoir',
+    'Atelier Luxe': 'Atelier Luxe',
+  };
+  return map[c];
+}
+
+function shape(api: ApiBouquet, no: number): Bouquet {
+  const c = collectionForPrice(api.price);
+  const images = (api.images ?? [])
+    .slice()
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+    .map((i) => i.url);
+  return {
+    id: api.id,
+    no,
+    name: api.name,
+    description: api.description ?? '',
+    price: api.price,
+    oldPrice: api.oldPrice,
+    collection: c,
+    collectionEn: collectionEnFor(c),
+    isHit: !!api.isHit,
+    isNew: !!api.isNew,
+    images,
+  };
+}
+
+/**
+ * Fetch the full bouquet catalog from the API and return it shaped for the UI.
+ *
+ * - Sorts by isHit (hits first), then ascending price.
+ * - Assigns a stable `no` ordinal for display ("№ 001 / 40").
+ *
+ * Uses ISR: cached at the edge for 60s, then re-fetched in the background.
+ */
+export async function fetchBouquets(): Promise<Bouquet[]> {
+  const res = await fetch(`${API_BASE}/api/bouquets`, {
+    next: { revalidate: 60 },
+  });
+  if (!res.ok) {
+    throw new Error(`fetchBouquets: ${res.status} ${res.statusText}`);
+  }
+  const raw = (await res.json()) as ApiBouquet[];
+  const stockOnly = raw.filter((b) => b.inStock);
+  stockOnly.sort((a, b) => {
+    if (a.isHit !== b.isHit) return a.isHit ? -1 : 1;
+    return a.price - b.price;
+  });
+  return stockOnly.map((b, i) => shape(b, i + 1));
+}
+
+export async function fetchBouquet(id: number): Promise<Bouquet | null> {
+  const all = await fetchBouquets();
+  return all.find((b) => b.id === id) ?? null;
+}
