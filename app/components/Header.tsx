@@ -5,7 +5,7 @@ export function Header() {
     <header className="site-header">
       <div className="masthead-top">
         <div>
-          <span className="ast">✦</span>&nbsp;&nbsp;№ 001 · Сезон Май 2026 · 40 букетов
+          <span className="ast">✦</span>&nbsp;&nbsp;№ 001 · Сезон Май 2026 · 73 букета
         </div>
         <div>Atelier · est. 2017 · Tatarstan</div>
         <div style={{ fontFamily: 'var(--mono)' }}>+7 960 045 39 96</div>
