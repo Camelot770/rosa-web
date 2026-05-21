@@ -33,7 +33,6 @@ const items: PatentItem[] = [
     title: 'Товарный знак',
     text:
       'Товарный знак «Роза Цветов» зарегистрирован в&nbsp;Роспатенте. Гарантирует, что вы получаете оригинальный продукт от&nbsp;студии, а&nbsp;не&nbsp;кустарную перепродажу.',
-    image: '/site-photos/trademark-certificate.png',
   },
 ];
 
