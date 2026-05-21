@@ -48,9 +48,6 @@ export function Header({ bouquetCount }: HeaderProps = {}) {
           <Link href="/care">Care</Link>
         </nav>
         <div className="header-right">
-          <button className="icon-btn hide-on-mobile" aria-label="Поиск">
-            <I.Search />
-          </button>
           <Link href="/favorites" className="icon-btn" aria-label="Избранное">
             <I.Heart />
             <HeartBadge />
