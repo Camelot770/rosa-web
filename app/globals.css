@@ -487,10 +487,12 @@ body::before {
   margin-top: clamp(-720px, -40vw, -200px);
 }
 .cover-photo {
+  display: block;            /* link element needs this for aspect-ratio */
   position: relative;
   aspect-ratio: 4 / 5;
   overflow: hidden;
   border: 1px solid var(--ink);
+  color: inherit;            /* don't inherit link colour */
 }
 .cover-photo .photo {
   position: absolute; inset: 0;
