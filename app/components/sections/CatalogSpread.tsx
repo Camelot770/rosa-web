@@ -6,17 +6,18 @@ import { R, Split } from '../Reveal';
 import { I } from '../Icons';
 import type { Bouquet, CollectionEn } from '@/lib/bouquets-data';
 
-interface CatalogSpreadProps {
-  bouquets: Bouquet[];
-}
-
 type FilterValue = 'All' | CollectionEn;
 const filters: FilterValue[] = ['All', 'Morning Light', 'Silk', 'Boudoir', 'Atelier Luxe'];
 
+interface CatalogSpreadProps {
+  bouquets: Bouquet[];
+  initialFilter?: FilterValue;
+}
+
 const fmt = (n: number) => n.toLocaleString('ru-RU');
 
-export function CatalogSpread({ bouquets }: CatalogSpreadProps) {
-  const [active, setActive] = useState<FilterValue>('All');
+export function CatalogSpread({ bouquets, initialFilter = 'All' }: CatalogSpreadProps) {
+  const [active, setActive] = useState<FilterValue>(initialFilter);
   const items = active === 'All' ? bouquets : bouquets.filter((b) => b.collectionEn === active);
   const total = bouquets.length;
 

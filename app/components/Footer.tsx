@@ -29,19 +29,19 @@ export function Footer() {
             <h4>Catalog</h4>
             <ul>
               <li>
-                <a href="/catalog">Все 40 букетов</a>
+                <Link href="/catalog">Все 40 букетов</Link>
               </li>
               <li>
-                <a href="/catalog">Утренний свет</a>
+                <Link href="/catalog?filter=Morning+Light">Утренний свет</Link>
               </li>
               <li>
-                <a href="/catalog">Шёлковая</a>
+                <Link href="/catalog?filter=Silk">Шёлковая</Link>
               </li>
               <li>
-                <a href="/catalog">Будуарная</a>
+                <Link href="/catalog?filter=Boudoir">Будуарная</Link>
               </li>
               <li>
-                <a href="/catalog">Atelier Luxe</a>
+                <Link href="/catalog?filter=Atelier+Luxe">Atelier Luxe</Link>
               </li>
             </ul>
           </div>
@@ -49,19 +49,22 @@ export function Footer() {
             <h4>Atelier</h4>
             <ul>
               <li>
-                <a href="#editorial">Editorial</a>
+                <Link href="/#editorial">Editorial</Link>
               </li>
               <li>
-                <a href="#atelier">Технология</a>
+                <Link href="/#atelier">Технология</Link>
               </li>
               <li>
-                <a href="#care">Care</a>
+                <Link href="/#care">Care</Link>
               </li>
               <li>
-                <a href="#">Сертификат</a>
+                <Link href="/#patent">Сертификат и патент</Link>
               </li>
               <li>
-                <a href="#">Сотрудничество</a>
+                <Link href="/b2b">Корпоративным клиентам</Link>
+              </li>
+              <li>
+                <Link href="/#faq">Частые вопросы</Link>
               </li>
               <li>
                 <Link href="/privacy">Политика конфиденциальности</Link>
@@ -115,7 +118,7 @@ export function Footer() {
             <Link href="/privacy">Privacy</Link>
             <Link href="/offer">Terms</Link>
             <Link href="/offer#09">Реквизиты</Link>
-            <a href="#">Issue №001 / May 2026</a>
+            <Link href="/">Issue №001 / May 2026</Link>
           </div>
         </div>
       </div>

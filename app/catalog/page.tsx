@@ -18,7 +18,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function CatalogPage() {
+type FilterValue = 'All' | 'Morning Light' | 'Silk' | 'Boudoir' | 'Atelier Luxe';
+const VALID_FILTERS: FilterValue[] = ['All', 'Morning Light', 'Silk', 'Boudoir', 'Atelier Luxe'];
+
+interface PageProps {
+  searchParams: { filter?: string };
+}
+
+export default async function CatalogPage({ searchParams }: PageProps) {
   let bouquets;
   try {
     bouquets = await fetchBouquets();
@@ -27,11 +34,16 @@ export default async function CatalogPage() {
     bouquets = BOUQUETS;
   }
 
+  const rawFilter = (searchParams?.filter ?? '').toString();
+  const initialFilter: FilterValue = (VALID_FILTERS as string[]).includes(rawFilter)
+    ? (rawFilter as FilterValue)
+    : 'All';
+
   return (
     <>
       <Header bouquetCount={bouquets.length} />
       <main>
-        <CatalogSpread bouquets={bouquets} />
+        <CatalogSpread bouquets={bouquets} initialFilter={initialFilter} />
       </main>
       <Footer />
     </>
