@@ -304,7 +304,7 @@ export default function PrivacyPage() {
         <div className="legal-container">
           <hr className="hairline" />
           <div className="row">
-            <span>© 2026 ООО «Роза Цветов» · Patent RU 2 451 833</span>
+            <span>© 2026 ООО «Роза Цветов» · Patent RU 2 698 058</span>
             <Link href="/">← Вернуться на сайт</Link>
           </div>
         </div>

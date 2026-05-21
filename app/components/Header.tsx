@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { I } from './Icons';
 import { CartBadge } from './CartBadge';
+import { CONTACTS } from '@/lib/contacts';
 
 function pluralBouquet(n: number): string {
   const mod10 = n % 10;
@@ -28,7 +29,9 @@ export function Header({ bouquetCount }: HeaderProps = {}) {
           <span className="ast">✦</span>&nbsp;&nbsp;№ 001 · Сезон Май 2026 · {catalogLine}
         </div>
         <div>Atelier · est. 2017 · Tatarstan</div>
-        <div style={{ fontFamily: 'var(--mono)' }}>+7 960 045 39 96</div>
+        <div style={{ fontFamily: 'var(--mono)' }}>
+          <a href={CONTACTS.phoneHref}>{CONTACTS.phone}</a>
+        </div>
       </div>
       <div className="masthead">
         <a className="brand-name" href="#top">

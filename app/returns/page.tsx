@@ -124,8 +124,8 @@ export default function ReturnsPage() {
               <ul>
                 <li>
                   телефон:{' '}
-                  <a href="tel:+79600453996" style={{ color: 'var(--vermilion)' }}>
-                    +7 960 045 39 96
+                  <a href="tel:+79600483996" style={{ color: 'var(--vermilion)' }}>
+                    +7 960 048 39 96
                   </a>
                 </li>
                 <li>
