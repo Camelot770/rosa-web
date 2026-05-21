@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { I } from './Icons';
 import { CartBadge } from './CartBadge';
 import { HeartBadge } from './HeartBadge';
+import { MobileMenu } from './MobileMenu';
 import { CONTACTS } from '@/lib/contacts';
 
 function pluralBouquet(n: number): string {
@@ -47,7 +48,7 @@ export function Header({ bouquetCount }: HeaderProps = {}) {
           <Link href="/care">Care</Link>
         </nav>
         <div className="header-right">
-          <button className="icon-btn" aria-label="Поиск">
+          <button className="icon-btn hide-on-mobile" aria-label="Поиск">
             <I.Search />
           </button>
           <Link href="/favorites" className="icon-btn" aria-label="Избранное">
@@ -58,6 +59,7 @@ export function Header({ bouquetCount }: HeaderProps = {}) {
             <I.Bag />
             <CartBadge />
           </Link>
+          <MobileMenu />
         </div>
       </div>
     </header>
