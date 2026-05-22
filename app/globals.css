@@ -2850,3 +2850,8 @@ body::before {
     line-height: 1;
   }
 }
+
+/* ---- iOS Safari white-strip fix ---- */
+html { overflow-x: clip; background-color: var(--paper); }
+body  { overflow-x: clip; background-color: var(--paper); min-height: 100vh; width: 100%; max-width: 100vw; }
+@supports not (overflow: clip) { html, body { overflow-x: hidden; } }
