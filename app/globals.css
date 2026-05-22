@@ -2774,3 +2774,50 @@ body::before {
 @media (max-width: 640px) {
   .b2b-hero { aspect-ratio: 4 / 3; }
 }
+
+/* =====================================================================
+   MOBILE polishing — phone-screen issues spotted on iPhone
+   ===================================================================== */
+
+/* 1. Phone number in masthead-top must never wrap mid-digits */
+.masthead-top a,
+.masthead-top span { white-space: nowrap; }
+
+/* 2. Stack the 3 masthead-top items on phones — they don't fit horizontally
+      and the auto-wrap inside flex looked broken. */
+@media (max-width: 720px) {
+  .masthead-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 10px var(--pad-x);
+  }
+}
+@media (max-width: 480px) {
+  .masthead-top { font-size: 9.5px; letter-spacing: 0.18em; }
+}
+
+/* 3. The drop-caps on the editorial body and the story body floated huge
+      letters into a narrow column on phones, so the body text wrapped on
+      top of them. Disable the drop-cap below 720px. */
+@media (max-width: 720px) {
+  .editorial-body { column-count: 1; column-rule: none; }
+  .editorial-body p:first-child::first-letter,
+  .story-body p:first-of-type::first-letter {
+    font-size: inherit;
+    line-height: inherit;
+    float: none;
+    margin: 0;
+    color: inherit;
+  }
+}
+
+/* 4. Story stat numbers like "12 800" must stay on one line in their
+      narrow phone column. */
+.story-stat .v { white-space: nowrap; }
+
+/* 5. Footer schedule line — same idea. (Now also handled by NBSPs in
+      lib/contacts.ts; this is a backstop.) */
+.footer-col li { white-space: normal; }
+.footer-col li:has(> a[href^="tel:"]),
+.footer-col li:has(> a[href^="mailto:"]) { white-space: nowrap; }

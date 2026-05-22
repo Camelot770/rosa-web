@@ -11,7 +11,8 @@ export const CONTACTS = {
   whatsapp: 'https://wa.me/79178765958',
   telegram: 'https://t.me/Elenaeilat',
   max: 'https://max.ru/id165510704999_bot',
-  schedule: 'Без выходных · 9:00 — 21:00',
+  // Non-breaking spaces so the schedule doesn't wrap as "9:00\n— 21:00".
+  schedule: 'Без выходных · 9:00 — 21:00',
   city: 'Казань · Татарстан',
   pickupAddressShort: 'д. Званка, ул. Приозерная, 58',
   pickupAddressFull:
