@@ -2821,3 +2821,32 @@ body::before {
 .footer-col li { white-space: normal; }
 .footer-col li:has(> a[href^="tel:"]),
 .footer-col li:has(> a[href^="mailto:"]) { white-space: nowrap; }
+
+/* Cart / Checkout / Favorites — H1 was overflowing upward on iPhone because
+   Italiana italic at 56px with line-height 0.92 lifts the cap line above its
+   own bounding box. Reduce on phone widths and give the section a bit more
+   top padding so the heading sits fully visible below the masthead. */
+@media (max-width: 640px) {
+  .cart-page,
+  .fav-page,
+  .checkout-page,
+  .thanks-page,
+  .product-page {
+    padding-top: 56px;
+  }
+  .cart-page h1,
+  .fav-page h1 {
+    font-size: clamp(40px, 11vw, 64px);
+    line-height: 1;
+    margin: 8px 0 28px;
+  }
+  .checkout-page h1 {
+    font-size: clamp(36px, 9vw, 56px);
+    line-height: 1;
+    margin: 8px 0 24px;
+  }
+  .thanks-card h1 {
+    font-size: clamp(40px, 10vw, 64px);
+    line-height: 1;
+  }
+}
