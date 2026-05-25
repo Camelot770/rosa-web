@@ -11,6 +11,7 @@ const links: Array<{ href: string; label: string; sub?: string }> = [
   { href: '/editorial', label: 'Философия', sub: 'Имена и смыслы' },
   { href: '/atelier', label: 'Студия', sub: 'Ателье в Татарстане' },
   { href: '/care', label: 'Уход', sub: 'Три правила' },
+  { href: '/stabilization', label: 'Стабилизация', sub: 'Что это такое' },
   { href: '/b2b', label: 'Корпоративам', sub: 'Брендирование · от 1 суток' },
   { href: '/favorites', label: 'Избранное', sub: 'Сохранённые букеты' },
   { href: '/cart', label: 'Корзина', sub: 'Оформление заказа' },
