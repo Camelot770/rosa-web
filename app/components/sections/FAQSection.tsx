@@ -45,8 +45,8 @@ export function FAQSection() {
         </R>
 
         <div className="faq-head">
-          <Split as="h2" className="disp disp-xl">
-            {['Шесть вопросов', 'которые задают <em>чаще всего.</em>']}
+          <Split as="h2" className="disp disp-md">
+            {['Шесть вопросов, которые задают <em>чаще всего.</em>']}
           </Split>
         </div>
 
