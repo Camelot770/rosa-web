@@ -89,13 +89,13 @@ export function StorySection() {
                   <div className="k">лет студии</div>
                 </div>
                 <div className="story-stat">
-                  <div className="v">12&#8202;800</div>
+                  <div className="v">3&#8202;200</div>
                   <div className="k">букетов</div>
                 </div>
                 <div className="story-stat">
                   <div className="v">
                     <em>
-                      98<sup style={{ fontSize: '0.5em' }}>%</sup>
+                      72<sup style={{ fontSize: '0.5em' }}>%</sup>
                     </em>
                   </div>
                   <div className="k">повторных заказов</div>
