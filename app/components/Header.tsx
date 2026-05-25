@@ -3,6 +3,7 @@ import { I } from './Icons';
 import { CartBadge } from './CartBadge';
 import { HeartBadge } from './HeartBadge';
 import { MobileMenu } from './MobileMenu';
+import { SeasonLabel } from './SeasonLabel';
 import { CONTACTS } from '@/lib/contacts';
 
 function pluralBouquet(n: number): string {
@@ -28,7 +29,7 @@ export function Header({ bouquetCount }: HeaderProps = {}) {
     <header className="site-header">
       <div className="masthead-top">
         <div>
-          <span className="ast">✦</span>&nbsp;&nbsp;Сезон 17 · Май 2026 · {catalogLine}
+          <span className="ast">✦</span>&nbsp;&nbsp;<SeasonLabel /> · {catalogLine}
         </div>
         <div>Atelier · est. 2017 · Tatarstan</div>
         <div style={{ fontFamily: 'var(--mono)' }}>
