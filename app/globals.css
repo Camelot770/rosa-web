@@ -2868,3 +2868,31 @@ body  { overflow-x: clip; background-color: var(--paper); min-height: 100vh; wid
   font-weight: 400;
   letter-spacing: 0;
 }
+
+/* Scale-cells in EditorialSection are clickable links to filtered /catalog */
+.scale-cell {
+  display: flex;
+  flex-direction: column;
+  color: var(--ink);
+  position: relative;
+  transition: transform 400ms var(--ease-expo), background 300ms;
+  cursor: pointer;
+}
+.scale-cell:hover {
+  background-color: rgba(196, 73, 30, 0.04);
+  transform: translateY(-2px);
+}
+.scale-cell:hover .sttl em { color: var(--vermilion-d); }
+.scale-cta {
+  display: block;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ink-line);
+  font-family: var(--body);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  transition: color 200ms;
+}
+.scale-cell:hover .scale-cta { color: var(--vermilion); }

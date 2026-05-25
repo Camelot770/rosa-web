@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { R, Split } from '../Reveal';
 
 export function EditorialSection() {
@@ -77,38 +78,42 @@ export function EditorialSection() {
 
         <R>
           <div className="scale-row">
-            <div className="scale-cell scale-cell-1">
+            <Link href="/catalog?filter=Calm" className="scale-cell scale-cell-1" aria-label="Открыть коллекцию Штиль">
               <span className="sn">— 01 / Тишина</span>
               <span className="sttl">
                 <em>Штиль</em>
               </span>
               <span className="sex">безветрие · минимализм · открытое пространство</span>
               <span className="scap">8 букетов · 1 400–2 550 ₽</span>
-            </div>
-            <div className="scale-cell scale-cell-2">
+              <span className="scale-cta">Открыть →</span>
+            </Link>
+            <Link href="/catalog?filter=Breeze" className="scale-cell scale-cell-2" aria-label="Открыть коллекцию Бриз">
               <span className="sn">— 02 / Движение</span>
               <span className="sttl">
                 <em>Бриз</em>
               </span>
               <span className="sex">свежесть · ясность · ритм</span>
               <span className="scap">11 букетов · 2 850–4 380 ₽</span>
-            </div>
-            <div className="scale-cell scale-cell-3">
+              <span className="scale-cta">Открыть →</span>
+            </Link>
+            <Link href="/catalog?filter=Flight" className="scale-cell scale-cell-3" aria-label="Открыть коллекцию Полёт">
               <span className="sn">— 03 / Подъём</span>
               <span className="sttl">
                 <em>Полёт</em>
               </span>
               <span className="sex">слоистость · парение · масштаб</span>
               <span className="scap">9 букетов · 4 500–6 500 ₽</span>
-            </div>
-            <div className="scale-cell scale-cell-4">
+              <span className="scale-cta">Открыть →</span>
+            </Link>
+            <Link href="/catalog?filter=Altitude" className="scale-cell scale-cell-4" aria-label="Открыть коллекцию Высота">
               <span className="sn">— 04 / Вершина</span>
               <span className="sttl">
                 <em>Высота</em>
               </span>
               <span className="sex">премиум · штучное · парадное</span>
               <span className="scap">12 букетов · 7 000–12 000 ₽</span>
-            </div>
+              <span className="scale-cta">Открыть →</span>
+            </Link>
           </div>
         </R>
       </div>
