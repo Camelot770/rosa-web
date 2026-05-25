@@ -15,6 +15,7 @@ export function Footer() {
           <div className="footer-col footer-brand">
             <div style={{ fontFamily: 'var(--display)', fontSize: 32 }}>
               <em style={{ fontStyle: 'italic', color: 'var(--vermilion)' }}>Роза</em> Цветов
+              <sup className="reg">®</sup>
             </div>
             <p className="lead-line">
               «Живые цветы,
