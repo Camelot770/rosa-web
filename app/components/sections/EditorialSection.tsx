@@ -63,7 +63,7 @@ export function EditorialSection() {
             <p>
               Наконец&nbsp;— <strong>Atelier Luxe.</strong> Имена дворцов и&nbsp;замков Европы:{' '}
               <em>Палаццо, Бельведер, Шеверни, Шамбор, Шенонсо, Версаль, Альгамбра, Фонтенбло, Барокко.</em>{' '}
-              Одиннадцать редких букетов, каждый в&nbsp;единичном экземпляре. Это уже не&nbsp;подарок&nbsp;— это
+              Двенадцать редких букетов, каждый в&nbsp;единичном экземпляре. Это уже не&nbsp;подарок&nbsp;— это
               наследие.
             </p>
             <p>
@@ -82,7 +82,7 @@ export function EditorialSection() {
                 <em>Утренний</em> свет
               </span>
               <span className="sex">Заря · Дымка · Шёпот · Мерцание · Иней</span>
-              <span className="scap">16 букетов · до 2 700 ₽</span>
+              <span className="scap">8 букетов · 1 400–2 550 ₽</span>
             </div>
             <div className="scale-cell scale-cell-2">
               <span className="sn">— 02 / Ткань</span>
@@ -90,7 +90,7 @@ export function EditorialSection() {
                 <em>Шёлковая</em>
               </span>
               <span className="sex">Шёлк · Бархат · Кашемир · Опал · Янтарь</span>
-              <span className="scap">22 букета · 2 700 — 4 500 ₽</span>
+              <span className="scap">11 букетов · 2 850–4 380 ₽</span>
             </div>
             <div className="scale-cell scale-cell-3">
               <span className="sn">— 03 / Камень</span>
@@ -98,7 +98,7 @@ export function EditorialSection() {
                 <em>Будуарная</em>
               </span>
               <span className="sex">Сапфир · Истома · Веранда · Каскад · Полнолуние</span>
-              <span className="scap">24 букета · 4 500 — 7 000 ₽</span>
+              <span className="scap">9 букетов · 4 500–6 500 ₽</span>
             </div>
             <div className="scale-cell scale-cell-4">
               <span className="sn">— 04 / Дворец</span>
@@ -106,7 +106,7 @@ export function EditorialSection() {
                 Atelier <em>Luxe</em>
               </span>
               <span className="sex">Палаццо · Шамбор · Версаль · Альгамбра · Фонтенбло</span>
-              <span className="scap">11 букетов · от 7 000 ₽</span>
+              <span className="scap">12 букетов · 7 000–12 000 ₽</span>
             </div>
           </div>
         </R>

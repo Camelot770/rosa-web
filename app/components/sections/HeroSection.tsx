@@ -73,12 +73,12 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
                     <I.Arrow />
                   </span>
                 </Link>
-                <a className="link-u" href="#editorial">
+                <Link className="link-u" href="/editorial">
                   Философия названий{' '}
                   <span className="arrow">
                     <I.Arrow />
                   </span>
-                </a>
+                </Link>
               </div>
             </R>
           </div>
