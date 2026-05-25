@@ -43,7 +43,7 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
 
         <div className="hero-cover">
           <Split as="h1" className="cover-headline">
-            {['<em>Цветы,</em>', 'которые', 'не&nbsp;вянут.']}
+            {['Живые <em>цветы,</em>', 'которые', 'не&nbsp;вянут.']}
           </Split>
         </div>
 
