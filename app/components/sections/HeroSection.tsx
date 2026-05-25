@@ -35,7 +35,7 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
               <span className="ast">✦</span> <span>P.01 · Cover</span>
             </div>
             <div className="right">
-              <span>Issue № 001 · Сезон Май 2026</span>
+              <span>Сезон 17 · Май 2026</span>
               <span className="ast">✦</span>
             </div>
           </div>
@@ -93,7 +93,7 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
               >
                 <div className="corner-tape" />
                 <div className="plate-tag">
-                  <span className="v">№ 001</span> · Plate I
+                  <span className="v">Сезон 17</span> · Plate I
                 </div>
                 <div
                   className="photo"
