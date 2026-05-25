@@ -89,7 +89,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
         </R>
         <div className="index-grid">
           <Split as="h2" className="disp disp-lg">
-            {['Inhalt.', '<em>Содержание</em>']}
+            {['Содержание.', '<em>Inhalt</em>']}
           </Split>
           <div className="index-list">
             {rows.map((r, i) => (
