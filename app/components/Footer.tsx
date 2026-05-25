@@ -49,13 +49,13 @@ export function Footer() {
             <h4>Atelier</h4>
             <ul>
               <li>
-                <Link href="/editorial">Editorial</Link>
+                <Link href="/editorial">Философия</Link>
               </li>
               <li>
-                <Link href="/atelier">Технология</Link>
+                <Link href="/atelier">Студия и технология</Link>
               </li>
               <li>
-                <Link href="/care">Care</Link>
+                <Link href="/care">Уход</Link>
               </li>
               <li>
                 <Link href="/plates">Коллекции</Link>

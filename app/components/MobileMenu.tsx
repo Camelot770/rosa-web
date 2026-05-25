@@ -5,12 +5,12 @@ import Link from 'next/link';
 import { I } from './Icons';
 
 const links: Array<{ href: string; label: string; sub?: string }> = [
-  { href: '/', label: 'Главная', sub: 'Hero · обложка' },
+  { href: '/', label: 'Главная', sub: 'Обложка номера' },
   { href: '/catalog', label: 'Каталог', sub: 'Все 40 букетов' },
-  { href: '/plates', label: 'Plates', sub: 'Четыре коллекции' },
-  { href: '/editorial', label: 'Editorial', sub: 'Философия названий' },
-  { href: '/atelier', label: 'Atelier', sub: 'Студия в Татарстане' },
-  { href: '/care', label: 'Care', sub: 'Три правила ухода' },
+  { href: '/plates', label: 'Коллекции', sub: 'Четыре коллекции' },
+  { href: '/editorial', label: 'Философия', sub: 'Имена и смыслы' },
+  { href: '/atelier', label: 'Студия', sub: 'Ателье в Татарстане' },
+  { href: '/care', label: 'Уход', sub: 'Три правила' },
   { href: '/b2b', label: 'Корпоративам', sub: 'Брендирование · от 1 суток' },
   { href: '/favorites', label: 'Избранное', sub: 'Сохранённые букеты' },
   { href: '/cart', label: 'Корзина', sub: 'Оформление заказа' },
