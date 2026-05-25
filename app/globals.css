@@ -2859,13 +2859,13 @@ body  { overflow-x: clip; background-color: var(--paper); min-height: 100vh; wid
 /* Registered-trademark mark next to «Роза Цветов» — small vermilion superscript. */
 .reg {
   font-family: var(--body);
-  font-size: 0.42em;
+  font-size: 0.62em;
   vertical-align: super;
   line-height: 0;
   color: var(--vermilion);
-  margin-left: 3px;
+  margin-left: 5px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0;
 }
 
