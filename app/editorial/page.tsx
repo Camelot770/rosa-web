@@ -6,7 +6,7 @@ import { EditorialSection } from '@/app/components/sections/EditorialSection';
 export const metadata: Metadata = {
   title: 'Editorial · Философия названий · Роза Цветов',
   description:
-    'Имена нашего каталога живут в одном ряду — от воздуха к камню. Структура букетов «Роза Цветов» по четырём коллекциям: Утренний свет, Шёлковая, Будуарная, Atelier Luxe.',
+    'Имена коллекций «Розы Цветов» — это шкала воздуха. От полного штиля к высотному потоку. Четыре ступени: Штиль, Бриз, Полёт, Высота.',
 };
 
 export default function EditorialPage() {

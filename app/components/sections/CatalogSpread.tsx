@@ -8,7 +8,7 @@ import { FavoriteToggle } from '../FavoriteToggle';
 import type { Bouquet, CollectionEn } from '@/lib/bouquets-data';
 
 type FilterValue = 'All' | CollectionEn;
-const filters: FilterValue[] = ['All', 'Morning Light', 'Silk', 'Boudoir', 'Atelier Luxe'];
+const filters: FilterValue[] = ['All', 'Calm', 'Breeze', 'Flight', 'Altitude'];
 
 interface CatalogSpreadProps {
   bouquets: Bouquet[];
