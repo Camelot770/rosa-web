@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { R, Split } from '../Reveal';
 import { I } from '../Icons';
+import { SeasonLabel } from '../SeasonLabel';
 import { CONTACTS } from '@/lib/contacts';
 import type { Bouquet } from '@/lib/bouquets-data';
 
@@ -35,7 +36,7 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
               <span className="ast">✦</span> <span>P.01 · Cover</span>
             </div>
             <div className="right">
-              <span>Сезон 17 · Май 2026</span>
+              <SeasonLabel />
               <span className="ast">✦</span>
             </div>
           </div>
@@ -93,7 +94,7 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
               >
                 <div className="corner-tape" />
                 <div className="plate-tag">
-                  <span className="v">Сезон 17</span> · Plate I
+                  <span className="v"><SeasonLabel format="plate" /></span> · Plate I
                 </div>
                 <div
                   className="photo"
