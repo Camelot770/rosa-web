@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { R, Split } from '../Reveal';
 import { I } from '../Icons';
 
@@ -60,7 +61,7 @@ export function StorySection() {
               </div>
             </R>
             <Split as="h2" className="disp disp-xl">
-              {['Девять лет', 'в&nbsp;<em>Татарстане.</em>']}
+              {['Девять лет', '<em>работы.</em>']}
             </Split>
             <R delay={300}>
               <p>
@@ -102,12 +103,12 @@ export function StorySection() {
               </div>
             </R>
             <R delay={600}>
-              <a className="btn btn-outline" href="#">
+              <Link className="btn btn-outline" href="/#patent">
                 Технология стабилизации{' '}
                 <span className="arrow">
                   <I.Arrow />
                 </span>
-              </a>
+              </Link>
             </R>
           </div>
         </div>
