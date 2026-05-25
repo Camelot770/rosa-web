@@ -10,7 +10,7 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: 'Каталог букетов · Роза Цветов',
   description:
-    'Полный каталог стабилизированных букетов студии «Роза Цветов» — четыре коллекции, от Утреннего света до Atelier Luxe. Цены, наличие, доставка по России.',
+    'Полный каталог стабилизированных букетов студии «Роза Цветов» — четыре коллекции от Штиля до Высоты. Цены, наличие, доставка по России.',
   openGraph: {
     title: 'Каталог · Роза Цветов',
     description:
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   },
 };
 
-type FilterValue = 'All' | 'Morning Light' | 'Silk' | 'Boudoir' | 'Atelier Luxe';
-const VALID_FILTERS: FilterValue[] = ['All', 'Morning Light', 'Silk', 'Boudoir', 'Atelier Luxe'];
+type FilterValue = 'All' | 'Calm' | 'Breeze' | 'Flight' | 'Altitude';
+const VALID_FILTERS: FilterValue[] = ['All', 'Calm', 'Breeze', 'Flight', 'Altitude'];
 
 interface PageProps {
   searchParams: { filter?: string };

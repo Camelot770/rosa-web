@@ -115,7 +115,7 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
                 <span>
                   <strong>Pl.&nbsp;I</strong> · «{featured ? featured.name : 'Палаццо'}»
                 </span>
-                <span>{featured ? featured.collection : 'Atelier Luxe'}</span>
+                <span>{featured ? featured.collection : 'Высота'}</span>
                 <span>
                   <strong>{fmt(featured ? featured.price : 9800)}&nbsp;₽</strong>
                 </span>
