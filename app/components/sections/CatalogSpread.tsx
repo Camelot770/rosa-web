@@ -10,6 +10,16 @@ import type { Bouquet, CollectionEn } from '@/lib/bouquets-data';
 type FilterValue = 'All' | CollectionEn;
 const filters: FilterValue[] = ['All', 'Calm', 'Breeze', 'Flight', 'Altitude'];
 
+/** Display labels in Russian; URL filter values stay English for clean
+ *  ?filter=Calm links and stable bookmarks. */
+const FILTER_LABELS: Record<FilterValue, string> = {
+  All: 'Все',
+  Calm: 'Штиль',
+  Breeze: 'Бриз',
+  Flight: 'Полёт',
+  Altitude: 'Высота',
+};
+
 interface CatalogSpreadProps {
   bouquets: Bouquet[];
   initialFilter?: FilterValue;
@@ -65,7 +75,7 @@ export function CatalogSpread({ bouquets, initialFilter = 'All', limit }: Catalo
                   className={`filter-pill ${active === f ? 'active' : ''}`}
                   onClick={() => setActive(f)}
                 >
-                  {f}
+                  {FILTER_LABELS[f]}
                 </button>
               ))}
               <span
