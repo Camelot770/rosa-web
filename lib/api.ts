@@ -69,6 +69,35 @@ function absoluteImage(url: string): string {
   return `${API_BASE}/${url}`;
 }
 
+/**
+ * Frontend-only display name overrides. The DB still has the original female-name /
+ * musical-term titles (Татьяна, Соната, etc.) — they show as is in the admin and
+ * the Telegram/MAX mini-apps. On rosa-web we display thematic names that match
+ * each price tier's collection (Штиль / Бриз / Полёт / Высота).
+ *
+ * Important caveat: when a customer orders via web, the guest order route on
+ * the backend stores the OrderItem.name from the DB (not the renamed one).
+ * So the admin sees "Соната 1600 ₽" while the customer saw "Шёпот 1600 ₽".
+ * To fix the drift either (a) push the new names to admin, or (b) extend the
+ * guest order route to accept a client-supplied display name.
+ */
+const NAME_OVERRIDES: Record<number, string> = {
+  // Штиль (8) — тишина
+  120: 'Тишина', 11: 'Шёпот', 137: 'Дымка', 14: 'Иней',
+  71: 'Пауза', 125: 'Полусон', 117: 'Безмолвие', 136: 'Утро',
+  // Бриз (11) — лёгкий ветер
+  143: 'Бриз', 121: 'Свежесть', 60: 'Рассвет', 129: 'Прибой', 128: 'Парус',
+  135: 'Залив', 138: 'Побережье', 139: 'Муссон', 147: 'Узор', 114: 'Маре',
+  116: 'Тёплый ветер',
+  // Полёт (9)
+  140: 'Парение', 115: 'Перо', 113: 'Крыло', 112: 'Ласточка', 141: 'Полёт',
+  127: 'Вираж', 57: 'Взмах', 133: 'Лебедь', 134: 'Ястреб',
+  // Высота (12)
+  110: 'Облако', 130: 'Стратосфера', 19: 'Высь', 124: 'Орбита', 119: 'Альпы',
+  118: 'Космос', 111: 'Эфир', 148: 'Звезда', 144: 'Эльбрус', 145: 'Монблан',
+  146: 'Эверест', 142: 'Вершина',
+};
+
 function shape(api: ApiBouquet, no: number): Bouquet {
   const c = collectionForPrice(api.price);
   const images = (api.images ?? [])
@@ -78,7 +107,7 @@ function shape(api: ApiBouquet, no: number): Bouquet {
   return {
     id: api.id,
     no,
-    name: api.name,
+    name: NAME_OVERRIDES[api.id] ?? api.name,
     description: api.description ?? '',
     price: api.price,
     oldPrice: api.oldPrice,
