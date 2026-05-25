@@ -14,7 +14,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
       href: '/editorial',
       title: (
         <span>
-          Editorial · <em>Философия названий</em>
+          Философия названий · <em>Editorial</em>
         </span>
       ),
       sub: 'Спред · 4 главы',
@@ -25,7 +25,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
       href: '/plates',
       title: (
         <span>
-          Plates · <em>Четыре коллекции</em>
+          Четыре коллекции · <em>Plates</em>
         </span>
       ),
       sub: `${totalBouquets} букетов`,
@@ -36,7 +36,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
       href: '/atelier',
       title: (
         <span>
-          <em>Atelier</em> · Студия в Татарстане
+          Студия в Татарстане · <em>Atelier</em>
         </span>
       ),
       sub: 'Технология + история',
@@ -47,7 +47,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
       href: '/catalog',
       title: (
         <span>
-          <em>Catalog</em> · Хиты сезона
+          Хиты сезона · <em>Catalog</em>
         </span>
       ),
       sub: 'Showcase + цены',
@@ -58,7 +58,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
       href: '/care',
       title: (
         <span>
-          <em>Care</em> · Три правила
+          Три правила ухода · <em>Care</em>
         </span>
       ),
       sub: 'Уход + FAQ',
@@ -69,7 +69,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
       href: '/b2b',
       title: (
         <span>
-          <em>B2B</em> · Корпоративным
+          Корпоративным клиентам · <em>B2B</em>
         </span>
       ),
       sub: 'Брендирование · от 1 суток',
