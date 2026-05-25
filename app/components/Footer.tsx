@@ -62,6 +62,9 @@ export function Footer() {
                 <Link href="/plates">Коллекции</Link>
               </li>
               <li>
+                <Link href="/stabilization">Что такое стабилизация</Link>
+              </li>
+              <li>
                 <Link href="/#patent">Сертификат и патент</Link>
               </li>
               <li>
