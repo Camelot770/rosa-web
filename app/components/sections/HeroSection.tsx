@@ -27,6 +27,20 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
     return () => clearTimeout(t);
   }, []);
 
+  // Track cursor inside the cover photo so the floating "Открыть →" label
+  // can follow it on hover (premium gallery cue).
+  useEffect(() => {
+    const el = photoRef.current;
+    if (!el) return;
+    const onMove = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--cx', `${e.clientX - r.left}px`);
+      el.style.setProperty('--cy', `${e.clientY - r.top}px`);
+    };
+    el.addEventListener('mousemove', onMove);
+    return () => el.removeEventListener('mousemove', onMove);
+  }, []);
+
   return (
     <section className="hero" id="top">
       <div className="container">
@@ -108,6 +122,9 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
                       : undefined
                   }
                 />
+                <span className="cursor-label" aria-hidden="true">
+                  Открыть&nbsp;→
+                </span>
               </Link>
             </R>
             <R delay={1200}>

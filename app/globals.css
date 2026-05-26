@@ -2910,3 +2910,102 @@ body  { overflow-x: clip; background-color: var(--paper); min-height: 100vh; wid
   transition: color 200ms;
 }
 .scale-cell:hover .scale-cta { color: var(--vermilion); }
+
+/* =====================================================================
+   ANIMATIONS — magazine cues added later in the project
+   ===================================================================== */
+
+/* Magazine marquee — slow ticker between sections. -33.333% lands on the
+   start of the second of three duplicates, so the loop is seamless
+   regardless of viewport. */
+.marquee-strip {
+  overflow: hidden;
+  border-top: 1px solid var(--ink-line);
+  border-bottom: 1px solid var(--ink-line);
+  background: var(--paper-2);
+  padding: 14px 0;
+}
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  animation: marquee-scroll var(--marquee-duration, 60s) linear infinite;
+  will-change: transform;
+}
+.marquee-line {
+  display: inline-block;
+  padding-right: 28px;
+}
+.marquee-sep {
+  display: inline-block;
+  padding-right: 28px;
+  color: var(--vermilion);
+}
+@keyframes marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-33.333%, 0, 0); }
+}
+/* Pause on hover so users can read it without chasing. */
+.marquee-strip:hover .marquee-track { animation-play-state: paused; }
+/* Respect reduced-motion. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* Cover-photo cursor follower — small vermilion "Открыть →" label that
+   follows the cursor while hovering. Position via inline custom props
+   (--cx, --cy) set from the React mousemove listener. */
+.cover-photo .cursor-label {
+  position: absolute;
+  left: var(--cx, -200px);
+  top: var(--cy, -200px);
+  transform: translate(-50%, -135%);
+  background: var(--vermilion);
+  color: var(--paper);
+  padding: 8px 16px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 220ms var(--ease-expo);
+  z-index: 5;
+  border-radius: 2px;
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.25);
+}
+.cover-photo:hover .cursor-label { opacity: 1; }
+/* On touch / no hover, the floating label is decorative — hide entirely. */
+@media (hover: none) {
+  .cover-photo .cursor-label { display: none; }
+}
+
+/* FAQ accordion — smooth open/close instead of a binary `hidden` toggle.
+   Uses grid-template-rows trick (0fr → 1fr) which animates intrinsic
+   height in modern browsers without measuring with JS.
+   The vertical padding lives outside the grid row, so we animate it
+   in parallel so the bottom 28px collapses with the content. */
+.faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition:
+    grid-template-rows 380ms var(--ease-expo),
+    padding-bottom 380ms var(--ease-expo);
+}
+.faq-a > p {
+  overflow: hidden;
+  min-height: 0;
+}
+.faq-item.open .faq-a {
+  grid-template-rows: 1fr;
+  padding-bottom: 28px;
+}

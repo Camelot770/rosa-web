@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { R, Split } from '../Reveal';
 import { I } from '../Icons';
+import { AnimatedNumber } from '../AnimatedNumber';
 
 export function StorySection() {
   const visRef = useRef<HTMLDivElement | null>(null);
@@ -84,18 +85,26 @@ export function StorySection() {
               <div className="story-stats">
                 <div className="story-stat">
                   <div className="v">
-                    <em>9</em>
+                    <em>
+                      <AnimatedNumber to={9} />
+                    </em>
                   </div>
                   <div className="k">лет студии</div>
                 </div>
                 <div className="story-stat">
-                  <div className="v">3&#8202;200</div>
+                  <div className="v">
+                    <AnimatedNumber
+                      to={3200}
+                      formatter={(n) => n.toLocaleString('ru-RU').replace(/\s/g, ' ')}
+                    />
+                  </div>
                   <div className="k">букетов</div>
                 </div>
                 <div className="story-stat">
                   <div className="v">
                     <em>
-                      72<sup style={{ fontSize: '0.5em' }}>%</sup>
+                      <AnimatedNumber to={72} />
+                      <sup style={{ fontSize: '0.5em' }}>%</sup>
                     </em>
                   </div>
                   <div className="k">повторных заказов</div>
