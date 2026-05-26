@@ -21,14 +21,14 @@ export function EditorialSection() {
               <div className="kicker">✦ Философия названий</div>
             </R>
             <Split as="h2" className="disp disp-xl">
-              {['От штиля —', '<em>к&nbsp;высоте.</em>']}
+              {['От соло —', '<em>к&nbsp;оркестру.</em>']}
             </Split>
           </div>
           <R delay={200}>
             <div className="standfirst">
-              «Имена наших коллекций&nbsp;— это <em>шкала воздуха.</em> От&nbsp;полного штиля
-              к&nbsp;высотному потоку. От&nbsp;букета, который хочется поставить у&nbsp;окна
-              и&nbsp;забыть&nbsp;— к&nbsp;парадной композиции, которая дышит на&nbsp;всю комнату».
+              «Четыре коллекции&nbsp;— это <em>четыре состава.</em> От&nbsp;одного голоса
+              до&nbsp;оркестра. Чем больше букет&nbsp;— тем больше «инструментов»
+              в&nbsp;композиции».
             </div>
           </R>
         </div>
@@ -36,81 +36,78 @@ export function EditorialSection() {
         <R>
           <div className="editorial-body">
             <p>
-              Имена коллекций «Розы Цветов»&nbsp;— это не&nbsp;маркетинговая упаковка
-              и&nbsp;не&nbsp;настроение копирайтера. Это <strong>структура</strong>: шкала плотности
-              композиции, которая нарастает от&nbsp;самого лёгкого букета до&nbsp;самого крупного.
+              Букет похож на&nbsp;музыкальную пьесу: у&nbsp;него есть тема, есть голоса
+              и&nbsp;есть громкость. Чем сложнее композиция, тем больше «исполнителей»
+              в&nbsp;ней участвует&nbsp;— и&nbsp;тем заметнее она в&nbsp;комнате.
             </p>
             <p>
-              На&nbsp;первой ступени&nbsp;— <strong>Штиль.</strong> Самые лёгкие композиции каталога:
-              открытый воздух между стеблями, тонкая зелень, дымчатая гипсофила, нежные сорта роз
-              пастельных оттенков. Минималистично&nbsp;— и&nbsp;потому пронзительно. Их хочется
-              поставить у&nbsp;окна, на&nbsp;прикроватную тумбу, подарить «просто так».
+              <strong>Соло.</strong> Один голос, одна тема. Самые лёгкие букеты каталога:
+              тонкая зелень, дымчатая гипсофила, пастельные розы, воздух между стеблями.
+              Их ставят у&nbsp;окна, на&nbsp;прикроватную тумбу, дарят без&nbsp;повода.
             </p>
             <p>
-              Дальше&nbsp;— <strong>Бриз.</strong> Свежесть, движение, ясность. Более насыщенные
-              композиции: больше слоёв, гуще тон, плотнее лепестки. Но&nbsp;всё ещё лёгкие&nbsp;— как
-              утренний приморский ветер: чувствуется, наполняет, не&nbsp;давит. Хорошо стоят
-              на&nbsp;консоли, у&nbsp;входа, на&nbsp;рабочем столе.
+              <strong>Дуэт.</strong> Два голоса в&nbsp;разговоре. Появляются акценты,
+              контраст, плотность. Больше слоёв, насыщеннее тон&nbsp;— но&nbsp;ещё камерно.
+              Хорошо стоят на&nbsp;консоли, у&nbsp;входа, на&nbsp;рабочем столе.
             </p>
             <p className="pull-quote">
-              Когда вы листаете каталог, вы движетесь по&nbsp;этой шкале&nbsp;— от&nbsp;тишины
-              к&nbsp;звучанию, от&nbsp;точки на&nbsp;тумбе&nbsp;— к&nbsp;объекту в&nbsp;интерьере.
+              Чем дальше по&nbsp;каталогу&nbsp;— тем больше голосов в&nbsp;букете.
+              От&nbsp;одного&nbsp;— к&nbsp;десяткам.
             </p>
             <p>
-              На&nbsp;третьей ступени&nbsp;— <strong>Полёт.</strong> Букеты, которые начинают занимать
-              пространство. Сложные многослойные композиции с&nbsp;пионовидными розами,
-              эвкалиптом, сухоцветами. Их ставят туда, где они становятся центром комнаты:
-              каминная полка, обеденный стол, ниша гостиной.
+              <strong>Квартет.</strong> Камерное многоголосие. Сложные многослойные
+              композиции с&nbsp;пионовидными розами, эвкалиптом, сухоцветами. Их ставят
+              на&nbsp;каминную полку, обеденный стол, в&nbsp;нишу гостиной&nbsp;— туда,
+              где они становятся центром комнаты.
             </p>
             <p>
-              Наконец&nbsp;— <strong>Высота.</strong> Парадные композиции в&nbsp;единичном
-              исполнении. Большие кашпо, плотные слои, редкие сорта, премиум-материалы.
-              Двенадцать букетов, каждый штучный&nbsp;— это уже не&nbsp;просто подарок,
-              это интерьерный объект.
+              <strong>Оркестр.</strong> Полный состав, парадные композиции. Объёмные
+              кашпо, плотные слои, редкие сорта, премиум-материалы. Двенадцать штучных
+              букетов&nbsp;— каждый занимает пространство как интерьерный объект.
             </p>
             <p>
-              Так в&nbsp;одном каталоге живут все четыре регистра&nbsp;— от&nbsp;тишины
-              до&nbsp;парадного звучания. И&nbsp;каждое имя выбрано не&nbsp;случайно: оно
-              сообщает вам <strong>вес</strong> композиции до&nbsp;того, как вы её&nbsp;увидите.
+              Четыре коллекции в&nbsp;одном каталоге. Имя сразу подсказывает,
+              на&nbsp;сколько «голосов» рассчитан букет&nbsp;— ещё до&nbsp;того, как
+              вы откроете карточку.
             </p>
           </div>
         </R>
 
         <R>
           <div className="scale-row">
-            <Link href="/catalog?filter=Calm" className="scale-cell scale-cell-1" aria-label="Открыть коллекцию Штиль">
-              <span className="sn">— 01 / Тишина</span>
+            <Link href="/catalog?filter=Solo" className="scale-cell scale-cell-1" aria-label="Открыть коллекцию Соло">
+              <span className="sn">— 01 / Один голос</span>
               <span className="sttl">
-                <em>Штиль</em>
+                <em>Соло</em>
               </span>
-              <span className="sex">безветрие · минимализм · открытое пространство</span>
+              <span className="sex">лёгкие · воздушные · пастельные</span>
               <span className="scap">8 букетов · 1 400–2 550 ₽</span>
               <span className="scale-cta">Открыть →</span>
             </Link>
-            <Link href="/catalog?filter=Breeze" className="scale-cell scale-cell-2" aria-label="Открыть коллекцию Бриз">
-              <span className="sn">— 02 / Движение</span>
+            <Link href="/catalog?filter=Duet" className="scale-cell scale-cell-2" aria-label="Открыть коллекцию Дуэт">
+              <span className="sn">— 02 / Два голоса</span>
               <span className="sttl">
-                <em>Бриз</em>
+                <em>Дуэт</em>
               </span>
-              <span className="sex">свежесть · ясность · ритм</span>
+              <span className="sex">контраст · акценты · камерно</span>
               <span className="scap">11 букетов · 2 850–4 380 ₽</span>
               <span className="scale-cta">Открыть →</span>
             </Link>
-            <Link href="/catalog?filter=Flight" className="scale-cell scale-cell-3" aria-label="Открыть коллекцию Полёт">
-              <span className="sn">— 03 / Подъём</span>
+            <Link href="/catalog?filter=Quartet" className="scale-cell scale-cell-3" aria-label="Открыть коллекцию Квартет">
+              <span className="sn">— 03 / Камерно</span>
               <span className="sttl">
-                <em>Полёт</em>
+                <em>Квартет</em>
               </span>
-              <span className="sex">слоистость · парение · масштаб</span>
+              <span className="sex">многослойные · крупные · сложные</span>
               <span className="scap">9 букетов · 4 500–6 500 ₽</span>
               <span className="scale-cta">Открыть →</span>
             </Link>
-            <Link href="/catalog?filter=Altitude" className="scale-cell scale-cell-4" aria-label="Открыть коллекцию Высота">
-              <span className="sn">— 04 / Вершина</span>
+            <Link href="/catalog?filter=Orchestra" className="scale-cell scale-cell-4" aria-label="Открыть коллекцию Оркестр">
+              <span className="sn">— 04 / Полный состав</span>
               <span className="sttl">
-                <em>Высота</em>
+                <em>Оркестр</em>
               </span>
-              <span className="sex">премиум · штучное · парадное</span>
+              <span className="sex">парадные · штучные · премиум</span>
               <span className="scap">12 букетов · 7 000–12 000 ₽</span>
               <span className="scale-cta">Открыть →</span>
             </Link>

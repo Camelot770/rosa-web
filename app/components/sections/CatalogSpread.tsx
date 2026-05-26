@@ -8,16 +8,16 @@ import { FavoriteToggle } from '../FavoriteToggle';
 import type { Bouquet, CollectionEn } from '@/lib/bouquets-data';
 
 type FilterValue = 'All' | CollectionEn;
-const filters: FilterValue[] = ['All', 'Calm', 'Breeze', 'Flight', 'Altitude'];
+const filters: FilterValue[] = ['All', 'Solo', 'Duet', 'Quartet', 'Orchestra'];
 
 /** Display labels in Russian; URL filter values stay English for clean
- *  ?filter=Calm links and stable bookmarks. */
+ *  ?filter=Solo links and stable bookmarks. */
 const FILTER_LABELS: Record<FilterValue, string> = {
   All: 'Все',
-  Calm: 'Штиль',
-  Breeze: 'Бриз',
-  Flight: 'Полёт',
-  Altitude: 'Высота',
+  Solo: 'Соло',
+  Duet: 'Дуэт',
+  Quartet: 'Квартет',
+  Orchestra: 'Оркестр',
 };
 
 interface CatalogSpreadProps {

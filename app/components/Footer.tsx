@@ -33,16 +33,16 @@ export function Footer() {
                 <Link href="/catalog">Все 40 букетов</Link>
               </li>
               <li>
-                <Link href="/catalog?filter=Calm">Штиль</Link>
+                <Link href="/catalog?filter=Solo">Соло</Link>
               </li>
               <li>
-                <Link href="/catalog?filter=Breeze">Бриз</Link>
+                <Link href="/catalog?filter=Duet">Дуэт</Link>
               </li>
               <li>
-                <Link href="/catalog?filter=Flight">Полёт</Link>
+                <Link href="/catalog?filter=Quartet">Квартет</Link>
               </li>
               <li>
-                <Link href="/catalog?filter=Altitude">Высота</Link>
+                <Link href="/catalog?filter=Orchestra">Оркестр</Link>
               </li>
             </ul>
           </div>

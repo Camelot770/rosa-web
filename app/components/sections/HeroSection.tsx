@@ -52,8 +52,8 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
           <div className="hero-left">
             <R delay={1000}>
               <p className="epigraph">
-                «Имена живут в одном&nbsp;ряду&nbsp;— это шкала воздуха.{' '}
-                <em>От&nbsp;штиля к&nbsp;высоте, от&nbsp;тишины&nbsp;— к&nbsp;звучанию».</em>
+                «Имена живут в одном&nbsp;ряду&nbsp;— это четыре состава.{' '}
+                <em>От&nbsp;соло у&nbsp;окна&nbsp;— к&nbsp;оркестру в&nbsp;гостиной».</em>
               </p>
             </R>
             <R delay={1150}>
@@ -115,7 +115,7 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
                 <span>
                   <strong>Pl.&nbsp;I</strong> · «{featured ? featured.name : 'Палаццо'}»
                 </span>
-                <span>{featured ? featured.collection : 'Высота'}</span>
+                <span>{featured ? featured.collection : 'Оркестр'}</span>
                 <span>
                   <strong>{fmt(featured ? featured.price : 9800)}&nbsp;₽</strong>
                 </span>
