@@ -46,6 +46,7 @@ export function Header({ bouquetCount }: HeaderProps = {}) {
           <Link href="/plates">Коллекции</Link>
           <Link href="/atelier">Студия</Link>
           <Link href="/catalog">Каталог</Link>
+          <Link href="/b2b">Бизнес</Link>
           <Link href="/care">Уход</Link>
         </nav>
         <div className="header-right">
