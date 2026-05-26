@@ -2958,38 +2958,6 @@ body  { overflow-x: clip; background-color: var(--paper); min-height: 100vh; wid
   .marquee-track { animation: none; }
 }
 
-/* Cover-photo cursor follower — small vermilion "Открыть →" label that
-   follows the cursor while hovering. Position via inline custom props
-   (--cx, --cy) set from the React mousemove listener. The label sits
-   16px below-right of the cursor so it stays inside the .cover-photo
-   bounds even near edges (the parent has overflow: hidden). */
-.cover-photo .cursor-label {
-  position: absolute;
-  left: var(--cx, -200px);
-  top: var(--cy, -200px);
-  transform: translate(16px, 16px);
-  background: var(--vermilion);
-  color: var(--paper);
-  padding: 10px 18px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 220ms var(--ease-expo), transform 80ms ease-out;
-  z-index: 5;
-  border-radius: 2px;
-  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.35);
-  font-weight: 600;
-}
-.cover-photo:hover .cursor-label { opacity: 1; }
-/* On touch / no hover, the floating label is decorative — hide entirely. */
-@media (hover: none) {
-  .cover-photo .cursor-label { display: none; }
-}
-
 /* FAQ accordion — smooth open/close instead of a binary `hidden` toggle.
    Uses grid-template-rows trick (0fr → 1fr) which animates intrinsic
    height in modern browsers without measuring with JS.
