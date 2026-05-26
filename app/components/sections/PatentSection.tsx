@@ -44,7 +44,7 @@ export function PatentSection() {
 
         <div className="patent-head">
           <Split as="h2" className="disp disp-xl">
-            {['Букет, которому', '<em>можно доверять.</em>']}
+            {['Студия, которой', '<em>можно доверять.</em>']}
           </Split>
           <R delay={150}>
             <p className="patent-lead">
