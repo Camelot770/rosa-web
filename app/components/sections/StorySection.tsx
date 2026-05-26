@@ -61,7 +61,7 @@ export function StorySection() {
               </div>
             </R>
             <Split as="h2" className="disp disp-xl">
-              {['Девять лет', '<em>работы.</em>']}
+              {['Девять лет <em>исследований</em>', 'и&nbsp;<em>работы.</em>']}
             </Split>
             <R delay={300}>
               <p>
