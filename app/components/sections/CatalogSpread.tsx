@@ -47,13 +47,17 @@ export function CatalogSpread({ bouquets, initialFilter = 'All', limit }: Catalo
         <R>
           <div className="page-marker" style={{ marginBottom: 24 }}>
             <span className="num">P.&nbsp;28</span>
-            <span className="lab">— Catalog</span>
-            <span className="sub">/ Каталог букетов</span>
+            <span className="lab">— Каталог</span>
+            <span className="sub">/ {active === 'All' ? 'все коллекции' : `коллекция «${FILTER_LABELS[active]}»`}</span>
           </div>
         </R>
         <div className="spread-head">
           <Split as="h2" className="disp disp-xl">
-            {isPreview ? ['Хиты <em>сезона.</em>'] : ['Каталог <em>букетов.</em>']}
+            {isPreview
+              ? ['Хиты <em>сезона.</em>']
+              : active === 'All'
+                ? ['Каталог <em>букетов.</em>']
+                : ['Коллекция', `<em>«${FILTER_LABELS[active]}».</em>`]}
           </Split>
           <R delay={150}>
             <Link className="link-u" href="/catalog">
@@ -68,7 +72,7 @@ export function CatalogSpread({ bouquets, initialFilter = 'All', limit }: Catalo
         {!isPreview && (
           <R>
             <div className="filter-row">
-              <span className="lbl">Filter ✦</span>
+              <span className="lbl">Фильтр ✦</span>
               {filters.map((f) => (
                 <button
                   key={f}
