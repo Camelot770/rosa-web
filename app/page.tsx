@@ -13,6 +13,8 @@ import { FAQSection } from './components/sections/FAQSection';
 import { CareSection } from './components/sections/CareSection';
 import { SubscribeSection } from './components/sections/SubscribeSection';
 import { MarqueeStrip } from './components/MarqueeStrip';
+import { ScrollProgress } from './components/ScrollProgress';
+import { SectionScribe } from './components/SectionScribe';
 import { fetchBouquets } from '@/lib/api';
 import { BOUQUETS } from '@/lib/bouquets-data';
 
@@ -39,6 +41,7 @@ export default async function HomePage() {
   return (
     <>
       <Intro />
+      <ScrollProgress />
       <Header bouquetCount={bouquets.length} />
       <main>
         <HeroSection totalBouquets={bouquets.length} featured={featured} />
@@ -58,8 +61,10 @@ export default async function HomePage() {
         <PlatesSection bouquets={bouquets} />
         <StorySection />
         <PatentSection />
+        <SectionScribe label="✦ Каталог" />
         <CatalogSpread bouquets={bouquets} limit={8} />
         <FAQSection />
+        <SectionScribe label="✦ Уход" />
         <CareSection />
         <SubscribeSection />
       </main>

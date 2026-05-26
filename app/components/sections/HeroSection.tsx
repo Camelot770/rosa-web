@@ -27,6 +27,34 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
     return () => clearTimeout(t);
   }, []);
 
+  // Subtle vertical parallax on the hero cover photo. The CSS custom prop
+  // --py is read by the inner `.photo` background, combined with the
+  // existing scale transform. Updated via rAF on scroll for smoothness.
+  useEffect(() => {
+    const el = photoRef.current;
+    if (!el) return;
+    let raf = 0;
+    const update = () => {
+      const r = el.getBoundingClientRect();
+      const center = r.top + r.height / 2;
+      const dist = center - window.innerHeight / 2;
+      const offset = dist * -0.06;
+      el.style.setProperty('--py', `${offset}px`);
+      raf = 0;
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
     <section className="hero" id="top">
       <div className="container">
