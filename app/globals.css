@@ -2754,6 +2754,13 @@ body::before {
 .aud-grid > .r { display: flex; }
 .aud-grid > .r > .aud-card { flex: 1; width: 100%; }
 
+/* B2B card photo (3rd) — natural framing of the source image was a bit
+   wider than 3/2, so default `cover` was clipping the subject at the
+   edges. Push it in slightly: scale up by ~8 % so hands + peonies sit
+   more comfortably inside the crop, and bump hover scale to match. */
+.aud-grid > .r:nth-child(3) .aud-photo { transform: scale(1.08); }
+.aud-grid > .r:nth-child(3) .aud-card:hover .aud-photo { transform: scale(1.12); }
+
 /* Patent card with optional certificate preview */
 .patent-image {
   width: 100%;
