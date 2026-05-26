@@ -2980,3 +2980,105 @@ body  { overflow-x: clip; background-color: var(--paper); min-height: 100vh; wid
   grid-template-rows: 1fr;
   padding-bottom: 28px;
 }
+
+/* =====================================================================
+   MORE ANIMATIONS — second pass
+   ===================================================================== */
+
+/* Top scroll-progress bar. Sits above every other UI, uses scaleX so the
+   browser only does a compositor transform per frame. */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 200;
+  pointer-events: none;
+  background: rgba(26, 22, 18, 0.04);
+}
+.scroll-progress-bar {
+  height: 100%;
+  width: 100%;
+  background: var(--vermilion);
+  transform-origin: left center;
+  will-change: transform;
+  transition: transform 80ms linear;
+}
+
+/* Hero cover-photo parallax — the inner `.photo` shifts vertically with
+   scroll via the --py CSS variable. Combined with the existing scale
+   transform (1.08 at rest, 1 after intro completes). */
+.cover-photo .photo {
+  transform: scale(1.08) translate3d(0, var(--py, 0px), 0);
+  will-change: transform;
+}
+.cover-photo.in .photo {
+  transform: scale(1) translate3d(0, var(--py, 0px), 0);
+}
+/* Pause parallax when the user prefers reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .cover-photo .photo,
+  .cover-photo.in .photo {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+/* Section scribe divider — a thin vermilion line that draws from the
+   centre outwards once the divider enters the viewport. Lives between
+   major sections to reinforce the chapter-break feel. */
+.section-scribe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: clamp(48px, 7vw, 96px) 0;
+  max-width: 1240px;
+  margin: 0 auto;
+  width: 92%;
+}
+.section-scribe-line {
+  flex: 1;
+  height: 1px;
+  background: var(--vermilion);
+  transform: scaleX(0);
+  transition: transform 1100ms var(--ease-expo);
+  will-change: transform;
+}
+.section-scribe-line-l { transform-origin: right center; }
+.section-scribe-line-r { transform-origin: left center; }
+.section-scribe.drawn .section-scribe-line { transform: scaleX(1); }
+.section-scribe-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--vermilion);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 600ms 400ms;
+}
+.section-scribe.drawn .section-scribe-label { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .section-scribe-line { transform: scaleX(1); transition: none; }
+  .section-scribe-label { opacity: 1; transition: none; }
+}
+
+/* Primary button arrow nudge — the inner ↗ icon shifts right on hover
+   so the button visually invites the click. Affects every .btn that
+   contains a .arrow span. Pure CSS, no JS. */
+.btn .arrow,
+.link-u .arrow,
+.aud-cta .arrow {
+  display: inline-flex;
+  transition: transform 320ms var(--ease-expo);
+  will-change: transform;
+}
+.btn:hover .arrow,
+.btn:focus-visible .arrow,
+.link-u:hover .arrow,
+.link-u:focus-visible .arrow,
+.aud-cta:hover .arrow,
+.aud-card:hover .aud-cta .arrow {
+  transform: translateX(6px);
+}
