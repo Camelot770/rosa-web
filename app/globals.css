@@ -2747,6 +2747,13 @@ body::before {
 }
 .aud-body .aud-text { flex-grow: 1; }
 
+/* Equalise card heights inside the audiences grid: the <R> wrapper is the
+   actual grid item, so we stretch the card to fill it. Without this, the
+   card with the longest body copy makes the whole grid row taller while
+   the two lighter cards keep their natural height and look smaller. */
+.aud-grid > .r { display: flex; }
+.aud-grid > .r > .aud-card { flex: 1; width: 100%; }
+
 /* Patent card with optional certificate preview */
 .patent-image {
   width: 100%;
