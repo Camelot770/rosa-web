@@ -68,7 +68,7 @@ export function FAQSection() {
                       {isOpen ? '−' : '+'}
                     </span>
                   </button>
-                  <div className="faq-a" hidden={!isOpen}>
+                  <div className="faq-a" aria-hidden={!isOpen}>
                     <p dangerouslySetInnerHTML={{ __html: f.a }} />
                   </div>
                 </div>

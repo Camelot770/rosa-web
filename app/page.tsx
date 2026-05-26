@@ -12,6 +12,7 @@ import { CatalogSpread } from './components/sections/CatalogSpread';
 import { FAQSection } from './components/sections/FAQSection';
 import { CareSection } from './components/sections/CareSection';
 import { SubscribeSection } from './components/sections/SubscribeSection';
+import { MarqueeStrip } from './components/MarqueeStrip';
 import { fetchBouquets } from '@/lib/api';
 import { BOUQUETS } from '@/lib/bouquets-data';
 
@@ -44,6 +45,16 @@ export default async function HomePage() {
         <AudiencesSection />
         <IndexSection totalBouquets={bouquets.length} />
         <EditorialSection />
+        <MarqueeStrip
+          items={[
+            'Atelier · Kazan · Tatarstan',
+            'Est. 2017',
+            `${bouquets.length} букетов в каталоге`,
+            'Соло · Дуэт · Квартет · Оркестр',
+            'Patent RU 2 698 058',
+            'Сезон 17 · Май 2026',
+          ]}
+        />
         <PlatesSection bouquets={bouquets} />
         <StorySection />
         <PatentSection />
