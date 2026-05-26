@@ -17,10 +17,10 @@ interface CollDef {
 }
 
 const COLLS: CollDef[] = [
-  { roman: 'I', lbl: 'Штиль', name: 'Calm', it: '' },
-  { roman: 'II', lbl: 'Бриз', name: 'Breeze', it: '' },
-  { roman: 'III', lbl: 'Полёт', name: 'Flight', it: '' },
-  { roman: 'IV', lbl: 'Высота', name: 'Altitude', it: '' },
+  { roman: 'I', lbl: 'Соло', name: 'Solo', it: '' },
+  { roman: 'II', lbl: 'Дуэт', name: 'Duet', it: '' },
+  { roman: 'III', lbl: 'Квартет', name: 'Quartet', it: '' },
+  { roman: 'IV', lbl: 'Оркестр', name: 'Orchestra', it: '' },
 ];
 
 const fmt = (n: number) => n.toLocaleString('ru-RU');

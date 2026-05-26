@@ -36,18 +36,18 @@ interface ApiBouquet {
 }
 
 function collectionForPrice(price: number): Collection {
-  if (price < 2700) return 'Штиль';
-  if (price < 4500) return 'Бриз';
-  if (price < 7000) return 'Полёт';
-  return 'Высота';
+  if (price < 2700) return 'Соло';
+  if (price < 4500) return 'Дуэт';
+  if (price < 7000) return 'Квартет';
+  return 'Оркестр';
 }
 
 function collectionEnFor(c: Collection): CollectionEn {
   const map: Record<Collection, CollectionEn> = {
-    Штиль: 'Calm',
-    Бриз: 'Breeze',
-    Полёт: 'Flight',
-    Высота: 'Altitude',
+    Соло: 'Solo',
+    Дуэт: 'Duet',
+    Квартет: 'Quartet',
+    Оркестр: 'Orchestra',
   };
   return map[c];
 }

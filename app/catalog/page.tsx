@@ -7,16 +7,16 @@ import { BOUQUETS } from '@/lib/bouquets-data';
 
 export const revalidate = 60;
 
-type FilterValue = 'All' | 'Calm' | 'Breeze' | 'Flight' | 'Altitude';
-const VALID_FILTERS: FilterValue[] = ['All', 'Calm', 'Breeze', 'Flight', 'Altitude'];
+type FilterValue = 'All' | 'Solo' | 'Duet' | 'Quartet' | 'Orchestra';
+const VALID_FILTERS: FilterValue[] = ['All', 'Solo', 'Duet', 'Quartet', 'Orchestra'];
 
 /** Russian display label for each filter value (English in URL → Russian on page). */
 const FILTER_LABEL_RU: Record<FilterValue, string> = {
   All: 'Каталог букетов',
-  Calm: 'Штиль',
-  Breeze: 'Бриз',
-  Flight: 'Полёт',
-  Altitude: 'Высота',
+  Solo: 'Соло',
+  Duet: 'Дуэт',
+  Quartet: 'Квартет',
+  Orchestra: 'Оркестр',
 };
 
 interface PageProps {
@@ -30,7 +30,7 @@ export function generateMetadata({ searchParams }: PageProps): Metadata {
     f === 'All' ? 'Каталог букетов' : `Коллекция «${FILTER_LABEL_RU[f]}»`;
   const description =
     f === 'All'
-      ? 'Полный каталог стабилизированных букетов студии «Роза Цветов» — четыре коллекции от Штиля до Высоты. Цены, наличие, доставка по России.'
+      ? 'Полный каталог стабилизированных букетов студии «Роза Цветов» — четыре коллекции от Соло до Оркестра. Цены, наличие, доставка по России.'
       : `Букеты коллекции «${FILTER_LABEL_RU[f]}» — стабилизированные композиции студии «Роза Цветов», которые живут 3–5 лет. Доставка из Казани по всей России.`;
   return {
     title: `${titleHead} · Роза Цветов`,
