@@ -243,8 +243,8 @@ export default function StabilizationPage() {
                 <span className="num">07</span>
                 <span>Сравнительная таблица</span>
               </h2>
-              <div className="info-block" style={{ padding: 0, overflow: 'hidden' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+              <div className="info-block" style={{ padding: 0, overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+                <table style={{ width: '100%', minWidth: 560, borderCollapse: 'collapse', fontSize: 14 }}>
                   <thead>
                     <tr style={{ background: 'var(--paper)', textAlign: 'left' }}>
                       <th style={{ padding: '14px 18px', fontFamily: 'var(--body)', fontWeight: 500, fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--ink-soft)' }}>
