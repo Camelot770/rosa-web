@@ -3156,3 +3156,124 @@ body  { overflow-x: clip; background-color: var(--paper); min-height: 100vh; wid
   .recognition-grid { grid-template-columns: 1fr; gap: 28px; }
 }
 
+
+/* =====================================================================
+   FULL MOBILE AUDIT — comprehensive small-screen overrides
+   ===================================================================== */
+
+/* --- Tablet nav crowding (7 items, gap 32 was too tight 1100-1280) --- */
+@media (max-width: 1280px) {
+  .nav { gap: 22px; }
+  .nav a { font-size: 10.5px; letter-spacing: 0.18em; }
+}
+
+/* --- Masthead top: hide middle ATELIER segment under 720px so the
+       left (season+count) and the right (phone) stop colliding ------- */
+@media (max-width: 720px) {
+  .masthead-top {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    gap: 12px;
+  }
+  .masthead-top > div:nth-child(2) { display: none; }
+}
+@media (max-width: 480px) {
+  .masthead-top {
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  .masthead-top > div { font-size: 8.5px; }
+}
+
+/* --- Display typography: cap minimums for phones so Italian italic
+       Russian H2s ("К оркестру", "Видели первые лица", "Студия которой")
+       don't push past the viewport edge ------------------------------ */
+@media (max-width: 720px) {
+  .disp-xl  { font-size: clamp(40px, 11vw, 72px); line-height: 0.94; }
+  .disp-lg  { font-size: clamp(32px, 9vw, 56px);  line-height: 0.98; }
+  .disp-md  { font-size: clamp(24px, 6.5vw, 40px); line-height: 1.05; }
+}
+@media (max-width: 480px) {
+  .disp-xxl { font-size: clamp(48px, 13vw, 80px); line-height: 0.9; }
+  .disp-xl  { font-size: clamp(34px, 10vw, 56px); line-height: 0.96; }
+  .disp-lg  { font-size: clamp(28px, 8vw, 42px);  line-height: 1; }
+  .disp-md  { font-size: clamp(22px, 6vw, 32px);  line-height: 1.1; }
+}
+
+/* --- Hero cover headline: re-tune for very narrow phones so "не вянут."
+       drops cleanly and "Живые" doesn't dominate the column ---------- */
+@media (max-width: 420px) {
+  .cover-headline { font-size: clamp(48px, 13vw, 80px); line-height: 0.94; }
+}
+
+/* --- Recognition section: tighter mobile rhythm ---------------------- */
+@media (max-width: 720px) {
+  .recognition-section { padding: 56px 0; }
+  .recognition-figure { gap: 8px; }
+  .recognition-caption { padding-top: 10px; }
+  .rcap-text { font-size: 12.5px; }
+}
+
+/* --- Patent grid (now 3 cards): on tablet 2 cols, on phone 1 col.
+       Was repeat(3, 1fr) — tighten the breakpoint ladder. ------------ */
+@media (max-width: 980px) {
+  .patent-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .patent-grid { grid-template-columns: 1fr; gap: 16px; }
+  .patent-card { padding: 24px; }
+  .patent-image { margin: -24px -24px 14px; width: calc(100% + 48px); aspect-ratio: 4 / 5; }
+}
+
+/* --- Editorial scale row (4 collection cards) — collapse cleanly ----- */
+@media (max-width: 900px) {
+  .scale-row { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .scale-row { grid-template-columns: 1fr; }
+}
+
+/* --- Catalog spread grid (preview 8 / full 40 cards) ----------------- */
+@media (max-width: 720px) {
+  .spread-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+@media (max-width: 480px) {
+  .spread-grid { grid-template-columns: 1fr; }
+  .filter-row { gap: 8px; flex-wrap: wrap; }
+  .filter-row .lbl { width: 100%; margin-bottom: 4px; }
+}
+
+/* --- Section scribe: pad less on mobile so the chapter break doesn't
+       eat half the screen ------------------------------------------- */
+@media (max-width: 720px) {
+  .section-scribe { padding: 36px 0; gap: 12px; }
+  .section-scribe-label { font-size: 10px; letter-spacing: 0.22em; }
+}
+
+/* --- Marquee strip: shrink type on phones so the message reads ------ */
+@media (max-width: 600px) {
+  .marquee-track { font-size: 10px; letter-spacing: 0.18em; }
+  .marquee-line, .marquee-sep { padding-right: 22px; }
+}
+
+/* --- Footer: smoother mobile collapse ------------------------------- */
+@media (max-width: 600px) {
+  .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+}
+
+/* --- Editorial body: keep readable column at narrow widths ---------- */
+@media (max-width: 600px) {
+  .editorial-body { font-size: 15px; line-height: 1.65; }
+  .editorial-body .pull-quote { font-size: 18px; }
+}
+
+/* --- Long Russian word soft-break safety. Apply to all body text so
+       "стабилизированных", "запатентовано", "корпоративных" can break
+       gracefully instead of pushing the row width. ------------------- */
+p, li, .lead, .body-text, .standfirst, .aud-text, .patent-text {
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
+}
