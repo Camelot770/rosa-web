@@ -7,6 +7,7 @@ import { IndexSection } from './components/sections/IndexSection';
 import { EditorialSection } from './components/sections/EditorialSection';
 import { PlatesSection } from './components/sections/PlatesSection';
 import { StorySection } from './components/sections/StorySection';
+import { RecognitionSection } from './components/sections/RecognitionSection';
 import { PatentSection } from './components/sections/PatentSection';
 import { CatalogSpread } from './components/sections/CatalogSpread';
 import { FAQSection } from './components/sections/FAQSection';
@@ -60,6 +61,7 @@ export default async function HomePage() {
         />
         <PlatesSection bouquets={bouquets} />
         <StorySection />
+        <RecognitionSection />
         <PatentSection />
         <SectionScribe label="✦ Каталог" />
         <CatalogSpread bouquets={bouquets} limit={8} />
