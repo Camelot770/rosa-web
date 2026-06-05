@@ -552,6 +552,21 @@ body::before {
   color: var(--ink-soft);
 }
 .cover-caption strong { font-weight: 500; color: var(--ink); }
+/* When the caption itself is a link to the featured product, the whole
+   strip is hoverable and reflects the click intent in vermilion. */
+.cover-caption-link {
+  text-decoration: none;
+  color: var(--ink-soft);
+  transition: color 280ms var(--ease-expo);
+}
+.cover-caption-link:hover,
+.cover-caption-link:focus-visible {
+  color: var(--vermilion);
+}
+.cover-caption-link:hover strong,
+.cover-caption-link:focus-visible strong {
+  color: var(--vermilion);
+}
 
 /* Hero key facts strip */
 .facts-strip {

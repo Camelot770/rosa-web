@@ -139,7 +139,11 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
               </Link>
             </R>
             <R delay={1200}>
-              <div className="cover-caption">
+              <Link
+                href={featured ? `/product/${featured.id}` : '/catalog'}
+                className="cover-caption cover-caption-link"
+                aria-label={featured ? `Открыть букет «${featured.name}»` : 'Открыть каталог'}
+              >
                 <span>
                   <strong>Pl.&nbsp;I</strong> · «{featured ? featured.name : 'Палаццо'}»
                 </span>
@@ -147,7 +151,7 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
                 <span>
                   <strong>{fmt(featured ? featured.price : 9800)}&nbsp;₽</strong>
                 </span>
-              </div>
+              </Link>
             </R>
           </div>
         </div>
