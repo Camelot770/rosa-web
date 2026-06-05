@@ -1353,8 +1353,18 @@ body::before {
   letter-spacing: -0.03em;
   margin: 0 0 64px;
   color: var(--ink);
+  /* Allow the italic ending ("годы.") to wrap if the viewport is too
+     narrow — otherwise on iPhone SE the word slides past the edge. */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .footer-big em { font-style: italic; color: var(--vermilion); }
+@media (max-width: 720px) {
+  .footer-big { font-size: clamp(48px, 12vw, 96px); line-height: 0.9; margin-bottom: 40px; }
+}
+@media (max-width: 480px) {
+  .footer-big { font-size: clamp(36px, 10vw, 52px); line-height: 0.96; margin-bottom: 32px; }
+}
 .footer-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
