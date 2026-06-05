@@ -3277,3 +3277,33 @@ p, li, .lead, .body-text, .standfirst, .aud-text, .patent-text {
   word-break: normal;
   hyphens: auto;
 }
+
+/* Patent section hero image — the certificate as a vertical visual
+   inside the head row, next to the H2 and above the lead copy. */
+.patent-head-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: stretch;
+}
+.patent-hero-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--paper);
+  border: 1px solid var(--ink-line);
+  box-shadow: 0 12px 32px -16px rgba(0, 0, 0, 0.18);
+  transition: transform 600ms var(--ease-expo), box-shadow 600ms;
+}
+.patent-hero-image:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.24);
+}
+@media (max-width: 1080px) {
+  .patent-hero-image { max-width: 420px; aspect-ratio: 3 / 4; }
+}
+@media (max-width: 600px) {
+  .patent-hero-image { max-width: 320px; margin: 0 auto; }
+}
