@@ -2306,7 +2306,7 @@ body::before {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   gap: 48px;
-  align-items: end;
+  align-items: start;
   margin-bottom: clamp(40px, 5vw, 64px);
 }
 .patent-lead {
