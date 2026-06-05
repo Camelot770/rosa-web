@@ -15,7 +15,6 @@ const items: PatentItem[] = [
     title: 'Патент на технологию',
     text:
       'Технология стабилизации цветов, мха и&nbsp;растений разработана компанией «Роза Цветов» и&nbsp;запатентована в&nbsp;Роспатенте. Цветы, стабилизированные по&nbsp;нашей технологии, будут радовать не&nbsp;один год.',
-    image: '/site-photos/patent-certificate.jpg',
   },
   {
     code: 'ЭКО',
@@ -48,11 +47,19 @@ export function PatentSection() {
             {['Студия, которой', '<em>можно доверять.</em>']}
           </Split>
           <R delay={150}>
-            <p className="patent-lead">
-              Технология стабилизации&nbsp;— запатентована. На&nbsp;состав&nbsp;— экологический
-              сертификат. Имя закреплено зарегистрированным товарным знаком. Три документа
-              за&nbsp;каждым букетом&nbsp;— поэтому он живёт у&nbsp;вас годами, а&nbsp;не&nbsp;неделями.
-            </p>
+            <div className="patent-head-right">
+              <div
+                className="patent-hero-image"
+                role="img"
+                aria-label="Патент Российской Федерации № 2 698 058 на технологию стабилизации"
+                style={{ backgroundImage: 'url("/site-photos/patent-certificate.jpg")' }}
+              />
+              <p className="patent-lead">
+                Технология стабилизации&nbsp;— запатентована. На&nbsp;состав&nbsp;— экологический
+                сертификат. Имя закреплено зарегистрированным товарным знаком. Три документа
+                за&nbsp;каждым букетом&nbsp;— поэтому он живёт у&nbsp;вас годами, а&nbsp;не&nbsp;неделями.
+              </p>
+            </div>
           </R>
         </div>
 
