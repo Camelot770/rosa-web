@@ -38,7 +38,7 @@ export function RecognitionSection() {
               <div className="kicker">✦ Признание</div>
             </R>
             <Split as="h2" className="disp disp-lg">
-              {['Технологию', '<em>видели первые лица.</em>']}
+              {['На форумах', '<em>Татарстана.</em>']}
             </Split>
           </div>
           <R delay={150}>
