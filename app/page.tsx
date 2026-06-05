@@ -47,6 +47,7 @@ export default async function HomePage() {
       <main>
         <HeroSection totalBouquets={bouquets.length} featured={featured} />
         <AudiencesSection />
+        <RecognitionSection />
         <IndexSection totalBouquets={bouquets.length} />
         <EditorialSection />
         <MarqueeStrip
@@ -61,7 +62,6 @@ export default async function HomePage() {
         />
         <PlatesSection bouquets={bouquets} />
         <StorySection />
-        <RecognitionSection />
         <PatentSection />
         <SectionScribe label="✦ Каталог" />
         <CatalogSpread bouquets={bouquets} limit={8} />
