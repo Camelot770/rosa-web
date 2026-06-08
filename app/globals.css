@@ -3332,3 +3332,84 @@ p, li, .lead, .body-text, .standfirst, .aud-text, .patent-text {
 @media (max-width: 600px) {
   .patent-hero-image { max-width: 320px; margin: 0 auto; }
 }
+
+/* =====================================================================
+   MAGAZINE CUES — Cover lines on Hero + sticky folio while scrolling
+   ===================================================================== */
+
+/* Cover lines strip — sits just below the section-bar on Hero.
+   Pure flex row with `✦` separators between teasers. Wraps gracefully. */
+.cover-lines {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  border-top: 1px solid var(--ink-line);
+  border-bottom: 1px solid var(--ink-line);
+  padding: 12px 0;
+  margin: 0 0 28px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.cover-lines-lab {
+  color: var(--vermilion);
+  font-weight: 500;
+}
+.cover-lines-sep {
+  color: var(--vermilion);
+  font-size: 9px;
+  opacity: 0.7;
+}
+.cover-lines-item {
+  white-space: nowrap;
+}
+@media (max-width: 720px) {
+  .cover-lines {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    gap: 6px 10px;
+    padding: 10px 0;
+    margin-bottom: 20px;
+  }
+  .cover-lines-item { white-space: normal; }
+}
+@media (max-width: 480px) {
+  .cover-lines { font-size: 9.5px; gap: 4px 8px; }
+  .cover-lines-sep { font-size: 8px; }
+}
+
+/* Sticky folio — fixed bottom-left chip that always shows the current
+   "page" (P.XX — Section) as the user scrolls.  Magazine folio cue. */
+.sticky-folio {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 90;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 8px 14px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 6px 18px -10px rgba(0, 0, 0, 0.25);
+  transition: opacity 220ms var(--ease-expo);
+  /* Animate appearance / label change via fade — short, unobtrusive. */
+  animation: folio-in 240ms var(--ease-expo);
+}
+.sticky-folio span { display: inline-block; }
+@keyframes folio-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* Hide on phones — already cramped, and the page-marker headers
+   above each section serve the same role at this size. */
+@media (max-width: 720px) {
+  .sticky-folio { display: none; }
+}
