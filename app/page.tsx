@@ -16,6 +16,7 @@ import { SubscribeSection } from './components/sections/SubscribeSection';
 import { MarqueeStrip } from './components/MarqueeStrip';
 import { ScrollProgress } from './components/ScrollProgress';
 import { SectionScribe } from './components/SectionScribe';
+import { StickyFolio } from './components/StickyFolio';
 import { fetchBouquets } from '@/lib/api';
 import { BOUQUETS } from '@/lib/bouquets-data';
 
@@ -43,6 +44,7 @@ export default async function HomePage() {
     <>
       <Intro />
       <ScrollProgress />
+      <StickyFolio />
       <Header bouquetCount={bouquets.length} />
       <main>
         <HeroSection totalBouquets={bouquets.length} featured={featured} />

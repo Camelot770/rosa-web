@@ -1,12 +1,19 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, Fragment } from 'react';
 import Link from 'next/link';
 import { R, Split } from '../Reveal';
 import { I } from '../Icons';
 import { SeasonLabel } from '../SeasonLabel';
 import { CONTACTS } from '@/lib/contacts';
 import type { Bouquet } from '@/lib/bouquets-data';
+
+const COVER_LINES = [
+  'От соло к оркестру',
+  'Девять лет ателье',
+  'На форумах Татарстана',
+  'Patent RU 2 698 058',
+];
 
 interface HeroSectionProps {
   totalBouquets: number;
@@ -59,7 +66,7 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
     <section className="hero" id="top">
       <div className="container">
         <R>
-          <div className="section-bar" style={{ marginBottom: 32, border: 'none', padding: 0 }}>
+          <div className="section-bar" style={{ marginBottom: 16, border: 'none', padding: 0 }}>
             <div className="left">
               <span className="ast">✦</span> <span>P.01 · Cover</span>
             </div>
@@ -67,6 +74,18 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
               <SeasonLabel />
               <span className="ast">✦</span>
             </div>
+          </div>
+        </R>
+
+        <R delay={150}>
+          <div className="cover-lines" aria-label="В этом выпуске">
+            <span className="cover-lines-lab">✦&nbsp;В&nbsp;этом выпуске</span>
+            {COVER_LINES.map((line, i) => (
+              <Fragment key={i}>
+                <span className="cover-lines-sep" aria-hidden="true">✦</span>
+                <span className="cover-lines-item">{line}</span>
+              </Fragment>
+            ))}
           </div>
         </R>
 
