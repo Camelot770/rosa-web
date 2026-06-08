@@ -87,9 +87,9 @@ export function PlatesSection({ bouquets }: PlatesSectionProps) {
                 </div>
                 <div className="plate-info">
                   <div>
-                    <div className="lbl">{p.lbl}</div>
+                    <div className="lbl">{p.name}</div>
                     <div className="nm">
-                      {p.name}
+                      {p.lbl}
                       {p.it ? <em>{p.it}</em> : null}
                     </div>
                     <div className="meta">{p.meta}</div>
