@@ -8,7 +8,7 @@ import type { Bouquet, Collection, CollectionEn } from './bouquets-data';
 
 const API_BASE =
   process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, '') ||
-  'https://rosa-cvetov-camelot770.amvera.io';
+  'https://roza-cvetov-camelot770.msk1.amvera.tech';
 
 interface ApiImage {
   id: number;

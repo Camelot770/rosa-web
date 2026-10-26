@@ -13,7 +13,7 @@ const fmt = (n: number) => n.toLocaleString('ru-RU');
 
 const API_BASE =
   process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, '') ||
-  'https://rosa-cvetov-camelot770.amvera.io';
+  'https://roza-cvetov-camelot770.msk1.amvera.tech';
 
 type DeliveryType = 'delivery' | 'pickup';
 
