@@ -1,5 +1,6 @@
-// Auto-generated from rosa-flowers-export/. Do not edit by hand.
-// In M2 this static data is replaced by a server fetch to /api/bouquets.
+// Build-time fallback catalog, used only when the API is unreachable during
+// `next build` (see lib/catalog.ts). Generated from the server's prisma/seed.ts
+// with ids as seeded, in fetchBouquets() order. Do not edit by hand.
 
 export type Collection = 'Соло' | 'Дуэт' | 'Квартет' | 'Оркестр';
 export type CollectionEn = 'Solo' | 'Duet' | 'Quartet' | 'Orchestra';
@@ -15,394 +16,75 @@ export interface Bouquet {
   collectionEn: CollectionEn;
   isHit: boolean;
   isNew: boolean;
+  isFeatured?: boolean;
   images: string[];
 }
 
 export const BOUQUETS: Bouquet[] = [
   {
-    "id": 120,
+    "id": 5,
     "no": 1,
-    "name": "Прелюдия",
-    "description": "Нежный авторский букет в розовой цветовой гамме. В основе — стабилизированная гипсофила \r\nВысота композиции в кашпо: 22 см, диаметр композиции: 22 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 1400,
-    "oldPrice": 2199,
-    "collection": "Соло",
-    "collectionEn": "Solo",
+    "name": "Ритм",
+    "description": "Стабилизированная композиция. Высота 25 см, диаметр 25 см.",
+    "price": 4000,
+    "oldPrice": null,
+    "collection": "Дуэт",
+    "collectionEn": "Duet",
     "isHit": true,
-    "isNew": true,
+    "isNew": false,
     "images": [
-      "/bouquets/017_%D0%A2%D0%B0%D1%82%D1%8C%D1%8F%D0%BD%D0%B0.jpg"
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-05.jpeg"
     ]
   },
   {
-    "id": 137,
+    "id": 23,
     "no": 2,
-    "name": "Этюд",
-    "description": "Нежный авторский букет в бело-голубой цветовой гамме. В основе — стабилизированные розы и гортензия,  дополненные эвкалиптом и сухоцветами (лагурус,  озотамнус)\r\n\r\nВысота композиции в кашпо: 27см, диаметр композиции: 20 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 1900,
-    "oldPrice": 2800,
-    "collection": "Соло",
-    "collectionEn": "Solo",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/029_%D0%A1%D0%B2%D0%B5%D1%82%D0%BB%D0%B0%D0%BD%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 125,
-    "no": 3,
-    "name": "Адажио",
-    "description": "Нежный авторский букет в красно-белой цветовой гамме. В основе — стабилизированные розы и гортензия, дополненные эвкалиптом и сухоцветами (фаларис, озотамнус)\r\n\r\nВысота композиции в кашпо: 30 см, диаметр композиции: 26 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 2400,
-    "oldPrice": 3649,
-    "collection": "Соло",
-    "collectionEn": "Solo",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/020_%D0%92%D0%B5%D0%BD%D0%B5%D1%80%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 117,
-    "no": 4,
-    "name": "Ноктюрн",
-    "description": "Нежный авторский букет в розовой цветовой гамме. В основе — стабилизированные розы и гортензия, гипсофила , дополненные эвкалиптом и сухоцветами (лимониум, лагурус, статица, озотамнус)\r\n\r\nВысота композиции в кашпо: 25 см, диаметр композиции: 25 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 2500,
-    "oldPrice": 3780,
-    "collection": "Соло",
-    "collectionEn": "Solo",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/014_%D0%90%D1%80%D0%B8%D0%BD%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 136,
-    "no": 5,
-    "name": "Романс",
-    "description": "Яркий авторский букет , который хочется рассматривать. В основе — стабилизированные розы и гортензия, гипсофила , дополненные эвкалиптом и сухоцветами (краспедия, озотамнус)\r\n\r\nВысота композиции в кашпо: 20(35)см, диаметр композиции: 19 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 2550,
-    "oldPrice": 3800,
-    "collection": "Соло",
-    "collectionEn": "Solo",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/028_%D0%90%D0%BC%D0%B5%D0%BB%D0%B8.jpg"
-    ]
-  },
-  {
-    "id": 143,
-    "no": 6,
-    "name": "Вальс",
-    "description": "Нежный авторский букет в фиолетовой цветовой гамме. В основе — стабилизированная гипсофила\r\n\r\nВысота композиции в кашпо: 23см, диаметр композиции: 30см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 2850,
-    "oldPrice": 4200,
-    "collection": "Дуэт",
-    "collectionEn": "Duet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/035_%D0%90%D0%B3%D0%BB%D0%B0%D1%8F.jpg"
-    ]
-  },
-  {
-    "id": 121,
-    "no": 7,
-    "name": "Канон",
-    "description": "Нежный авторский букет в розовой цветовой гамме. В основе — стабилизированные розы и гортензия, гипсофила , дополненные эвкалиптом и сухоцветами (лимониум, лагурус, статица, озотамнус)\r\n\r\nВысота композиции в кашпо: 28см, диаметр композиции: 28 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 2900,
-    "oldPrice": 3850,
-    "collection": "Дуэт",
-    "collectionEn": "Duet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/018_%D0%92%D0%B0%D1%80%D0%B2%D0%B0%D1%80%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 129,
-    "no": 8,
-    "name": "Гармония",
-    "description": "Нежный авторский букет в розово-белой цветовой гамме. В основе — стабилизированные розы и  гипсофила , дополненные эвкалиптом и сухоцветами (лимониум)\r\n\r\nВысота композиции в кашпо: 34см, диаметр композиции: 28см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 3800,
-    "oldPrice": 5199,
-    "collection": "Дуэт",
-    "collectionEn": "Duet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/023_%D0%9E%D0%BB%D1%8C%D0%B3%D0%B0.jpg",
-      "/bouquets/023_%D0%9E%D0%BB%D1%8C%D0%B3%D0%B0_2.jpg"
-    ]
-  },
-  {
-    "id": 128,
-    "no": 9,
-    "name": "Серенада",
-    "description": "Нежный авторский букет в розово-сиреневой цветовой гамме. В основе — стабилизированные розы и  гипсофила , дополненные эвкалиптом и сухоцветами (лимониум, листья пальмы)\r\n\r\nВысота композиции в кашпо: 38см, диаметр композиции: 25 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 3900,
-    "oldPrice": 5200,
-    "collection": "Дуэт",
-    "collectionEn": "Duet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/022_%D0%AE%D0%BB%D0%B8%D1%8F.jpg"
-    ]
-  },
-  {
-    "id": 135,
-    "no": 10,
-    "name": "Скерцо",
-    "description": "Яркий интерьерный букет. В основе — стабилизированные розы и гортензия, гипсофила , дополненные эвкалиптом и сухоцветами (краспедия)\r\n\r\nВысота композиции в кашпо: 28см, диаметр композиции: 23 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 3970,
-    "oldPrice": 5860,
-    "collection": "Дуэт",
-    "collectionEn": "Duet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/027_%D0%93%D0%BB%D0%BE%D1%80%D0%B8%D1%8F.jpg"
-    ]
-  },
-  {
-    "id": 138,
-    "no": 11,
-    "name": "Полонез",
-    "description": "Нежный авторский букет . В основе — стабилизированные розы и гортензия, дополненные эвкалиптом и сухоцветами ( статица, озотамнус)\r\n\r\nВысота композиции в кашпо: 24 см, диаметр композиции: 22 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 4050,
-    "oldPrice": 5450,
-    "collection": "Дуэт",
-    "collectionEn": "Duet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/030_%D0%9A%D1%80%D0%B8%D1%81%D1%82%D0%B8%D0%BD%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 139,
-    "no": 12,
-    "name": "Болеро",
-    "description": "Нежный авторский букет в розовой цветовой гамме. В основе — стабилизированные розы и гортензия,  дополненные эвкалиптом и сухоцветами (лимониум, фаларис, нигела )\r\n\r\nВысота композиции в кашпо: 23см, диаметр композиции: 25см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 4050,
-    "oldPrice": 5800,
-    "collection": "Дуэт",
-    "collectionEn": "Duet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/031_%D0%9C%D0%B0%D1%80%D0%B8%D0%BD%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 147,
-    "no": 13,
-    "name": "Пастораль",
-    "description": "Нежный авторский букет в розовой-голубой цветовой гамме. В основе — стабилизированные розы и гортензия, дополненные сухоцветами (лимониум, озотамнус)\r\n\r\nВысота композиции в кашпо: 21см, диаметр композиции: 23см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 4260,
-    "oldPrice": 5449,
-    "collection": "Дуэт",
-    "collectionEn": "Duet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/039_%D0%A1%D0%BE%D0%BD%D1%8F.jpg"
-    ]
-  },
-  {
-    "id": 114,
-    "no": 14,
-    "name": "Каприччио",
-    "description": "Нежный авторский букет в голубой цветовой гамме. В основе — стабилизированные розы и гортензия,  дополненные эвкалиптом и сухоцветами ( хлопок, краспедия, озотамнус)\r\n\r\nВысота композиции в кашпо: 26 см, диаметр композиции: 26 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 4380,
-    "oldPrice": 5650,
-    "collection": "Дуэт",
-    "collectionEn": "Duet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/011_%D0%A1%D0%BE%D1%84%D0%B8%D1%8F.jpg"
-    ]
-  },
-  {
-    "id": 116,
-    "no": 15,
-    "name": "Вокализ",
-    "description": "Нежный авторский букет в желто-фиолетовой цветовой гамме. В основе — стабилизированные розы и гортензия, дополненные эвкалиптом и сухоцветами (статица, озотамнус)\r\n\r\nВысота композиции в кашпо: 24см, диаметр композиции: 26 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 4380,
-    "oldPrice": 6700,
-    "collection": "Дуэт",
-    "collectionEn": "Duet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/013_%D0%92%D0%B8%D0%BE%D0%BB%D0%B5%D1%82%D1%82%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 140,
-    "no": 16,
-    "name": "Соната",
-    "description": "Яркий авторский букет в сиреневой цветовой гамме. В основе — стабилизированные розы и гортензия, гипсофила , дополненные эвкалиптом и сухоцветами ( озотамнус)\r\n\r\nВысота композиции в кашпо: 18(25) см, диаметр композиции: 25см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
+    "name": "Созвучие",
+    "description": "Стабилизированная композиция. Высота 20 см, диаметр 20 см.",
     "price": 4500,
-    "oldPrice": 6300,
+    "oldPrice": null,
     "collection": "Квартет",
     "collectionEn": "Quartet",
     "isHit": true,
-    "isNew": true,
+    "isNew": false,
     "images": [
-      "/bouquets/032_%D0%A3%D0%BB%D1%8C%D1%8F%D0%BD%D0%B0.jpg"
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-23.jpeg"
     ]
   },
   {
-    "id": 115,
-    "no": 17,
-    "name": "Дивертисмент",
-    "description": "Нежный авторский букет в розовой цветовой гамме. В основе — стабилизированные розы и гортензия, гипсофила , дополненные эвкалиптом и сухоцветами (лагурус, озотамнус)\r\n\r\nВысота композиции в кашпо: 27см, диаметр композиции: 30 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 4550,
-    "oldPrice": 6800,
+    "id": 37,
+    "no": 3,
+    "name": "Полифония",
+    "description": "Стабилизированная композиция. Высота 23 см, диаметр 26 см.",
+    "price": 5000,
+    "oldPrice": null,
     "collection": "Квартет",
     "collectionEn": "Quartet",
     "isHit": true,
-    "isNew": true,
+    "isNew": false,
     "images": [
-      "/bouquets/012_%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D1%8F.jpg"
-    ]
-  },
-  {
-    "id": 113,
-    "no": 18,
-    "name": "Аккорд",
-    "description": "Нежный авторский букет в бело-красной цветовой гамме. В основе — стабилизированные розы и гортензия, гипсофила , дополненные эвкалиптом и сухоцветами (лимониум, статица, озотамнус)\r\n\r\nВысота композиции в кашпо: 45см, диаметр композиции: 28 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 4600,
-    "oldPrice": 7349,
-    "collection": "Квартет",
-    "collectionEn": "Quartet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/010_%D0%9C%D0%B0%D1%80%D0%B8%D1%8F.jpg"
-    ]
-  },
-  {
-    "id": 112,
-    "no": 19,
-    "name": "Каденция",
-    "description": "Интерьерный авторский букет в красно- белой цветовой гамме. В основе — стабилизированные розы и  гипсофила , дополненные эвкалиптом и сухоцветами (хлопок, озотамнус)\r\n\r\nВысота композиции в кашпо: 45см, диаметр композиции: 30 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 4660,
-    "oldPrice": 7800,
-    "collection": "Квартет",
-    "collectionEn": "Quartet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/009_%D0%90%D0%BD%D0%BD%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 141,
-    "no": 20,
-    "name": "Интермеццо",
-    "description": "Нежный авторский букет в коралловой цветовой гамме. В основе — стабилизированные розы и гортензия, гипсофила , дополненные эвкалиптом и сухоцветами (лимониум, лагурус, статица, озотамнус)\r\n\r\nВысота композиции в кашпо: 20см, диаметр композиции: 25см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 5100,
-    "oldPrice": 7500,
-    "collection": "Квартет",
-    "collectionEn": "Quartet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/033_%D0%95%D0%BB%D0%B5%D0%BD%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 127,
-    "no": 21,
-    "name": "Унисон",
-    "description": "Яркий интерьерный букет в бело-красной цветовой гамме. В основе — стабилизированные розы и гортензия, дополненные эвкалиптом и амарантусом\r\n\r\nВысота композиции в кашпо: 40 см, диаметр композиции: 30 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 5450,
-    "oldPrice": 7800,
-    "collection": "Квартет",
-    "collectionEn": "Quartet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/021_%D0%AF%D0%BD%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 133,
-    "no": 22,
-    "name": "Сюита",
-    "description": "Нежный авторский букет в кораллово-белой цветовой гамме. В основе — стабилизированные розы и гортензия, дополненные эвкалиптом и сухоцветами (хлопок, лагурус,  озотамнус)\r\n\r\nВысота композиции в кашпо: 27см, диаметр композиции: 30 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 6500,
-    "oldPrice": 8900,
-    "collection": "Квартет",
-    "collectionEn": "Quartet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/025_%D0%90%D0%B4%D0%B5%D0%BB%D1%8C.jpg"
-    ]
-  },
-  {
-    "id": 134,
-    "no": 23,
-    "name": "Рапсодия",
-    "description": "Нежный авторский букет в бело-розовой цветовой гамме. В основе — стабилизированные розы и гортензия,  дополненные эвкалиптом и сухоцветами (хлопок, статица, озотамнус)\r\n\r\nВысота композиции в кашпо: 28см, диаметр композиции: 30 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 6500,
-    "oldPrice": 8900,
-    "collection": "Квартет",
-    "collectionEn": "Quartet",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/026_%D0%9D%D0%B0%D1%82%D0%B0%D0%BB%D0%B8.jpg"
-    ]
-  },
-  {
-    "id": 110,
-    "no": 24,
-    "name": "Симфония",
-    "description": "Нежный авторский букет в лавандовой цветовой гамме. В основе — стабилизированные розы и гортензия,  дополненные эвкалиптом и сухоцветами (хлопок, озотамнус)\r\n\r\nВысота композиции в кашпо: 35см, диаметр композиции: 35 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 7000,
-    "oldPrice": 9700,
-    "collection": "Оркестр",
-    "collectionEn": "Orchestra",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/007_%D0%9B%D1%83%D0%BD%D0%BD%D1%8B%D0%B9_%D0%A1%D0%B2%D0%B5%D1%82.jpg"
-    ]
-  },
-  {
-    "id": 130,
-    "no": 25,
-    "name": "Концерт",
-    "description": "Интерьерный букет в бордовой цветовой гамме. В основе — стабилизированные розы , дополненные эвкалиптом .\r\nВысота композиции в кашпо: 29см, диаметр композиции: 30 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.\r\n\r\nМожно выполнить в разной цветовой гамме, на выбор",
-    "price": 7800,
-    "oldPrice": 10200,
-    "collection": "Оркестр",
-    "collectionEn": "Orchestra",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0.jpg",
-      "/bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0_2.jpg",
-      "/bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0_3.jpg",
-      "/bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0_4.jpg",
-      "/bouquets/024_%D0%90%D0%B4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0_5.jpg"
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-37.jpeg"
     ]
   },
   {
     "id": 19,
-    "no": 26,
-    "name": "Увертюра",
+    "no": 4,
+    "name": "Ларго",
+    "description": "Стабилизированная композиция. Высота 35 см, диаметр 35 см.",
+    "price": 6900,
+    "oldPrice": null,
+    "collection": "Квартет",
+    "collectionEn": "Quartet",
+    "isHit": true,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-19.jpeg"
+    ]
+  },
+  {
+    "id": 9,
+    "no": 5,
+    "name": "Рапсодия",
     "description": "Стабилизированная композиция. Высота 30 см, диаметр 30 см.",
     "price": 7900,
     "oldPrice": null,
@@ -411,164 +93,73 @@ export const BOUQUETS: Bouquet[] = [
     "isHit": true,
     "isNew": false,
     "images": [
-      "/bouquets/003_%D0%A0%D0%B0%D0%BF%D1%81%D0%BE%D0%B4%D0%B8%D1%8F.jpeg"
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-09.jpeg"
     ]
   },
   {
-    "id": 124,
-    "no": 27,
-    "name": "Кантата",
-    "description": "Нежный авторский букет в розовой цветовой гамме. В основе — стабилизированные розы и гортензия, дополненные эвкалиптом и сухоцветами ( лагурус, фаларис, озотамнус)\r\n\r\nВысота композиции в кашпо: 40 см, диаметр композиции: 35 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 8300,
-    "oldPrice": 10350,
+    "id": 30,
+    "no": 6,
+    "name": "Серенада",
+    "description": "Стабилизированная композиция. Высота 30 см, диаметр 30 см.",
+    "price": 9500,
+    "oldPrice": null,
     "collection": "Оркестр",
     "collectionEn": "Orchestra",
     "isHit": true,
-    "isNew": true,
+    "isNew": false,
     "images": [
-      "/bouquets/019_%D0%90%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D0%B8%D1%8F.jpg"
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-30.jpeg"
     ]
   },
   {
-    "id": 119,
-    "no": 28,
-    "name": "Оратория",
-    "description": "Нежный авторский букет в розовой цветовой гамме. В основе — стабилизированные розы и гортензия, гипсофила , дополненные эвкалиптом и сухоцветами (хлопок, лагурус)\r\n\r\nВысота композиции в кашпо: 38см, диаметр композиции: 40 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 8500,
-    "oldPrice": 11350,
-    "collection": "Оркестр",
-    "collectionEn": "Orchestra",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/016_%D0%90%D0%BB%D0%B8%D1%81%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 118,
-    "no": 29,
-    "name": "Поэма",
-    "description": "Авторский букет в сиреневых тонах . В основе — стабилизированные розы и гортензия, диантусы, гипсофила , дополненные эвкалиптом и сухоцветами ( озотамнус)\r\n\r\nВысота композиции в кашпо: 38см, диаметр композиции: 36 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 8850,
-    "oldPrice": 10500,
-    "collection": "Оркестр",
-    "collectionEn": "Orchestra",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/015_%D0%92%D0%B8%D0%BE%D0%BB%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 111,
-    "no": 30,
-    "name": "Месса",
-    "description": "Авторский букет в яркой цветовой гамме. В основе — стабилизированные розы и гортензия, гипсофила , дополненные эвкалиптом и сухоцветами (краспедия, лотос, листья пальмы, озотамнус)\r\n\r\nВысота композиции в кашпо: 40 см, диаметр композиции: 35см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 9450,
-    "oldPrice": 12850,
-    "collection": "Оркестр",
-    "collectionEn": "Orchestra",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/008_%D0%94%D0%B8%D0%B0%D0%BD%D0%B0.jpg",
-      "/bouquets/008_%D0%94%D0%B8%D0%B0%D0%BD%D0%B0_2.jpg"
-    ]
-  },
-  {
-    "id": 148,
-    "no": 31,
-    "name": "Хорал",
-    "description": "Нежный авторский букет в розово-белой цветовой гамме. В основе — стабилизированные розы и гортензия,  дополненные эвкалиптом и сухоцветами (лимониум, краспедия)\r\n\r\nВысота композиции в кашпо: 45см, диаметр композиции: 45 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 9800,
-    "oldPrice": 12450,
-    "collection": "Оркестр",
-    "collectionEn": "Orchestra",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/040_%D0%90%D0%B4%D1%80%D0%B8%D0%B0%D0%BD%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 144,
-    "no": 32,
-    "name": "Песнь",
-    "description": "Яркий авторский букет . В основе — стабилизированные розы и гортензия,  дополненные эвкалиптом и сухоцветами (лагурус, озотамнус)\r\n\r\nВысота композиции в кашпо: 30 см, диаметр композиции: 33см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 10100,
-    "oldPrice": 12300,
-    "collection": "Оркестр",
-    "collectionEn": "Orchestra",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/036_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D1%81%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 145,
-    "no": 33,
-    "name": "Виват",
-    "description": "Нежный авторский букет в розово-белой цветовой гамме. В основе — стабилизированные розы и гортензия,  дополненные эвкалиптом и сухоцветами ( лагурус, нигелла, сорго, хлопок)\r\n\r\nВысота композиции в кашпо: 45см, диаметр композиции: 45 см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 10300,
-    "oldPrice": 12800,
-    "collection": "Оркестр",
-    "collectionEn": "Orchestra",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/037_%D0%9C%D0%B0%D1%80%D0%B3%D0%B0%D1%80%D0%B8%D1%82%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 146,
-    "no": 34,
-    "name": "Кода",
-    "description": "Композиция из ажурных красных роз символизирует страсть и элегантность.\r\nВ основе — стабилизированные розы и эвкалипт.\r\n\r\nВысота композиции в кашпо: 40 см, диаметр композиции: 40 см\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 11400,
-    "oldPrice": 13200,
-    "collection": "Оркестр",
-    "collectionEn": "Orchestra",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/038_%D0%9D%D0%B0%D0%B4%D0%B5%D0%B6%D0%B4%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 142,
-    "no": 35,
-    "name": "Бравура",
-    "description": "Нежный авторский букет в розовой-голубой цветовой гамме. В основе — стабилизированные розы и гортензия,  дополненные эвкалиптом и сухоцветами (лимониум, амарантус, краспедия, рускус, озотамнус)\r\n\r\nВысота композиции в кашпо: 30 см, диаметр композиции: 37см.\r\n\r\nУход:\r\n• Не поливать.\r\n• Беречь от прямых солнечных лучей и высокой влажности.\r\n• Очищать мягкой сухой кисточкой или феном на холодном режиме.",
-    "price": 12000,
-    "oldPrice": 14800,
-    "collection": "Оркестр",
-    "collectionEn": "Orchestra",
-    "isHit": true,
-    "isNew": true,
-    "images": [
-      "/bouquets/034_%D0%90%D0%BD%D0%B6%D0%B5%D0%BB%D0%B8%D0%BA%D0%B0.jpg"
-    ]
-  },
-  {
-    "id": 11,
-    "no": 36,
-    "name": "Элегия",
+    "id": 2,
+    "no": 7,
+    "name": "Ноктюрн",
     "description": "Стабилизированная композиция. Высота 15 см, диаметр 15 см.",
-    "price": 1600,
+    "price": 1400,
     "oldPrice": null,
     "collection": "Соло",
     "collectionEn": "Solo",
     "isHit": false,
     "isNew": false,
     "images": [
-      "/bouquets/001_%D0%A1%D0%BE%D0%BD%D0%B0%D1%82%D0%B0.jpeg"
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-02.jpeg"
     ]
   },
   {
-    "id": 14,
-    "no": 37,
-    "name": "Идиллия",
+    "id": 1,
+    "no": 8,
+    "name": "Соната",
+    "description": "Стабилизированная композиция. Высота 15 см, диаметр 15 см.",
+    "price": 1600,
+    "oldPrice": null,
+    "collection": "Соло",
+    "collectionEn": "Solo",
+    "isHit": false,
+    "isNew": true,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-01.jpeg"
+    ]
+  },
+  {
+    "id": 3,
+    "no": 9,
+    "name": "Нимфа",
+    "description": "Стабилизированная композиция. Высота 10 см, диаметр 13 см.",
+    "price": 1700,
+    "oldPrice": null,
+    "collection": "Соло",
+    "collectionEn": "Solo",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-03.jpeg"
+    ]
+  },
+  {
+    "id": 4,
+    "no": 10,
+    "name": "Элегия",
     "description": "Стабилизированная композиция. Высота 20 см, диаметр 20 см.",
     "price": 2000,
     "oldPrice": null,
@@ -577,13 +168,13 @@ export const BOUQUETS: Bouquet[] = [
     "isHit": false,
     "isNew": false,
     "images": [
-      "/bouquets/002_%D0%AD%D0%BB%D0%B5%D0%B3%D0%B8%D1%8F.jpeg"
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-04.jpeg"
     ]
   },
   {
-    "id": 71,
-    "no": 38,
-    "name": "Канцона",
+    "id": 31,
+    "no": 11,
+    "name": "Ля-минор",
     "description": "Стабилизированная композиция. Высота 18 см, диаметр 15 см.",
     "price": 2200,
     "oldPrice": null,
@@ -592,13 +183,133 @@ export const BOUQUETS: Bouquet[] = [
     "isHit": false,
     "isNew": false,
     "images": [
-      "/bouquets/006_%D0%9B%D1%8F-%D0%BC%D0%B8%D0%BD%D0%BE%D1%80.jpeg"
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-31.jpeg"
     ]
   },
   {
-    "id": 60,
-    "no": 39,
-    "name": "Эхо",
+    "id": 32,
+    "no": 12,
+    "name": "Ля-мажор",
+    "description": "Стабилизированная композиция. Высота 18 см, диаметр 15 см.",
+    "price": 2200,
+    "oldPrice": null,
+    "collection": "Соло",
+    "collectionEn": "Solo",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-32.jpeg"
+    ]
+  },
+  {
+    "id": 6,
+    "no": 13,
+    "name": "Шопен",
+    "description": "Стабилизированная композиция. Высота 20 см, диаметр 24 см.",
+    "price": 2500,
+    "oldPrice": null,
+    "collection": "Соло",
+    "collectionEn": "Solo",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-06.jpeg"
+    ]
+  },
+  {
+    "id": 8,
+    "no": 14,
+    "name": "Мазурка",
+    "description": "Стабилизированная композиция. Высота 17 см, диаметр 22 см.",
+    "price": 2700,
+    "oldPrice": null,
+    "collection": "Дуэт",
+    "collectionEn": "Duet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-08.jpeg"
+    ]
+  },
+  {
+    "id": 17,
+    "no": 15,
+    "name": "Сюита",
+    "description": "Стабилизированная композиция. Высота 17 см, диаметр 17 см.",
+    "price": 2700,
+    "oldPrice": null,
+    "collection": "Дуэт",
+    "collectionEn": "Duet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-17.jpeg"
+    ]
+  },
+  {
+    "id": 18,
+    "no": 16,
+    "name": "Скрипка",
+    "description": "Стабилизированная композиция. Высота 17 см, диаметр 17 см.",
+    "price": 2700,
+    "oldPrice": null,
+    "collection": "Дуэт",
+    "collectionEn": "Duet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-18.jpeg"
+    ]
+  },
+  {
+    "id": 27,
+    "no": 17,
+    "name": "Пастораль",
+    "description": "Стабилизированная композиция. Высота 17 см, диаметр 17 см.",
+    "price": 2700,
+    "oldPrice": null,
+    "collection": "Дуэт",
+    "collectionEn": "Duet",
+    "isHit": false,
+    "isNew": true,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-27.jpeg"
+    ]
+  },
+  {
+    "id": 7,
+    "no": 18,
+    "name": "Адажио",
+    "description": "Стабилизированная композиция. Высота 20 см, диаметр 24 см.",
+    "price": 3000,
+    "oldPrice": null,
+    "collection": "Дуэт",
+    "collectionEn": "Duet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-07.jpeg"
+    ]
+  },
+  {
+    "id": 36,
+    "no": 19,
+    "name": "Флейта",
+    "description": "Стабилизированная композиция. Высота 21 см, диаметр 21 см.",
+    "price": 3100,
+    "oldPrice": null,
+    "collection": "Дуэт",
+    "collectionEn": "Duet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-36.jpeg"
+    ]
+  },
+  {
+    "id": 16,
+    "no": 20,
+    "name": "Аккорд",
     "description": "Стабилизированная композиция. Высота 20 см, диаметр 20 см.",
     "price": 3300,
     "oldPrice": null,
@@ -607,13 +318,208 @@ export const BOUQUETS: Bouquet[] = [
     "isHit": false,
     "isNew": false,
     "images": [
-      "/bouquets/005_%D0%90%D0%BA%D0%BA%D0%BE%D1%80%D0%B4.jpeg"
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-16.jpeg"
     ]
   },
   {
-    "id": 57,
-    "no": 40,
-    "name": "Симфониетта",
+    "id": 15,
+    "no": 21,
+    "name": "Штраус",
+    "description": "Стабилизированная композиция. Высота 18 см, диаметр 18 см.",
+    "price": 3500,
+    "oldPrice": null,
+    "collection": "Дуэт",
+    "collectionEn": "Duet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-15.jpeg"
+    ]
+  },
+  {
+    "id": 28,
+    "no": 22,
+    "name": "Легато",
+    "description": "Стабилизированная композиция. Высота 23 см, диаметр 23 см.",
+    "price": 3500,
+    "oldPrice": null,
+    "collection": "Дуэт",
+    "collectionEn": "Duet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-28.jpeg"
+    ]
+  },
+  {
+    "id": 26,
+    "no": 23,
+    "name": "Партитура",
+    "description": "Стабилизированная композиция. Высота 25 см, диаметр 27 см.",
+    "price": 3600,
+    "oldPrice": null,
+    "collection": "Дуэт",
+    "collectionEn": "Duet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-26.jpeg"
+    ]
+  },
+  {
+    "id": 21,
+    "no": 24,
+    "name": "Бетховен",
+    "description": "Стабилизированная композиция. Высота 20 см, диаметр 20 см.",
+    "price": 3700,
+    "oldPrice": null,
+    "collection": "Дуэт",
+    "collectionEn": "Duet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-21.jpeg"
+    ]
+  },
+  {
+    "id": 22,
+    "no": 25,
+    "name": "Моцарт",
+    "description": "Стабилизированная композиция. Высота 20 см, диаметр 20 см.",
+    "price": 3700,
+    "oldPrice": null,
+    "collection": "Дуэт",
+    "collectionEn": "Duet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-22.jpeg"
+    ]
+  },
+  {
+    "id": 34,
+    "no": 26,
+    "name": "Каденция",
+    "description": "Стабилизированная композиция. Высота 25 см, диаметр 20 см.",
+    "price": 3900,
+    "oldPrice": null,
+    "collection": "Дуэт",
+    "collectionEn": "Duet",
+    "isHit": false,
+    "isNew": true,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-34.jpeg"
+    ]
+  },
+  {
+    "id": 24,
+    "no": 27,
+    "name": "Мелодия",
+    "description": "Стабилизированная композиция. Высота 23 см, диаметр 23 см.",
+    "price": 4400,
+    "oldPrice": null,
+    "collection": "Дуэт",
+    "collectionEn": "Duet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-24.jpeg"
+    ]
+  },
+  {
+    "id": 35,
+    "no": 28,
+    "name": "Арфа",
+    "description": "Стабилизированная композиция. Высота 25 см, диаметр 27 см.",
+    "price": 5000,
+    "oldPrice": null,
+    "collection": "Квартет",
+    "collectionEn": "Quartet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-35.jpeg"
+    ]
+  },
+  {
+    "id": 25,
+    "no": 29,
+    "name": "Дебюсси",
+    "description": "Стабилизированная композиция. Высота 35 см, диаметр 35 см.",
+    "price": 5600,
+    "oldPrice": null,
+    "collection": "Квартет",
+    "collectionEn": "Quartet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-25.jpeg"
+    ]
+  },
+  {
+    "id": 29,
+    "no": 30,
+    "name": "Триоль",
+    "description": "Стабилизированная композиция. Высота 35 см, диаметр 35 см.",
+    "price": 5600,
+    "oldPrice": null,
+    "collection": "Квартет",
+    "collectionEn": "Quartet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-29.jpeg"
+    ]
+  },
+  {
+    "id": 10,
+    "no": 31,
+    "name": "Аллегро",
+    "description": "Стабилизированная композиция. Высота 35 см, диаметр 35 см.",
+    "price": 5900,
+    "oldPrice": null,
+    "collection": "Квартет",
+    "collectionEn": "Quartet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-10.jpeg"
+    ]
+  },
+  {
+    "id": 11,
+    "no": 32,
+    "name": "Граве",
+    "description": "Стабилизированная композиция. Высота 35 см, диаметр 35 см.",
+    "price": 5900,
+    "oldPrice": null,
+    "collection": "Квартет",
+    "collectionEn": "Quartet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-11.jpeg"
+    ]
+  },
+  {
+    "id": 12,
+    "no": 33,
+    "name": "Романс",
+    "description": "Стабилизированная композиция. Высота 35 см, диаметр 35 см.",
+    "price": 5900,
+    "oldPrice": null,
+    "collection": "Квартет",
+    "collectionEn": "Quartet",
+    "isHit": false,
+    "isNew": true,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-12.jpeg"
+    ]
+  },
+  {
+    "id": 13,
+    "no": 34,
+    "name": "Литавра",
     "description": "Стабилизированная композиция. Высота 35 см, диаметр 40 см.",
     "price": 6300,
     "oldPrice": null,
@@ -622,7 +528,52 @@ export const BOUQUETS: Bouquet[] = [
     "isHit": false,
     "isNew": false,
     "images": [
-      "/bouquets/004_%D0%9B%D0%B8%D1%82%D0%B0%D0%B2%D1%80%D0%B0.jpeg"
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-13.jpeg"
+    ]
+  },
+  {
+    "id": 14,
+    "no": 35,
+    "name": "Клавир",
+    "description": "Стабилизированная композиция. Высота 35 см, диаметр 40 см.",
+    "price": 6300,
+    "oldPrice": null,
+    "collection": "Квартет",
+    "collectionEn": "Quartet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-14.jpeg"
+    ]
+  },
+  {
+    "id": 33,
+    "no": 36,
+    "name": "Фантазия",
+    "description": "Стабилизированная композиция. Высота 35 см, диаметр 35 см.",
+    "price": 6300,
+    "oldPrice": null,
+    "collection": "Квартет",
+    "collectionEn": "Quartet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-33.jpeg"
+    ]
+  },
+  {
+    "id": 20,
+    "no": 37,
+    "name": "Гармония",
+    "description": "Стабилизированная композиция. Высота 35 см, диаметр 35 см.",
+    "price": 6800,
+    "oldPrice": null,
+    "collection": "Квартет",
+    "collectionEn": "Quartet",
+    "isHit": false,
+    "isNew": false,
+    "images": [
+      "https://rosa-flowers-client.vercel.app/bouquets/bouquet-20.jpeg"
     ]
   }
 ];

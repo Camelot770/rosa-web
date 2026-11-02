@@ -3413,3 +3413,55 @@ p, li, .lead, .body-text, .standfirst, .aud-text, .patent-text {
 @media (max-width: 720px) {
   .sticky-folio { display: none; }
 }
+
+/* =====================================================================
+   CART CHECKS, PAYMENT RETRY, DISABLED BUTTONS
+   ===================================================================== */
+.cart-notices { margin-bottom: 24px; }
+.cart-notices div + div { margin-top: 6px; }
+.cart-notices-close {
+  display: block;
+  margin-top: 10px;
+  padding: 0;
+  font-family: var(--body);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid currentColor;
+  cursor: pointer;
+}
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.cart-summary .checkout-btn.disabled,
+.cart-summary .checkout-btn.disabled:hover {
+  background: var(--taupe);
+  cursor: not-allowed;
+}
+.cart-summary .min-order {
+  margin-top: 16px;
+  font-family: var(--body);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--vermilion);
+}
+.field .hint {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-top: 6px;
+}
+.field .hint a { color: var(--vermilion); border-bottom: 1px solid currentColor; }
+.price-changed {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+.thanks-actions {
+  display: inline-flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.payment-retry { margin-bottom: 32px; }
+.payment-retry .checkout-error { margin-top: 16px; text-align: left; }

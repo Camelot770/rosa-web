@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import { Header } from '@/app/components/Header';
 import { Footer } from '@/app/components/Footer';
 import { CatalogSpread } from '@/app/components/sections/CatalogSpread';
-import { fetchBouquets } from '@/lib/api';
-import { BOUQUETS } from '@/lib/bouquets-data';
+import { loadCatalog } from '@/lib/catalog';
 
 export const revalidate = 60;
 
@@ -40,13 +39,7 @@ export function generateMetadata({ searchParams }: PageProps): Metadata {
 }
 
 export default async function CatalogPage({ searchParams }: PageProps) {
-  let bouquets;
-  try {
-    bouquets = await fetchBouquets();
-  } catch (err) {
-    console.warn('[catalog] live API unavailable, using bundled snapshot:', err);
-    bouquets = BOUQUETS;
-  }
+  const bouquets = await loadCatalog('catalog');
 
   const rawFilter = (searchParams?.filter ?? '').toString();
   const initialFilter: FilterValue = (VALID_FILTERS as string[]).includes(rawFilter)
@@ -57,7 +50,8 @@ export default async function CatalogPage({ searchParams }: PageProps) {
     <>
       <Header bouquetCount={bouquets.length} />
       <main>
-        <CatalogSpread bouquets={bouquets} initialFilter={initialFilter} />
+        {/* key: links like ?filter=Solo navigate without a reload, so the filter state must reset. */}
+        <CatalogSpread key={initialFilter} bouquets={bouquets} initialFilter={initialFilter} />
       </main>
       <Footer />
     </>

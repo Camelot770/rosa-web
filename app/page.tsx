@@ -17,28 +17,20 @@ import { MarqueeStrip } from './components/MarqueeStrip';
 import { ScrollProgress } from './components/ScrollProgress';
 import { SectionScribe } from './components/SectionScribe';
 import { StickyFolio } from './components/StickyFolio';
-import { fetchBouquets } from '@/lib/api';
-import { BOUQUETS } from '@/lib/bouquets-data';
+import { loadCatalog } from '@/lib/catalog';
 
 export const revalidate = 60;
 
 export default async function HomePage() {
-  // Live data from rosa-flowers-server. Falls back to the bundled snapshot
-  // if the API is unreachable during build (e.g. cold Amvera).
-  let bouquets;
-  try {
-    bouquets = await fetchBouquets();
-  } catch (err) {
-    console.warn('[home] live API unavailable, using bundled snapshot:', err);
-    bouquets = BOUQUETS;
-  }
+  // Live data from rosa-flowers-server.
+  const bouquets = await loadCatalog('home');
 
-  // Pick the most expensive in-stock bouquet for the magazine cover slot.
-  // Updating the prices in admin changes the cover automatically (with the
-  // 60s ISR window).
-  const featured = bouquets.length
-    ? [...bouquets].sort((a, b) => b.price - a.price)[0]
-    : null;
+  // Magazine cover slot: the bouquet picked in admin ("На превью"), otherwise
+  // the most expensive one in stock, same as the mini-apps. Changes in admin
+  // show up within the 60s ISR window.
+  const featured =
+    bouquets.find((b) => b.isFeatured) ??
+    (bouquets.length ? [...bouquets].sort((a, b) => b.price - a.price)[0] : null);
 
   return (
     <>

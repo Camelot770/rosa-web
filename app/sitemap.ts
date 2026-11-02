@@ -1,12 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { fetchBouquets } from '@/lib/api';
-
-// Falls back to the actual Vercel-generated canonical URL. Set
-// NEXT_PUBLIC_SITE_URL in Vercel env once a custom domain (e.g.
-// розацветов.рф) is wired up.
-const BASE =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://rosa-web-naums-projects-5189a309.vercel.app';
+import { isBuildPhase } from '@/lib/catalog';
+import { SITE_URL as BASE } from '@/lib/site';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
@@ -40,7 +35,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     }));
   } catch (e) {
-    console.warn('[sitemap] could not fetch bouquets:', e);
+    // At runtime rethrow so Next keeps the last good sitemap: a short API
+    // outage must not drop every product URL.
+    if (!isBuildPhase()) throw e;
+    console.warn('[sitemap] could not fetch bouquets during build:', e);
   }
 
   return [...staticUrls, ...products];

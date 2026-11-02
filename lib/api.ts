@@ -6,7 +6,7 @@
 
 import type { Bouquet, Collection, CollectionEn } from './bouquets-data';
 
-const API_BASE =
+export const API_BASE =
   process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, '') ||
   'https://roza-cvetov-camelot770.msk1.amvera.tech';
 
@@ -28,6 +28,7 @@ interface ApiBouquet {
   inStock: boolean;
   isHit: boolean;
   isNew: boolean;
+  isFeatured?: boolean;
   customOrder: boolean;
   sortOrder: number;
   createdAt: string;
@@ -86,6 +87,7 @@ function shape(api: ApiBouquet, no: number): Bouquet {
     collectionEn: collectionEnFor(c),
     isHit: !!api.isHit,
     isNew: !!api.isNew,
+    isFeatured: !!api.isFeatured,
     images,
   };
 }
@@ -117,4 +119,79 @@ export async function fetchBouquets(): Promise<Bouquet[]> {
 export async function fetchBouquet(id: number): Promise<Bouquet | null> {
   const all = await fetchBouquets();
   return all.find((b) => b.id === id) ?? null;
+}
+
+/** fetch() that gives up instead of hanging when the API stops answering. */
+export async function fetchWithTimeout(
+  url: string,
+  init: RequestInit = {},
+  timeoutMs = 10_000,
+): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...init, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+export type LiveBouquet =
+  | { status: 'ok'; bouquet: Bouquet; orderable: boolean }
+  | { status: 'missing' }
+  | { status: 'error' };
+
+/**
+ * Current state of one bouquet, for checking cart lines from the browser.
+ * Unlike the catalog list this also returns out-of-stock bouquets, so
+ * `missing` really means the id is gone and `error` means we could not ask.
+ */
+export async function fetchBouquetLive(id: number): Promise<LiveBouquet> {
+  try {
+    const res = await fetchWithTimeout(`${API_BASE}/api/bouquets/${id}`, { cache: 'no-store' });
+    if (res.status === 404 || res.status === 400) return { status: 'missing' };
+    if (!res.ok) return { status: 'error' };
+    const raw = (await res.json()) as ApiBouquet;
+    return {
+      status: 'ok',
+      bouquet: shape(raw, 0),
+      orderable: !!raw.inStock || !!raw.customOrder,
+    };
+  } catch {
+    return { status: 'error' };
+  }
+}
+
+export interface ShopSettings {
+  deliveryPrice: number;
+  freeDeliveryFrom: number;
+  minOrder: number;
+}
+
+/** Used until /api/settings answers. Delivery matches the server's fallbacks;
+ *  the minimum stays off so an API hiccup can't block a valid cart. */
+export const DEFAULT_SHOP_SETTINGS: ShopSettings = {
+  deliveryPrice: 500,
+  freeDeliveryFrom: 5000,
+  minOrder: 0,
+};
+
+function intSetting(value: string | undefined, fallback: number): number {
+  const n = parseInt(value ?? '', 10);
+  return Number.isFinite(n) ? n : fallback;
+}
+
+export async function fetchShopSettings(): Promise<ShopSettings | null> {
+  try {
+    const res = await fetchWithTimeout(`${API_BASE}/api/settings`, { cache: 'no-store' });
+    if (!res.ok) return null;
+    const raw = (await res.json()) as Record<string, string | undefined>;
+    return {
+      deliveryPrice: intSetting(raw.delivery_price, DEFAULT_SHOP_SETTINGS.deliveryPrice),
+      freeDeliveryFrom: intSetting(raw.free_delivery_from, DEFAULT_SHOP_SETTINGS.freeDeliveryFrom),
+      minOrder: intSetting(raw.min_order, DEFAULT_SHOP_SETTINGS.minOrder),
+    };
+  } catch {
+    return null;
+  }
 }
