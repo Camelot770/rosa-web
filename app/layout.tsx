@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import { CookieBanner } from './components/CookieBanner';
+import { SITE_URL } from '@/lib/site';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://rosa-web.vercel.app'),
+  metadataBase: new URL(SITE_URL),
   title: 'Роза Цветов · Numéro 001 — Editorial',
   description:
     'Журнал-каталог студии стабилизированной флористики «Роза Цветов». Issue №001 · Май 2026.',
