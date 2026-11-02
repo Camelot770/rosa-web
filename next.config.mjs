@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    // For M1 catalog images live in /public/bouquets/. In M2 we'll switch to
-    // remote URLs from the API and enumerate remotePatterns here.
+    // The site does not use next/image: pictures are plain backgrounds from the API.
+    unoptimized: true,
   },
 };
 

@@ -19,11 +19,11 @@ const FILTER_LABEL_RU: Record<FilterValue, string> = {
 };
 
 interface PageProps {
-  searchParams: { filter?: string };
+  searchParams: Promise<{ filter?: string }>;
 }
 
-export function generateMetadata({ searchParams }: PageProps): Metadata {
-  const raw = (searchParams?.filter ?? '').toString();
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const raw = ((await searchParams)?.filter ?? '').toString();
   const f: FilterValue = (VALID_FILTERS as string[]).includes(raw) ? (raw as FilterValue) : 'All';
   const titleHead =
     f === 'All' ? 'Каталог букетов' : `Коллекция «${FILTER_LABEL_RU[f]}»`;
@@ -41,7 +41,7 @@ export function generateMetadata({ searchParams }: PageProps): Metadata {
 export default async function CatalogPage({ searchParams }: PageProps) {
   const bouquets = await loadCatalog('catalog');
 
-  const rawFilter = (searchParams?.filter ?? '').toString();
+  const rawFilter = ((await searchParams)?.filter ?? '').toString();
   const initialFilter: FilterValue = (VALID_FILTERS as string[]).includes(rawFilter)
     ? (rawFilter as FilterValue)
     : 'All';

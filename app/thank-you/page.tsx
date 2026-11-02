@@ -21,7 +21,7 @@ interface OrderStatus {
 }
 
 interface PageProps {
-  searchParams: { orderId?: string; pay?: string };
+  searchParams: Promise<{ orderId?: string; pay?: string }>;
 }
 
 const fmt = (n: number) => n.toLocaleString('ru-RU');
@@ -49,7 +49,8 @@ async function loadStatus(orderId: string): Promise<OrderStatus | null> {
   }
 }
 
-export default async function ThankYouPage({ searchParams }: PageProps) {
+export default async function ThankYouPage({ searchParams: search }: PageProps) {
+  const searchParams = await search;
   const orderId = /^\d+$/.test(searchParams.orderId ?? '') ? searchParams.orderId! : null;
   const [order, allBouquets] = await Promise.all([
     orderId ? loadStatus(orderId) : Promise.resolve(null),

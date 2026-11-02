@@ -25,7 +25,7 @@ interface HeroSectionProps {
 const fmt = (n: number) => n.toLocaleString('ru-RU').replace(/ /g, ' ');
 
 export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
-  const photoRef = useRef<HTMLDivElement | null>(null);
+  const photoRef = useRef<HTMLAnchorElement | null>(null);
 
   useEffect(() => {
     const t = setTimeout(() => {
@@ -135,7 +135,7 @@ export function HeroSection({ totalBouquets, featured }: HeroSectionProps) {
               <Link
                 href={featured ? `/product/${featured.id}` : '/catalog'}
                 className="cover-photo"
-                ref={photoRef as React.RefObject<HTMLAnchorElement>}
+                ref={photoRef}
                 data-label={featured ? '' : 'cover · plate i · 4:5'}
                 aria-label={featured ? `Букет «${featured.name}»` : 'Каталог'}
               >

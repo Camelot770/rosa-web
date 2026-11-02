@@ -11,7 +11,7 @@ import { loadCatalog } from '@/lib/catalog';
 export const revalidate = 60;
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 const fmt = (n: number) => n.toLocaleString('ru-RU');
@@ -24,7 +24,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const id = Number(params.id);
+  const id = Number((await params).id);
   if (!Number.isFinite(id)) return { title: 'Букет · Роза Цветов' };
   const all = await loadCatalog('product metadata').catch(() => null);
   if (!all) return { title: 'Букет · Роза Цветов' };
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ProductPage({ params }: PageProps) {
-  const id = Number(params.id);
+  const id = Number((await params).id);
   if (!Number.isFinite(id)) notFound();
 
   const all = await loadCatalog('product');
