@@ -1,10 +1,13 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { Header } from '@/app/components/Header';
 import { Footer } from '@/app/components/Footer';
 import { I } from '@/app/components/Icons';
-import { useCart } from '@/lib/cart';
+import { CartNotices } from '@/app/components/CartNotices';
+import { courierCost, useCart } from '@/lib/cart';
+import { useShopSettings } from '@/lib/settings';
 
 const fmt = (n: number) => n.toLocaleString('ru-RU');
 
@@ -13,6 +16,12 @@ export default function CartPage() {
   const lines = useCart((s) => s.lines);
   const remove = useCart((s) => s.remove);
   const setQty = useCart((s) => s.setQty);
+  const revalidate = useCart((s) => s.revalidate);
+  const { settings } = useShopSettings();
+
+  useEffect(() => {
+    if (hydrated) void revalidate();
+  }, [hydrated, revalidate]);
 
   // Render an empty shell until persistence has hydrated, otherwise SSR
   // shows the "empty" state and then flips to filled, causing a flash.
@@ -20,6 +29,8 @@ export default function CartPage() {
   const total = lines.reduce((s, l) => s + l.price * l.qty, 0);
   const oldTotal = lines.reduce((s, l) => s + (l.oldPrice ?? l.price) * l.qty, 0);
   const saved = Math.max(0, oldTotal - total);
+  const delivery = courierCost(total, settings);
+  const belowMinOrder = total < settings.minOrder;
 
   return (
     <>
@@ -35,6 +46,8 @@ export default function CartPage() {
           <h1>
             <em>Корзина.</em>
           </h1>
+
+          <CartNotices />
 
           {showLoading ? (
             <p style={{ color: 'var(--ink-soft)', fontFamily: 'var(--mono)' }}>
@@ -107,8 +120,8 @@ export default function CartPage() {
                   <span>{fmt(total)} ₽</span>
                 </div>
                 <div className="row">
-                  <span>Доставка</span>
-                  <span>Бесплатно по Казани</span>
+                  <span>Доставка курьером</span>
+                  <span>{delivery === 0 ? 'Бесплатно' : `${fmt(delivery)} ₽`}</span>
                 </div>
                 {saved > 0 ? (
                   <div className="row" style={{ color: 'var(--vermilion)' }}>
@@ -119,14 +132,30 @@ export default function CartPage() {
                 <div className="row total">
                   <span>К оплате</span>
                   <span className="v">
-                    <em>{fmt(total)} ₽</em>
+                    <em>{fmt(total + delivery)} ₽</em>
                   </span>
                 </div>
 
-                <Link href="/checkout" className="checkout-btn">
-                  Оформить заказ <I.Arrow />
-                </Link>
+                {belowMinOrder ? (
+                  <>
+                    <p className="min-order">
+                      Минимальная сумма заказа - {fmt(settings.minOrder)} ₽. Добавьте букетов ещё
+                      на {fmt(settings.minOrder - total)} ₽.
+                    </p>
+                    <span className="checkout-btn disabled" aria-disabled="true">
+                      Оформить заказ <I.Arrow />
+                    </span>
+                  </>
+                ) : (
+                  <Link href="/checkout" className="checkout-btn">
+                    Оформить заказ <I.Arrow />
+                  </Link>
+                )}
 
+                <p className="note">
+                  Самовывоз бесплатно{delivery > 0 ? ` - тогда к оплате ${fmt(total)} ₽` : ''}.
+                  Доставку за пределы Казани менеджер рассчитает отдельно.
+                </p>
                 <p className="note">
                   Нажимая «Оформить заказ», вы соглашаетесь с{' '}
                   <Link href="/privacy" style={{ color: 'var(--ink)' }}>

@@ -1,19 +1,25 @@
 'use client';
 
-import { useEffect, useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Header } from '@/app/components/Header';
 import { Footer } from '@/app/components/Footer';
 import { I } from '@/app/components/Icons';
-import { useCart } from '@/lib/cart';
+import { CartNotices } from '@/app/components/CartNotices';
+import { API_BASE, fetchWithTimeout, type ShopSettings } from '@/lib/api';
+import { courierCost, useCart, type CartLine } from '@/lib/cart';
 import { CONTACTS } from '@/lib/contacts';
+import {
+  NETWORK_ERROR,
+  ORDER_TIMEOUT_MS,
+  orderErrorText,
+  rememberOrderToken,
+  startGuestPayment,
+} from '@/lib/payment';
+import { useShopSettings } from '@/lib/settings';
 
 const fmt = (n: number) => n.toLocaleString('ru-RU');
-
-const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, '') ||
-  'https://roza-cvetov-camelot770.msk1.amvera.tech';
 
 type DeliveryType = 'delivery' | 'pickup';
 
@@ -59,61 +65,154 @@ const initial: FormState = {
   agree: false,
 };
 
+/** Same rules as the server, so customers see the reason in Russian before sending. */
+function validate(form: FormState): string | null {
+  const firstName = form.firstName.trim();
+  if (firstName.length < 2 || firstName.length > 60) {
+    return 'Укажите имя: от 2 до 60 символов.';
+  }
+  const digits = form.phone.replace(/\D/g, '');
+  if (digits.length < 10 || digits.length > 15) {
+    return 'Укажите корректный номер телефона, например +7 900 000 00 00.';
+  }
+  const email = form.email.trim();
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return 'Проверьте e-mail: похоже, в адресе опечатка. Поле можно оставить пустым.';
+  }
+  if (form.deliveryType === 'delivery') {
+    if (!form.city.trim()) return 'Укажите город доставки.';
+    if (!form.street.trim() || !form.house.trim()) return 'Укажите улицу и дом для доставки.';
+  }
+  if (form.recipientPhone.trim() && form.recipientPhone.replace(/\D/g, '').length < 10) {
+    return 'Проверьте телефон получателя или оставьте поле пустым.';
+  }
+  if (!form.agree) return 'Подтвердите согласие с политикой конфиденциальности.';
+  return null;
+}
+
+/** Mirrors the server's total, so the customer sees what will be charged. */
+function calcTotals(lines: CartLine[], settings: ShopSettings, form: FormState) {
+  const subtotal = lines.reduce((s, l) => s + l.price * l.qty, 0);
+  const isPromoValid = form.promoCode.trim().toUpperCase() === 'VISITKA10';
+  const promoDiscount = isPromoValid ? Math.floor(subtotal * 0.1) : 0;
+  const deliveryCost = form.deliveryType === 'delivery' ? courierCost(subtotal, settings) : 0;
+  const total = Math.max(0, subtotal - promoDiscount + deliveryCost);
+  return { subtotal, promoDiscount, deliveryCost, total };
+}
+
+const minOrderText = (minOrder: number, subtotal: number) =>
+  `Минимальная сумма заказа - ${fmt(minOrder)} ₽. Добавьте букетов ещё на ${fmt(minOrder - subtotal)} ₽.`;
+
+function CheckoutMessage({ text }: { text: string }) {
+  return (
+    <>
+      <Header />
+      <main className="checkout-page">
+        <div className="container">
+          <p style={{ color: 'var(--ink-soft)', fontFamily: 'var(--mono)' }}>{text}</p>
+        </div>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+/** Order saved by the server with a total the customer has not seen yet. */
+interface ChangedOrder {
+  orderId: number;
+  token: string | undefined;
+  total: number;
+  expected: number;
+}
+
 export default function CheckoutPage() {
   const router = useRouter();
   const hydrated = useCart((s) => s.hydrated);
   const lines = useCart((s) => s.lines);
   const clearCart = useCart((s) => s.clear);
+  const revalidateCart = useCart((s) => s.revalidate);
+  const { settings, refresh: refreshSettings } = useShopSettings();
 
   const [form, setForm] = useState<FormState>(initial);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [changedOrder, setChangedOrder] = useState<ChangedOrder | null>(null);
+  const [leaving, setLeaving] = useState(false);
+  const alertRef = useRef<HTMLDivElement>(null);
 
   // Bounce back to cart if hydrated and empty
   useEffect(() => {
-    if (hydrated && lines.length === 0) {
+    if (hydrated && lines.length === 0 && !leaving) {
       router.replace('/cart');
     }
-  }, [hydrated, lines.length, router]);
+  }, [hydrated, lines.length, leaving, router]);
 
-  const subtotal = lines.reduce((s, l) => s + l.price * l.qty, 0);
+  useEffect(() => {
+    if (hydrated) void revalidateCart();
+  }, [hydrated, revalidateCart]);
+
+  // The form is long and the submit button is at its end: bring messages into view.
+  useEffect(() => {
+    if (error || changedOrder) {
+      alertRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [error, changedOrder]);
+
+  const { subtotal, promoDiscount, deliveryCost, total } = calcTotals(lines, settings, form);
   const oldSubtotal = lines.reduce((s, l) => s + (l.oldPrice ?? l.price) * l.qty, 0);
-  const isPromoValid = form.promoCode.trim().toUpperCase() === 'VISITKA10';
-  const promoDiscount = isPromoValid ? Math.floor(subtotal * 0.1) : 0;
-  // Delivery cost mirrors server logic (defaults that match settings fallbacks).
-  const FREE_FROM = 5000;
-  const DELIVERY_PRICE = 500;
-  const deliveryCost =
-    form.deliveryType === 'delivery' && subtotal < FREE_FROM ? DELIVERY_PRICE : 0;
-  const total = Math.max(0, subtotal - promoDiscount + deliveryCost);
+  const belowMinOrder = subtotal < settings.minOrder;
 
   const update = <K extends keyof FormState>(key: K, value: FormState[K]) =>
     setForm((f) => ({ ...f, [key]: value }));
+
+  const goToPayment = async (orderId: number, token: string | undefined) => {
+    const payment = await startGuestPayment(orderId, token);
+    // The order exists from here on, so the cart is done. Clear it only now:
+    // doing it earlier flashes "Корзина пуста" while the payment is created.
+    setLeaving(true);
+    clearCart();
+    if (payment.ok) {
+      window.location.href = payment.url;
+      return;
+    }
+    console.warn('Payment init failed:', payment.error);
+    router.push(`/thank-you?orderId=${encodeURIComponent(orderId)}&pay=failed`);
+  };
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     setError(null);
 
-    if (!form.agree) {
-      setError('Подтвердите согласие с политикой конфиденциальности.');
-      return;
-    }
-    if (form.firstName.trim().length < 2) {
-      setError('Укажите имя.');
-      return;
-    }
-    const digits = form.phone.replace(/\D/g, '');
-    if (digits.length < 10) {
-      setError('Укажите корректный номер телефона.');
-      return;
-    }
-    if (form.deliveryType === 'delivery' && (!form.street.trim() || !form.house.trim())) {
-      setError('Укажите улицу и дом для доставки.');
+    const invalid = validate(form);
+    if (invalid) {
+      setError(invalid);
       return;
     }
 
     setSubmitting(true);
     try {
+      // Prices, stock and delivery may have changed since the page was opened.
+      const [, freshSettings] = await Promise.all([revalidateCart(), refreshSettings()]);
+      const freshLines = useCart.getState().lines;
+      const activeSettings = freshSettings ?? settings;
+      const fresh = calcTotals(freshLines, activeSettings, form);
+      if (freshLines.length === 0) {
+        setSubmitting(false);
+        return;
+      }
+      if (fresh.subtotal < activeSettings.minOrder) {
+        setError(minOrderText(activeSettings.minOrder, fresh.subtotal));
+        setSubmitting(false);
+        return;
+      }
+      if (fresh.total !== total) {
+        setError(
+          `Сумма заказа изменилась: теперь ${fmt(fresh.total)} ₽. Проверьте заказ и нажмите «Оплатить» ещё раз.`,
+        );
+        setSubmitting(false);
+        return;
+      }
+
       const body = {
         customer: {
           firstName: form.firstName.trim(),
@@ -141,72 +240,60 @@ export default function CheckoutPage() {
         cardText: form.cardText.trim() || undefined,
         comment: form.comment.trim() || undefined,
         promoCode: form.promoCode.trim() || undefined,
-        items: lines.map((l) => ({ bouquetId: l.bouquetId, quantity: l.qty })),
+        items: freshLines.map((l) => ({ bouquetId: l.bouquetId, quantity: l.qty })),
       };
 
-      const res = await fetch(`${API_BASE}/api/orders/guest`, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(body),
-      });
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || `Сервер вернул ${res.status}`);
-      }
-      const data = await res.json();
-      const orderId: number = data.orderId;
-      clearCart();
-
-      // Try to spin up a YooKassa checkout. If the payment route isn't
-      // deployed or YooKassa is unreachable, fall back to the M3 flow:
-      // order is saved, studio calls back.
-      try {
-        const origin = window.location.origin;
-        const payRes = await fetch(`${API_BASE}/api/payment/create-guest`, {
+      const res = await fetchWithTimeout(
+        `${API_BASE}/api/orders/guest`,
+        {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({
-            orderId,
-            returnUrl: `${origin}/thank-you?orderId=${orderId}`,
-          }),
-        });
-        if (payRes.ok) {
-          const { confirmationUrl } = await payRes.json();
-          if (typeof confirmationUrl === 'string' && confirmationUrl.length > 0) {
-            window.location.href = confirmationUrl;
-            return;
-          }
-        } else {
-          console.warn('Payment init failed:', payRes.status);
-        }
-      } catch (payErr) {
-        console.warn('Payment init exception:', payErr);
+          body: JSON.stringify(body),
+        },
+        ORDER_TIMEOUT_MS,
+      );
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        // Usually a bouquet just went out of stock: let the cart explain what changed.
+        if (res.status === 400) await revalidateCart();
+        setError(orderErrorText(data.error));
+        setSubmitting(false);
+        return;
       }
 
-      router.push(`/thank-you?orderId=${encodeURIComponent(orderId)}`);
+      const orderId: number = data.orderId;
+      const token: string | undefined = data.guestToken;
+      rememberOrderToken(orderId, token);
+
+      // The server recomputes the total from its own prices. Never send the
+      // customer to pay a sum they have not seen.
+      if (typeof data.totalPrice === 'number' && data.totalPrice !== fresh.total) {
+        setChangedOrder({ orderId, token, total: data.totalPrice, expected: fresh.total });
+        setSubmitting(false);
+        return;
+      }
+
+      await goToPayment(orderId, token);
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Не удалось отправить заказ.';
-      setError(msg);
+      console.warn('Order submit failed:', err);
+      setError(NETWORK_ERROR);
       setSubmitting(false);
     }
   };
 
-  if (!hydrated) {
-    return (
-      <>
-        <Header />
-        <main className="checkout-page">
-          <div className="container">
-            <p style={{ color: 'var(--ink-soft)', fontFamily: 'var(--mono)' }}>
-              Загружаем корзину…
-            </p>
-          </div>
-        </main>
-        <Footer />
-      </>
-    );
+  const confirmChangedOrder = async () => {
+    if (!changedOrder) return;
+    setSubmitting(true);
+    await goToPayment(changedOrder.orderId, changedOrder.token);
+  };
+
+  if (!hydrated) return <CheckoutMessage text="Загружаем корзину…" />;
+  if (lines.length === 0) {
+    // useEffect redirects to the cart unless we're on our way to the payment
+    return leaving ? <CheckoutMessage text="Открываем оплату…" /> : null;
   }
-  if (lines.length === 0) return null; // useEffect will redirect
+
+  const isKazan = /^казань$/i.test(form.city.trim());
 
   return (
     <>
@@ -223,9 +310,41 @@ export default function CheckoutPage() {
             <em>Оформление</em> заказа.
           </h1>
 
+          <CartNotices />
+
           <div className="checkout-grid">
             <form className="checkout-form" onSubmit={submit} noValidate>
-              {error ? <div className="checkout-error">{error}</div> : null}
+              <div ref={alertRef}>
+                {error ? (
+                  <div className="checkout-error" role="alert">
+                    {error}
+                  </div>
+                ) : null}
+                {changedOrder ? (
+                  <div className="checkout-error price-changed" role="alert">
+                    <div>
+                      Заказ № {changedOrder.orderId} сохранён, но сумма изменилась:{' '}
+                      {fmt(changedOrder.total)} ₽ вместо {fmt(changedOrder.expected)} ₽. Цены или
+                      доставка только что обновились. Оплачивайте, только если сумма вам подходит.
+                      Если нет - не оплачивайте: менеджер позвонит и всё уточнит.
+                    </div>
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={confirmChangedOrder}
+                      disabled={submitting}
+                    >
+                      {submitting ? 'Создаём платёж…' : `Оплатить ${fmt(changedOrder.total)} ₽`}{' '}
+                      <span className="arrow">
+                        <I.Arrow />
+                      </span>
+                    </button>
+                  </div>
+                ) : null}
+              </div>
+              {belowMinOrder ? (
+                <div className="checkout-error">{minOrderText(settings.minOrder, subtotal)}</div>
+              ) : null}
 
               <section className="form-section">
                 <span className="num">01 · Контакт</span>
@@ -297,7 +416,8 @@ export default function CheckoutPage() {
                     />
                     <div className="rt-title">Доставка курьером</div>
                     <div className="rt-sub">
-                      Бесплатно от 5 000 ₽ · иначе 500 ₽
+                      Бесплатно от {fmt(settings.freeDeliveryFrom)} ₽ · иначе{' '}
+                      {fmt(settings.deliveryPrice)} ₽
                     </div>
                   </label>
                   <label className={`radio-tile ${form.deliveryType === 'pickup' ? 'active' : ''}`}>
@@ -314,7 +434,26 @@ export default function CheckoutPage() {
 
                 {form.deliveryType === 'delivery' && (
                   <>
-                    <div className="form-row three" style={{ marginTop: 24 }}>
+                    <div className="form-row full" style={{ marginTop: 24 }}>
+                      <div className="field">
+                        <label htmlFor="ci">Город*</label>
+                        <input
+                          id="ci"
+                          required
+                          autoComplete="address-level2"
+                          value={form.city}
+                          onChange={(e) => update('city', e.target.value)}
+                        />
+                        {form.city.trim() && !isKazan ? (
+                          <div className="hint">
+                            За пределами Казани стоимость и срок доставки уточнит менеджер:
+                            отправляем СДЭК или Почтой России, подробнее в{' '}
+                            <Link href="/delivery">условиях доставки</Link>.
+                          </div>
+                        ) : null}
+                      </div>
+                    </div>
+                    <div className="form-row three" style={{ marginTop: 20 }}>
                       <div className="field">
                         <label htmlFor="st">Улица*</label>
                         <input
@@ -464,7 +603,11 @@ export default function CheckoutPage() {
                 </label>
 
                 <div className="checkout-submit-row" style={{ marginTop: 24 }}>
-                  <button type="submit" className="btn" disabled={submitting}>
+                  <button
+                    type="submit"
+                    className="btn"
+                    disabled={submitting || belowMinOrder || !!changedOrder}
+                  >
                     {submitting ? 'Создаём платёж…' : `Оплатить ${fmt(total)} ₽`}{' '}
                     <span className="arrow">
                       <I.Arrow />

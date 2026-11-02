@@ -49,9 +49,15 @@ export const useFavorites = create<FavoritesState>()(
       setHydrated: () => set({ hydrated: true }),
     }),
     {
-      name: 'rosa-favorites-v1',
+      // v1 holds bouquet ids from the catalog before the API move.
+      name: 'rosa-favorites-v2',
       onRehydrateStorage: () => (state) => {
         state?.setHydrated();
+        try {
+          localStorage.removeItem('rosa-favorites-v1');
+        } catch {
+          // Storage may be blocked; the old key is then just left alone.
+        }
       },
     },
   ),
