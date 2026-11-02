@@ -65,6 +65,9 @@ const initial: FormState = {
   agree: false,
 };
 
+/** Today at the studio, Kazan is UTC+3. The server refuses earlier dates. */
+const studioToday = () => new Date(Date.now() + 3 * 60 * 60 * 1000).toISOString().slice(0, 10);
+
 /** Same rules as the server, so customers see the reason in Russian before sending. */
 function validate(form: FormState): string | null {
   const firstName = form.firstName.trim();
@@ -82,6 +85,9 @@ function validate(form: FormState): string | null {
   if (form.deliveryType === 'delivery') {
     if (!form.city.trim()) return 'Укажите город доставки.';
     if (!form.street.trim() || !form.house.trim()) return 'Укажите улицу и дом для доставки.';
+    if (form.deliveryDate && form.deliveryDate < studioToday()) {
+      return 'Эта дата уже прошла, выберите другую.';
+    }
   }
   if (form.recipientPhone.trim() && form.recipientPhone.replace(/\D/g, '').length < 10) {
     return 'Проверьте телефон получателя или оставьте поле пустым.';
@@ -222,8 +228,8 @@ export default function CheckoutPage() {
         },
         delivery: {
           type: form.deliveryType,
-          date: form.deliveryDate || undefined,
-          time: form.deliveryTime || undefined,
+          date: form.deliveryType === 'delivery' ? form.deliveryDate || undefined : undefined,
+          time: form.deliveryType === 'delivery' ? form.deliveryTime || undefined : undefined,
           address:
             form.deliveryType === 'delivery'
               ? {
@@ -488,6 +494,7 @@ export default function CheckoutPage() {
                         <input
                           id="dt"
                           type="date"
+                          min={studioToday()}
                           value={form.deliveryDate}
                           onChange={(e) => update('deliveryDate', e.target.value)}
                         />

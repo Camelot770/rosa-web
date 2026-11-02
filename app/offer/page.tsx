@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { loadShopSettings } from '@/lib/catalog';
 
 export const metadata: Metadata = {
   title: 'Публичная оферта · Роза Цветов',
@@ -7,7 +8,13 @@ export const metadata: Metadata = {
     'Договор публичной оферты ООО «Роза Цветов» на продажу стабилизированных букетов через сайт.',
 };
 
-export default function OfferPage() {
+export const revalidate = 300;
+
+const fmt = (n: number) => n.toLocaleString('ru-RU');
+
+export default async function OfferPage() {
+  const settings = await loadShopSettings();
+
   return (
     <>
       <header className="legal-topbar">
@@ -124,7 +131,7 @@ export default function OfferPage() {
               </ul>
               <p>
                 4.4. Стоимость доставки зависит от&nbsp;адреса и&nbsp;рассчитывается в&nbsp;момент
-                оформления заказа. При&nbsp;стоимости заказа от&nbsp;5&nbsp;000&nbsp;₽ доставка по
+                оформления заказа. При&nbsp;стоимости заказа от&nbsp;{fmt(settings.freeDeliveryFrom)}&nbsp;₽ доставка по
                 Казани&nbsp;— бесплатно.
               </p>
             </section>

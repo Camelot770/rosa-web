@@ -17,13 +17,16 @@ import { MarqueeStrip } from './components/MarqueeStrip';
 import { ScrollProgress } from './components/ScrollProgress';
 import { SectionScribe } from './components/SectionScribe';
 import { StickyFolio } from './components/StickyFolio';
+import { bouquetsLabel } from '@/lib/captions';
 import { loadCatalog } from '@/lib/catalog';
+import { currentSeason } from '@/lib/season';
 
 export const revalidate = 60;
 
 export default async function HomePage() {
   // Live data from rosa-flowers-server.
   const bouquets = await loadCatalog('home');
+  const season = currentSeason();
 
   // Magazine cover slot: the bouquet picked in admin ("На превью"), otherwise
   // the most expensive one in stock, same as the mini-apps. Changes in admin
@@ -43,15 +46,15 @@ export default async function HomePage() {
         <AudiencesSection />
         <RecognitionSection />
         <IndexSection totalBouquets={bouquets.length} />
-        <EditorialSection />
+        <EditorialSection bouquets={bouquets} />
         <MarqueeStrip
           items={[
             'Atelier · Kazan · Tatarstan',
             'Est. 2017',
-            `${bouquets.length} букетов в каталоге`,
+            `${bouquetsLabel(bouquets.length)} в каталоге`,
             'Соло · Дуэт · Квартет · Оркестр',
             'Patent RU 2 698 058',
-            'Сезон 17 · Май 2026',
+            `Сезон ${season.season} · ${season.month} ${season.year}`,
           ]}
         />
         <PlatesSection bouquets={bouquets} />

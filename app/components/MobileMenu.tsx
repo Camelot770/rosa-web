@@ -6,7 +6,7 @@ import { I } from './Icons';
 
 const links: Array<{ href: string; label: string; sub?: string }> = [
   { href: '/', label: 'Главная', sub: 'Обложка номера' },
-  { href: '/catalog', label: 'Каталог', sub: 'Все 40 букетов' },
+  { href: '/catalog', label: 'Каталог', sub: 'Все букеты' },
   { href: '/plates', label: 'Коллекции', sub: 'Четыре коллекции' },
   { href: '/editorial', label: 'Философия', sub: 'Имена и смыслы' },
   { href: '/atelier', label: 'Студия', sub: 'Ателье в Татарстане' },

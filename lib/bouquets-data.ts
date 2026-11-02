@@ -17,6 +17,7 @@ export interface Bouquet {
   isHit: boolean;
   isNew: boolean;
   isFeatured?: boolean;
+  customOrder?: boolean;
   images: string[];
 }
 

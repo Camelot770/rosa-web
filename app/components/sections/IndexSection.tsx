@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { R, Split } from '../Reveal';
+import { bouquetsLabel } from '@/lib/captions';
 
 interface IndexSectionProps {
   totalBouquets: number;
@@ -28,7 +29,7 @@ export function IndexSection({ totalBouquets }: IndexSectionProps) {
           Четыре коллекции · <em>Plates</em>
         </span>
       ),
-      sub: `${totalBouquets} букетов`,
+      sub: bouquetsLabel(totalBouquets),
       pg: 'P. 12',
     },
     {

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { loadShopSettings } from '@/lib/catalog';
 
 export const metadata: Metadata = {
   title: 'Условия доставки · Роза Цветов',
@@ -7,7 +8,13 @@ export const metadata: Metadata = {
     'Доставка стабилизированных букетов студии «Роза Цветов» по Казани, Татарстану и регионам России.',
 };
 
-export default function DeliveryPage() {
+export const revalidate = 300;
+
+const fmt = (n: number) => n.toLocaleString('ru-RU');
+
+export default async function DeliveryPage() {
+  const settings = await loadShopSettings();
+
   return (
     <>
       <header className="legal-topbar">
@@ -57,10 +64,10 @@ export default function DeliveryPage() {
               </p>
               <ul>
                 <li>
-                  <strong>Стоимость:</strong> 500&nbsp;₽ по&nbsp;Казани.
+                  <strong>Стоимость:</strong> {fmt(settings.deliveryPrice)}&nbsp;₽ по&nbsp;Казани.
                 </li>
                 <li>
-                  <strong>Бесплатно</strong> при&nbsp;стоимости заказа от&nbsp;5&nbsp;000&nbsp;₽.
+                  <strong>Бесплатно</strong> при&nbsp;стоимости заказа от&nbsp;{fmt(settings.freeDeliveryFrom)}&nbsp;₽.
                 </li>
                 <li>
                   <strong>Срок:</strong> в&nbsp;день заказа, если заказ оформлен до&nbsp;15:00.

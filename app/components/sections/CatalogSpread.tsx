@@ -6,6 +6,7 @@ import { R, Split } from '../Reveal';
 import { I } from '../Icons';
 import { FavoriteToggle } from '../FavoriteToggle';
 import type { Bouquet, CollectionEn } from '@/lib/bouquets-data';
+import { bouquetsLabel } from '@/lib/captions';
 
 type FilterValue = 'All' | CollectionEn;
 const filters: FilterValue[] = ['All', 'Solo', 'Duet', 'Quartet', 'Orchestra'];
@@ -61,7 +62,7 @@ export function CatalogSpread({ bouquets, initialFilter = 'All', limit }: Catalo
           </Split>
           <R delay={150}>
             <Link className="link-u" href="/catalog">
-              {isPreview ? `Все ${total} букетов` : 'Заказать букет'}{' '}
+              {isPreview ? `Все ${bouquetsLabel(total)}` : 'Заказать букет'}{' '}
               <span className="arrow">
                 <I.Arrow />
               </span>
@@ -156,7 +157,7 @@ export function CatalogSpread({ bouquets, initialFilter = 'All', limit }: Catalo
           <R delay={200}>
             <div className="spread-more">
               <Link href="/catalog" className="btn">
-                Посмотреть ещё · {total - items.length} букетов{' '}
+                Посмотреть ещё · {bouquetsLabel(total - items.length)}{' '}
                 <span className="arrow">
                   <I.Arrow />
                 </span>

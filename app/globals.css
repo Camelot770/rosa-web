@@ -1614,6 +1614,8 @@ body::before {
 .product-thumbs .thumb {
   width: 72px;
   aspect-ratio: 4 / 5;
+  padding: 0;
+  background-color: transparent;
   background-size: cover;
   background-position: center;
   border: 1px solid var(--ink-line);

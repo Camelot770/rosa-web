@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { R, Split } from '../Reveal';
 import { I } from '../Icons';
 import type { Bouquet, Collection } from '@/lib/bouquets-data';
+import { bouquetsLabel, collectionCaption } from '@/lib/captions';
 
 interface PlatesSectionProps {
   bouquets: Bouquet[];
@@ -23,21 +24,12 @@ const COLLS: CollDef[] = [
   { roman: 'IV', lbl: 'Оркестр', name: 'Orchestra', it: '' },
 ];
 
-const fmt = (n: number) => n.toLocaleString('ru-RU');
-
 export function PlatesSection({ bouquets }: PlatesSectionProps) {
   const plates = COLLS.map((p) => {
     const items = bouquets.filter((b) => b.collection === p.lbl);
     if (!items.length) return { ...p, meta: '', hero: null as string | null };
-    const prices = items.map((b) => b.price);
-    const lo = Math.min(...prices);
-    const hi = Math.max(...prices);
-    const meta =
-      lo === hi
-        ? `${items.length} букетов · ${fmt(lo)} ₽`
-        : `${items.length} букетов · ${fmt(lo)}–${fmt(hi)} ₽`;
     const hero = items[0].images[0] ?? null;
-    return { ...p, meta, hero };
+    return { ...p, meta: collectionCaption(bouquets, p.lbl), hero };
   });
 
   return (
@@ -56,7 +48,7 @@ export function PlatesSection({ bouquets }: PlatesSectionProps) {
           </Split>
           <R delay={150}>
             <Link className="link-u" href="/catalog">
-              Все {bouquets.length} букетов{' '}
+              Все {bouquetsLabel(bouquets.length)}{' '}
               <span className="arrow">
                 <I.Arrow />
               </span>

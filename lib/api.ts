@@ -88,6 +88,7 @@ function shape(api: ApiBouquet, no: number): Bouquet {
     isHit: !!api.isHit,
     isNew: !!api.isNew,
     isFeatured: !!api.isFeatured,
+    customOrder: !!api.customOrder,
     images,
   };
 }
@@ -108,17 +109,12 @@ export async function fetchBouquets(): Promise<Bouquet[]> {
     throw new Error(`fetchBouquets: ${res.status} ${res.statusText}`);
   }
   const raw = (await res.json()) as ApiBouquet[];
-  const stockOnly = raw.filter((b) => b.inStock);
-  stockOnly.sort((a, b) => {
+  const orderable = raw.filter((b) => b.inStock || b.customOrder);
+  orderable.sort((a, b) => {
     if (a.isHit !== b.isHit) return a.isHit ? -1 : 1;
     return a.price - b.price;
   });
-  return stockOnly.map((b, i) => shape(b, i + 1));
-}
-
-export async function fetchBouquet(id: number): Promise<Bouquet | null> {
-  const all = await fetchBouquets();
-  return all.find((b) => b.id === id) ?? null;
+  return orderable.map((b, i) => shape(b, i + 1));
 }
 
 /** fetch() that gives up instead of hanging when the API stops answering. */
@@ -181,9 +177,11 @@ function intSetting(value: string | undefined, fallback: number): number {
   return Number.isFinite(n) ? n : fallback;
 }
 
-export async function fetchShopSettings(): Promise<ShopSettings | null> {
+export async function fetchShopSettings(
+  init: RequestInit = { cache: 'no-store' },
+): Promise<ShopSettings | null> {
   try {
-    const res = await fetchWithTimeout(`${API_BASE}/api/settings`, { cache: 'no-store' });
+    const res = await fetchWithTimeout(`${API_BASE}/api/settings`, init);
     if (!res.ok) return null;
     const raw = (await res.json()) as Record<string, string | undefined>;
     return {

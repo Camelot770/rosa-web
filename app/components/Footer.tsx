@@ -30,7 +30,7 @@ export function Footer() {
             <h4>Catalog</h4>
             <ul>
               <li>
-                <Link href="/catalog">Все 40 букетов</Link>
+                <Link href="/catalog">Все букеты</Link>
               </li>
               <li>
                 <Link href="/catalog?filter=Solo">Соло</Link>

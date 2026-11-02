@@ -7,7 +7,7 @@
 // API may not know.
 
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
-import { fetchBouquets } from './api';
+import { DEFAULT_SHOP_SETTINGS, fetchBouquets, fetchShopSettings, type ShopSettings } from './api';
 import { BOUQUETS, type Bouquet } from './bouquets-data';
 
 export function isBuildPhase(): boolean {
@@ -22,4 +22,12 @@ export async function loadCatalog(page: string): Promise<Bouquet[]> {
     console.warn(`[${page}] API unavailable during build, using bundled snapshot:`, err);
     return BOUQUETS;
   }
+}
+
+/** Delivery terms for the static pages. Same rule: defaults only during the build. */
+export async function loadShopSettings(): Promise<ShopSettings> {
+  const settings = await fetchShopSettings({ next: { revalidate: 300 } });
+  if (settings) return settings;
+  if (!isBuildPhase()) throw new Error('loadShopSettings: API unavailable');
+  return DEFAULT_SHOP_SETTINGS;
 }

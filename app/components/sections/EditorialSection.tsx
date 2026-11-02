@@ -2,8 +2,14 @@
 
 import Link from 'next/link';
 import { R, Split } from '../Reveal';
+import type { Bouquet } from '@/lib/bouquets-data';
+import { collectionCaption } from '@/lib/captions';
 
-export function EditorialSection() {
+interface EditorialSectionProps {
+  bouquets: Bouquet[];
+}
+
+export function EditorialSection({ bouquets }: EditorialSectionProps) {
   return (
     <section className="editorial" id="editorial">
       <div className="container">
@@ -81,7 +87,7 @@ export function EditorialSection() {
                 <em>Соло</em>
               </span>
               <span className="sex">лёгкие · воздушные · пастельные</span>
-              <span className="scap">8 букетов · 1 400–2 550 ₽</span>
+              <span className="scap">{collectionCaption(bouquets, 'Соло')}</span>
               <span className="scale-cta">Открыть →</span>
             </Link>
             <Link href="/catalog?filter=Duet" className="scale-cell scale-cell-2" aria-label="Открыть коллекцию Дуэт">
@@ -90,7 +96,7 @@ export function EditorialSection() {
                 <em>Дуэт</em>
               </span>
               <span className="sex">контраст · акценты · камерно</span>
-              <span className="scap">11 букетов · 2 850–4 380 ₽</span>
+              <span className="scap">{collectionCaption(bouquets, 'Дуэт')}</span>
               <span className="scale-cta">Открыть →</span>
             </Link>
             <Link href="/catalog?filter=Quartet" className="scale-cell scale-cell-3" aria-label="Открыть коллекцию Квартет">
@@ -99,7 +105,7 @@ export function EditorialSection() {
                 <em>Квартет</em>
               </span>
               <span className="sex">многослойные · крупные · сложные</span>
-              <span className="scap">9 букетов · 4 500–6 500 ₽</span>
+              <span className="scap">{collectionCaption(bouquets, 'Квартет')}</span>
               <span className="scale-cta">Открыть →</span>
             </Link>
             <Link href="/catalog?filter=Orchestra" className="scale-cell scale-cell-4" aria-label="Открыть коллекцию Оркестр">
@@ -108,7 +114,7 @@ export function EditorialSection() {
                 <em>Оркестр</em>
               </span>
               <span className="sex">парадные · штучные · премиум</span>
-              <span className="scap">12 букетов · 7 000–12 000 ₽</span>
+              <span className="scap">{collectionCaption(bouquets, 'Оркестр')}</span>
               <span className="scale-cta">Открыть →</span>
             </Link>
           </div>

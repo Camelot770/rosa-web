@@ -5,7 +5,8 @@ import { Header } from '@/app/components/Header';
 import { Footer } from '@/app/components/Footer';
 import { AddToCartButton } from '@/app/components/AddToCartButton';
 import { FavoriteToggle } from '@/app/components/FavoriteToggle';
-import { fetchBouquet, fetchBouquets } from '@/lib/api';
+import { ProductGallery } from '@/app/components/ProductGallery';
+import { loadCatalog } from '@/lib/catalog';
 
 export const revalidate = 60;
 
@@ -15,19 +16,19 @@ interface PageProps {
 
 const fmt = (n: number) => n.toLocaleString('ru-RU');
 
+// Built from the snapshot when the API is down, so a deploy during an outage
+// still has every product page as its last good version.
 export async function generateStaticParams() {
-  try {
-    const all = await fetchBouquets();
-    return all.map((b) => ({ id: String(b.id) }));
-  } catch {
-    return [];
-  }
+  const all = await loadCatalog('product params');
+  return all.map((b) => ({ id: String(b.id) }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const id = Number(params.id);
   if (!Number.isFinite(id)) return { title: 'Букет · Роза Цветов' };
-  const bouquet = await fetchBouquet(id).catch(() => null);
+  const all = await loadCatalog('product metadata').catch(() => null);
+  if (!all) return { title: 'Букет · Роза Цветов' };
+  const bouquet = all.find((b) => b.id === id);
   if (!bouquet) return { title: 'Букет не найден · Роза Цветов' };
   return {
     title: `«${bouquet.name}» · ${bouquet.collection} · Роза Цветов`,
@@ -39,17 +40,15 @@ export default async function ProductPage({ params }: PageProps) {
   const id = Number(params.id);
   if (!Number.isFinite(id)) notFound();
 
-  const bouquet = await fetchBouquet(id);
+  const all = await loadCatalog('product');
+  const bouquet = all.find((b) => b.id === id);
   if (!bouquet) notFound();
 
-  const all = await fetchBouquets().catch(() => [] as typeof bouquet[]);
   const related = all
     .filter((b) => b.collection === bouquet.collection && b.id !== bouquet.id)
     .slice(0, 4);
   const totalBouquets = all.length;
 
-  const heroImg = bouquet.images[0];
-  const otherImages = bouquet.images.slice(1);
   const ix = `№ ${String(bouquet.no).padStart(3, '0')}`;
   const hasDiscount = bouquet.oldPrice && bouquet.oldPrice > bouquet.price;
   const savePct = hasDiscount
@@ -66,29 +65,7 @@ export default async function ProductPage({ params }: PageProps) {
           </Link>
 
           <div className="product-grid">
-            <div>
-              <div className="product-photo">
-                <span className="stamp-no">{ix}</span>
-                <span className="plate-tag">{bouquet.collection}</span>
-                <div
-                  className="image"
-                  style={
-                    heroImg ? { backgroundImage: `url("${heroImg}")` } : undefined
-                  }
-                />
-              </div>
-              {otherImages.length > 0 && (
-                <div className="product-thumbs">
-                  {bouquet.images.map((img, i) => (
-                    <div
-                      key={i}
-                      className={`thumb ${i === 0 ? 'active' : ''}`}
-                      style={{ backgroundImage: `url("${img}")` }}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
+            <ProductGallery images={bouquet.images} stamp={ix} collection={bouquet.collection} />
 
             <div className="product-info">
               <div className="kicker">✦ {bouquet.collectionEn}</div>
@@ -109,6 +86,10 @@ export default async function ProductPage({ params }: PageProps) {
 
               {bouquet.description ? (
                 <p className="desc">{bouquet.description}</p>
+              ) : null}
+
+              {bouquet.customOrder ? (
+                <p className="desc">Изготавливаем под заказ, срок уточним при подтверждении.</p>
               ) : null}
 
               <div className="product-cta">

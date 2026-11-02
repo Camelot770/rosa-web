@@ -4,15 +4,8 @@ import { CartBadge } from './CartBadge';
 import { HeartBadge } from './HeartBadge';
 import { MobileMenu } from './MobileMenu';
 import { SeasonLabel } from './SeasonLabel';
+import { bouquetsLabel } from '@/lib/captions';
 import { CONTACTS } from '@/lib/contacts';
-
-function pluralBouquet(n: number): string {
-  const mod10 = n % 10;
-  const mod100 = n % 100;
-  if (mod10 === 1 && mod100 !== 11) return 'букет';
-  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) return 'букета';
-  return 'букетов';
-}
 
 interface HeaderProps {
   /** Optional total bouquet count to show in the masthead top-bar. */
@@ -22,7 +15,7 @@ interface HeaderProps {
 export function Header({ bouquetCount }: HeaderProps = {}) {
   const catalogLine =
     typeof bouquetCount === 'number'
-      ? `${bouquetCount} ${pluralBouquet(bouquetCount)}`
+      ? bouquetsLabel(bouquetCount)
       : 'Стабилизированная флористика';
 
   return (
